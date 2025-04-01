@@ -1,0 +1,24 @@
+@model List<UIWeb.Models.Post>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  @foreach (UIWeb.Models.Post p in Model)
+  {
+    <div>
+      <h3>@p.Title</h3>
+      <p>@p.Content</p>
+      <p>
+        <a href="/Post/Get/@p.Id">Devamını oku...</a>
+      </p>
+    </div>
+  }
+</body>
+
+</html>
