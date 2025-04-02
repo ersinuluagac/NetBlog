@@ -1,0 +1,15 @@
+@model Post
+
+<div class="col-sm-12 col-md-6 col-lg-4 col-xxl-3 my-3">
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">@Model.Title</h5>
+      <h6 class="card-subtitle mb-2 text-body-secondary">Category</h6>
+      <p class="card-text">@Model.Content</p>
+      <a class="card-link btn btn-sm btn-dark"
+        asp-controller="Post" asp-action="Get" asp-route-id="@Model.Id">Devamını oku...
+      </a>
+      <a class="card-link btn btn-sm btn-outline-dark">Daha sonra oku</a>
+    </div>
+  </div>
+</div>

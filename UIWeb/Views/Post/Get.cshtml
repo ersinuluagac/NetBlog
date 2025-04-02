@@ -1,19 +1,21 @@
-@model UIWeb.Models.Post
-<!DOCTYPE html>
-<html lang="en">
+@model Post
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-
-<body>
-  <div>
-    <h1>@Model.Title</h1>
-    <p>@Model.Content</p>
-    <a href="/Post">Geri dön.</a>
+<div>
+  <h1>@Model.Title</h1>
+  <p>@Model.Content</p>
+  <a class="btn btn-sm btn-secondary"
+    asp-controller="Post" asp-action="Index">
+    <i class="fa-solid fa-arrow-left"></i> Geri dön
+  </a>
+  <div class="btn-group">
+    <a class="btn btn-sm btn-outline-danger">Beğen</a>
+    <a class="btn btn-sm btn-outline-primary">Yorum Yap</a>
+    <a class="btn btn-sm btn-outline-success">Okuma Listeme Ekle</a>
   </div>
-</body>
+</div>
 
-</html>
+@section Header {
+  <div>
+    Header section
+  </div>
+}

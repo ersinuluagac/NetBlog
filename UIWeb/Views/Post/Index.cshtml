@@ -1,24 +1,13 @@
-@model List<UIWeb.Models.Post>
-<!DOCTYPE html>
-<html lang="en">
+@model List<Post>
+@section Footer {
+  <div>
+    Footer section
+  </div>
+}
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-
-<body>
-  @foreach (UIWeb.Models.Post p in Model)
+<div class="row my-5">
+  @foreach (Post p in Model)
   {
-    <div>
-      <h3>@p.Title</h3>
-      <p>@p.Content</p>
-      <p>
-        <a href="/Post/Get/@p.Id">Devamını oku...</a>
-      </p>
-    </div>
+    <partial name="_PostCard" model="@p" />
   }
-</body>
-
-</html>
+</div>
