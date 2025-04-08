@@ -4,15 +4,15 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using UIWeb.Models;
+using Repository;
 
 #nullable disable
 
 namespace UIWeb.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20250408133208_initWithData")]
-    partial class initWithData
+    [Migration("20250408141140_startPoint")]
+    partial class startPoint
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

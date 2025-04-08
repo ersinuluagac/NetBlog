@@ -1,9 +1,9 @@
-﻿using Core.Models;
+using Core.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace UIWeb.Models
+namespace Repository
 {
-    public class RepositoryContext : DbContext
+  public class RepositoryContext : DbContext
     {
         public DbSet<Post> Posts { get; set; }
 

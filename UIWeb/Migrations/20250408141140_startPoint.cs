@@ -4,7 +4,7 @@
 
 namespace UIWeb.Migrations
 {
-    public partial class initWithData : Migration
+    public partial class startPoint : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

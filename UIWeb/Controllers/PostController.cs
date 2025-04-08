@@ -1,6 +1,6 @@
 using Core.Models;
 using Microsoft.AspNetCore.Mvc;
-using UIWeb.Models;
+using Repository;
 
 namespace UIWeb.Controllers
 {
