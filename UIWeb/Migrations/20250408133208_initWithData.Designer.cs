@@ -11,8 +11,8 @@ using UIWeb.Models;
 namespace UIWeb.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20250401212533_PostSeedData")]
-    partial class PostSeedData
+    [Migration("20250408133208_initWithData")]
+    partial class initWithData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,7 +23,7 @@ namespace UIWeb.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("UIWeb.Models.Post", b =>
+            modelBuilder.Entity("Core.Models.Post", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
