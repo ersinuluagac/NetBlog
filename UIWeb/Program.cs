@@ -4,7 +4,7 @@ using Repository;
 var builder = WebApplication.CreateBuilder(args); // Web uygulaması oluşturuluyor.
 
 builder.Services.AddControllersWithViews(); // Controller ve view servisleri ekleniyor.
-builder.Services.AddDbContext<RepositoryContext>(options => // Veritabanı baplantıssıyapılıyor.
+builder.Services.AddDbContext<RepositoryContext>(options => // Veritabanı bağlantısı yapılıyor.
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("MsSqlConnection"), // appsettings.json dosyasındaki bağlantı bilgileri alınıyor.
     b => b.MigrationsAssembly("UIWeb")); // Migrations'ların nerde bulunacağını belirliyoruz.
