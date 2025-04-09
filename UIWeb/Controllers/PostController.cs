@@ -1,27 +1,27 @@
 using Core.Models;
 using Microsoft.AspNetCore.Mvc;
-using Repository;
+using Repository.UnitOfWork;
 
 namespace UIWeb.Controllers
 {
   public class PostController : Controller
   {
-    private readonly RepositoryContext _context;
+    private readonly IRepositoryManager _manager;
 
-    public PostController(RepositoryContext context)
+    public PostController(IRepositoryManager manager)
     {
-      _context = context;
+      _manager = manager;
     }
 
     public IActionResult Index()
     {
-      var model = _context.Posts.ToList();
+      var model = _manager.Post.GetAllPosts(false);
       return View(model);
     }
     public IActionResult Get(int id)
     {
-      Post post = _context.Posts.First(p => p.Id.Equals(id));
-      return View(post);
+      // Post post = _manager.Posts.First(p => p.Id.Equals(id));
+      return View();
     }
   }
 }

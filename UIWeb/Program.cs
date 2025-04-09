@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Repository;
+using Repository.Implementations;
+using Repository.Interfaces;
+using Repository.UnitOfWork;
 
 var builder = WebApplication.CreateBuilder(args); // Web uygulaması oluşturuluyor.
 
@@ -9,6 +12,10 @@ builder.Services.AddDbContext<RepositoryContext>(options => // Veritabanı bağl
     options.UseSqlServer(builder.Configuration.GetConnectionString("MsSqlConnection"), // appsettings.json dosyasındaki bağlantı bilgileri alınıyor.
     b => b.MigrationsAssembly("UIWeb")); // Migrations'ların nerde bulunacağını belirliyoruz.
 });
+
+// Interfaces yerine Implementations
+builder.Services.AddScoped<IRepositoryManager, RepositoryManager>();
+builder.Services.AddScoped<IPostRepository, PostRepository>(); 
 
 var app = builder.Build(); // Web uygulaması servisler ile derleniyor.
 

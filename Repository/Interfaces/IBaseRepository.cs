@@ -3,10 +3,10 @@ namespace Repository.Interfaces
   public interface IBaseRepository<T>
   {
     /// <summary>
-    /// Bütün ögeleri bulmak için metot.
+    /// T tipinde bütün ögeleri bulmak için metot.
     /// </summary>
     /// <param name="trackChanges">Takip parametresi</param>
-    /// <returns>Bulunan ögeler.</returns>
+    /// <returns>T tipinde bulunan ögeler.</returns>
     IQueryable<T> FindAll(bool trackChanges);
   }
 }
