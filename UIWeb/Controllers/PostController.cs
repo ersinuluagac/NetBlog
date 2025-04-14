@@ -20,8 +20,8 @@ namespace UIWeb.Controllers
     }
     public IActionResult Get(int id)
     {
-      // Post post = _manager.Posts.First(p => p.Id.Equals(id));
-      return View();
+      var model = _manager.Post.GetOnePost(id, false);
+      return View(model);
     }
   }
 }

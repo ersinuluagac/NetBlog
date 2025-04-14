@@ -13,5 +13,10 @@ namespace Repository.Implementations
 
     // Methods
     public IQueryable<Post> GetAllPosts(bool trackChanges) => FindAll(trackChanges);
+
+    public Post? GetOnePost(int id, bool trackChanges)
+    {
+      return FindByCondition(p => p.Id.Equals(id), trackChanges);
+    }
   }
 }
