@@ -3,9 +3,9 @@ using Repository.Interfaces;
 
 namespace Repository.Implementations
 {
-  // Constructors
   public class PostRepository : BaseRepository<Post>, IPostRepository
   {
+    // Constructors
     public PostRepository(RepositoryContext context) : base(context)
     {
       // 'context' BaseRepository'de çözülecek
