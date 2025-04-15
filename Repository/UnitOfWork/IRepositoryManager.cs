@@ -6,6 +6,7 @@ namespace Repository.UnitOfWork
   {
     // Yönetilecek sınıflar.
     IPostRepository Post {get;}
+    ICategoryRepository Category {get;}
 
     /// <summary>
     /// Veri tabanına kayıt için metot.

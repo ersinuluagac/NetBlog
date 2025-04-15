@@ -8,17 +8,20 @@ namespace Repository.UnitOfWork
     // DIs
     private readonly RepositoryContext _context;
     private readonly IPostRepository _postRepository;
+    private readonly ICategoryRepository _categoryRepository;
 
     // Constructor
-    public RepositoryManager(RepositoryContext context, IPostRepository postRepository)
+    public RepositoryManager(RepositoryContext context, IPostRepository postRepository, ICategoryRepository categoryRepository)
     {
-      // IoC'de çözülecekler.
+      // IoC
       _context = context;
       _postRepository = postRepository;
+      _categoryRepository = categoryRepository;
     }
 
     // Yönetilecek sınıflar
     public IPostRepository Post => _postRepository;
+    public ICategoryRepository Category => _categoryRepository;
 
     // Metotlar
     public void Save() => _context.SaveChanges();
