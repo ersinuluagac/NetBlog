@@ -1,16 +1,15 @@
-using Core.Models;
 using Microsoft.AspNetCore.Mvc;
-using Repository.UnitOfWork;
+using Service.UnitOfWork;
 
 namespace UIWeb.Controllers
 {
   public class CategoryController : Controller
   {
     //Dependency Injection
-    private readonly IRepositoryManager _manager;
+    private readonly IServiceManager _manager;
 
     // Constructor
-    public CategoryController(IRepositoryManager manager)
+    public CategoryController(IServiceManager manager)
     {
       _manager = manager;
     }
@@ -18,7 +17,7 @@ namespace UIWeb.Controllers
     // Views
     public IActionResult Index()
     {
-      var model = _manager.Category.FindAll(false);
+      var model = _manager.CategoryService.GetAllCategories(false);
       return View(model);
     }
   }

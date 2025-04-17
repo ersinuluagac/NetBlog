@@ -1,16 +1,15 @@
-using Core.Models;
 using Microsoft.AspNetCore.Mvc;
-using Repository.UnitOfWork;
+using Service.UnitOfWork;
 
 namespace UIWeb.Controllers
 {
   public class PostController : Controller
   {
     //Dependency Injection
-    private readonly IRepositoryManager _manager;
+    private readonly IServiceManager _manager;
 
     // Constructor
-    public PostController(IRepositoryManager manager)
+    public PostController(IServiceManager manager)
     {
       _manager = manager;
     }
@@ -18,12 +17,12 @@ namespace UIWeb.Controllers
     // Views
     public IActionResult Index()
     {
-      var model = _manager.Post.GetAllPosts(false);
+      var model = _manager.PostService.GetAllPosts(false);
       return View(model);
     }
-    public IActionResult Get(int id)
+    public IActionResult Get([FromRoute(Name = "id")] int id)
     {
-      var model = _manager.Post.GetOnePost(id, false);
+      var model = _manager.PostService.GetOnePost(id, false);
       return View(model);
     }
   }
