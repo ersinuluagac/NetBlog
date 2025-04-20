@@ -5,7 +5,7 @@ namespace Repository
 {
     public class RepositoryContext : DbContext
     {
-        // Oluşturulacak tablolar
+        // Tablolar
         public DbSet<Post> Posts { get; set; }
         public DbSet<Category> Categories { get; set; }
 

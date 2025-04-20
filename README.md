@@ -30,3 +30,8 @@
 - Özel işlemler için PostRepository oluşturuldu.
 - RepositoryManager ile UnitOfWork yapısı hazırlandı.
 - Expression ile LINQ sorguları yapılabilir halde Repository classları için yeni metotlar yazıldı.
+## 4 Service Katmanının Oluşturulması
+- Temel modeler için Service katmanında CategoryService ve PostService oluştuldu.
+- Unit of Work yapısı için ServiceManager hazırlandı.
+## 5 Components
+- ViewComponent kullanımı için temel bir gönderi sayısı dönen PostSummaryViewComponent oluşturuldu.

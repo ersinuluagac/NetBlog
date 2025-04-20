@@ -1,13 +1,22 @@
 @model IQueryable<Post>
+
+<div class="row">
+  <div class="col-md-3">
+    @await Component.InvokeAsync("CategoriesMenu")
+  </div>
+  <div class="col-md-9">
+    <div class="row">
+      @foreach (Post p in Model)
+      {
+        <partial name="_PostCard" model="@p" />
+      }
+    </div>
+  </div>
+</div>
+
+
 @section Footer {
   <div>
     Footer section
   </div>
 }
-
-<div class="row my-5">
-  @foreach (Post p in Model)
-  {
-    <partial name="_PostCard" model="@p" />
-  }
-</div>
