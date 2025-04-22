@@ -18,7 +18,7 @@ builder.Services.AddDbContext<RepositoryContext>(options => // Veritabanı bağl
 
 // Inversion of Control
 builder.Services.AddScoped<IRepositoryManager, RepositoryManager>();
-builder.Services.AddScoped<IPostRepository, PostRepository>(); 
+builder.Services.AddScoped<IPostRepository, PostRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IServiceManager, ServiceManager>();
 builder.Services.AddScoped<IPostService, PostService>();
@@ -27,11 +27,20 @@ builder.Services.AddScoped<ICategoryService, CategoryService>();
 var app = builder.Build(); // Web uygulaması servisler ile derleniyor.
 
 app.UseStaticFiles(); // Statik dosyalar (wwwroot) kullanılıyor.
+
 app.UseHttpsRedirection(); // HTTPS yönlendirmesi yapılıyor.
 app.UseRouting(); // Yönlendirme ayarları yapılıyor.
-app.MapControllerRoute( // Varsayılan controller ve action belirleniyor.
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}"
-);
+app.UseEndpoints(endpoint => // Yönlendirme haritalaması.
+{
+    endpoint.MapAreaControllerRoute( // Admin için controller ve action.
+        name: "Admin",
+        areaName: "Admin",
+        pattern: "Admin/{controller=Dashboard}/{action=Index}/{id?}"
+    );
+    endpoint.MapControllerRoute( // Varsayılan controller ve action.
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}"
+    );
+});
 
 app.Run(); // Web uygulaması çalıştırılıyor.
