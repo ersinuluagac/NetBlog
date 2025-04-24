@@ -17,5 +17,10 @@ namespace Repository.Interfaces
     /// <param name="trackChanges">Takip</param>
     /// <returns>T tipinde koşula bağlı öge.</returns>
     T? FindByCondition(Expression<Func<T, bool>> expression, bool trackChanges);
+    /// <summary>
+    /// T tipinde öge oluşturur ve veri tabanına ekler.
+    /// </summary>
+    /// <param name="entity">Öge</param>
+    void Create(T entity);
   }
 }

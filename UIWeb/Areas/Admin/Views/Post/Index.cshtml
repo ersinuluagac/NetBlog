@@ -1,3 +1,28 @@
-<h1>
-  Post Index
-</h1>
+@model IEnumerable<Post>
+
+<div class="text-center">
+  <h1 class="dispaly-1">
+    Gönderiler
+  </h1>
+  <table  class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Gönderi Başlığı</th>
+        <th>Gönderi İçeriği</th>
+        <th>Operasyonlar</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (Post post in Model)
+      {
+        <tr>
+          <td>@post.Id</td>
+          <td>@post.Title</td>
+          <td>@post.Content</td>
+          <td>Butonlar</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

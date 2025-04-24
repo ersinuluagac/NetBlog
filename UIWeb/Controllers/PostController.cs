@@ -1,3 +1,4 @@
+using Core.Models;
 using Microsoft.AspNetCore.Mvc;
 using Service.UnitOfWork;
 
@@ -24,6 +25,21 @@ namespace UIWeb.Controllers
     {
       var model = _manager.PostService.GetOnePost(id, false);
       return View(model);
+    }
+    public IActionResult Create()
+    {
+      return View();
+    }
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult Create([FromForm] Post post)
+    {
+      if (ModelState.IsValid)
+      {
+        _manager.PostService.CreatePost(post);
+        return RedirectToAction("Index");
+      }
+      return View();
     }
   }
 }

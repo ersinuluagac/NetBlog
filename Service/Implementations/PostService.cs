@@ -28,5 +28,11 @@ namespace Service.Implementations
         throw new Exception("Gönderi bulunamadı!");
       return post;
     }
+    
+    public void CreatePost(Post post)
+    {
+      _manager.Post.CreatePost(post);
+      _manager.Save();
+    }
   }
 }

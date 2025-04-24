@@ -17,5 +17,10 @@ namespace Repository.Interfaces
     /// <param name="trackChanges">Takip</param>
     /// <returns>ID'ye göre "post"</returns>
     Post? GetOnePost(int id, bool trackChanges);
+    /// <summary>
+    /// "Post" yaratmak ve veritabanına eklemek için metot.
+    /// </summary>
+    /// <param name="post">Oluşturulacak "post"</param>
+    void CreatePost(Post post);
   }
 }

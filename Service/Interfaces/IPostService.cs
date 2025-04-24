@@ -6,5 +6,6 @@ namespace Service.Interfaces
   {
     IEnumerable<Post> GetAllPosts(bool trackChanges);
     Post? GetOnePost(int id, bool trackChanges);
+    void CreatePost(Post post);
   }
 }

@@ -33,5 +33,6 @@
 ## 4 Service Katmanının Oluşturulması
 - Temel modeler için Service katmanında CategoryService ve PostService oluştuldu.
 - Unit of Work yapısı için ServiceManager hazırlandı.
-## 5 Components
+## 5 Components (Bileşenler)
 - ViewComponent kullanımı için temel bir gönderi sayısı dönen PostSummaryViewComponent oluşturuldu.
+## 6 Areas (Alanlar)
