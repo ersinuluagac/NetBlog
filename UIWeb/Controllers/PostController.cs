@@ -21,11 +21,13 @@ namespace UIWeb.Controllers
       var model = _manager.PostService.GetAllPosts(false);
       return View(model);
     }
+
     public IActionResult Get([FromRoute(Name = "id")] int id)
     {
       var model = _manager.PostService.GetOnePost(id, false);
       return View(model);
     }
+
     public IActionResult Create()
     {
       return View();
@@ -36,8 +38,25 @@ namespace UIWeb.Controllers
     {
       if (ModelState.IsValid)
       {
-        _manager.PostService.CreatePost(post);
+        _manager.PostService.CreateOnePost(post);
         return RedirectToAction("Index");
+      }
+      return View();
+    }
+
+    public IActionResult Update([FromRoute(Name = "id")] int id)
+    {
+      var model = _manager.PostService.GetOnePost(id, false);
+      return View(model);
+    }
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult Update(Post post)
+    {
+      if (ModelState.IsValid)
+      {
+      _manager.PostService.UpdateOnePost(post);
+      return RedirectToAction("Index");
       }
       return View();
     }

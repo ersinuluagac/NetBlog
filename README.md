@@ -36,3 +36,5 @@
 ## 5 Components (Bileşenler)
 - ViewComponent kullanımı için temel bir gönderi sayısı dönen PostSummaryViewComponent oluşturuldu.
 ## 6 Areas (Alanlar)
+- Admin area oluşturuldu ve sayfa tasarımı buna göre değiştirildi.
+- Admin area ile birlikte CRUD işlemleri için gerekli metotlar oluşturuldu.

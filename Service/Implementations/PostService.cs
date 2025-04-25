@@ -24,15 +24,33 @@ namespace Service.Implementations
     public Post? GetOnePost(int id, bool trackChanges)
     {
       var post = _manager.Post.GetOnePost(id, trackChanges);
-      if(post is null)
+      if (post is null)
         throw new Exception("Gönderi bulunamadı!");
       return post;
     }
-    
-    public void CreatePost(Post post)
+
+    public void CreateOnePost(Post post)
     {
-      _manager.Post.CreatePost(post);
+      _manager.Post.CreateOnePost(post);
       _manager.Save();
+    }
+
+    public void UpdateOnePost(Post post)
+    {
+      var entity = _manager.Post.GetOnePost(post.Id, true);
+      entity.Title = post.Title;
+      entity.Content = post.Content;
+      _manager.Save();
+    }
+
+    public void DeleteOnePost(int id)
+    {
+      Post post = GetOnePost(id, false);
+      if (post is not null)
+      {
+        _manager.Post.DeleteOnePost(post);
+        _manager.Save();
+      }
     }
   }
 }

@@ -20,7 +20,12 @@ namespace Repository.Interfaces
     /// <summary>
     /// T tipinde öge oluşturur ve veri tabanına ekler.
     /// </summary>
-    /// <param name="entity">Öge</param>
+    /// <param name="entity">Oluşturulacak Öge</param>
     void Create(T entity);
+    /// <summary>
+    /// T tipinde öge siler.
+    /// </summary>
+    /// <param name="entity">Silinecek öge</param>
+    void Remove(T entity);
   }
 }

@@ -21,6 +21,11 @@ namespace Repository.Interfaces
     /// "Post" yaratmak ve veritabanına eklemek için metot.
     /// </summary>
     /// <param name="post">Oluşturulacak "post"</param>
-    void CreatePost(Post post);
+    void CreateOnePost(Post post);
+    /// <summary>
+    /// "Post" silmek için metot.
+    /// </summary>
+    /// <param name="id">Silinecek "post"</param>
+    void DeleteOnePost(Post post);
   }
 }

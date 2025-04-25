@@ -18,7 +18,9 @@ namespace Repository.Implementations
     {
       return FindByCondition(p => p.Id.Equals(id), trackChanges);
     }
-    
-    public void CreatePost(Post post) => Create(post);
+
+    public void CreateOnePost(Post post) => Create(post);
+
+    public void DeleteOnePost(Post post) => Remove(post);
   }
 }

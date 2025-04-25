@@ -21,5 +21,11 @@ namespace UIWeb.Areas.Admin.Controllers
       var model = _manager.PostService.GetAllPosts(false);
       return View(model);
     }
+
+    public IActionResult Delete([FromRoute(Name = "id")] int id)
+    {
+      _manager.PostService.DeleteOnePost(id);
+      return RedirectToAction("Index");
+    }
   }
 }
