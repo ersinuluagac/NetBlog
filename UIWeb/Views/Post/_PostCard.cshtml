@@ -4,7 +4,7 @@
   <div class="card" style="width: 18rem;">
     <div class="card-body">
       <h5 class="card-title">@Model.Title</h5>
-      <h6 class="card-subtitle mb-2 text-body-secondary">Category</h6>
+      <h6 class="card-subtitle mb-2 text-body-secondary">@(Model.Category != null ? Model.Category.Name : "Kategori Yok")</h6>
       <p class="card-text">@Model.Content</p>
       <a class="card-link btn btn-sm btn-dark" asp-action="Get" asp-route-id="@Model.Id">
         Devamını oku...

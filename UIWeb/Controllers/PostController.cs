@@ -1,5 +1,6 @@
 using Core.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Service.UnitOfWork;
 
 namespace UIWeb.Controllers
@@ -30,6 +31,7 @@ namespace UIWeb.Controllers
 
     public IActionResult Create()
     {
+      ViewBag.Categories = new SelectList(_manager.CategoryService.GetAllCategories(false), "Id", "Name", "1");
       return View();
     }
     [HttpPost]
@@ -55,8 +57,8 @@ namespace UIWeb.Controllers
     {
       if (ModelState.IsValid)
       {
-      _manager.PostService.UpdateOnePost(post);
-      return RedirectToAction("Index");
+        _manager.PostService.UpdateOnePost(post);
+        return RedirectToAction("Index");
       }
       return View();
     }

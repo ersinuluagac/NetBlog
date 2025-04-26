@@ -7,6 +7,7 @@
 - **Identity**
 - **Entity**
 - **LINQ**
+- **Fluent API**
 ## 1 Projenin Oluşturulması & Çalıştırılması
 - "ASP.NET Core Empty" projesi başlatıldı.
 - "MVC Pattern" uygulandı.
@@ -38,3 +39,6 @@
 ## 6 Areas (Alanlar)
 - Admin area oluşturuldu ve sayfa tasarımı buna göre değiştirildi.
 - Admin area ile birlikte CRUD işlemleri için gerekli metotlar oluşturuldu.
+## 7 AutoMapper
+- Deneme modelleri arasındaki ilişkiler belirlendi.
+- ViewBag ile kategoriler, gönderi oluşturma sayfasına SelectList olarak gönderildi.

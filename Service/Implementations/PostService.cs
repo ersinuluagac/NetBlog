@@ -1,4 +1,5 @@
 using Core.Models;
+using Microsoft.EntityFrameworkCore;
 using Repository.UnitOfWork;
 using Service.Interfaces;
 
@@ -18,7 +19,7 @@ namespace Service.Implementations
     // Methods
     public IEnumerable<Post> GetAllPosts(bool trackChanges)
     {
-      return _manager.Post.GetAllPosts(trackChanges);
+      return _manager.Post.GetAllPosts(trackChanges).Include(p => p.Category); // Kategori dahil edildi.
     }
 
     public Post? GetOnePost(int id, bool trackChanges)

@@ -11,6 +11,12 @@
 <form method="post" asp-action="Create">
   <div class="text-danger" asp-validation-summary="All"></div> @* Form hataları için *@
   <div class="form-group my-3">
+    <label asp-for="CategoryId"></label>
+    <select class="form-control" asp-items="@ViewBag.Categories" asp-for="CategoryId">
+      @* Kategori listesi *@
+    </select>
+  </div>
+  <div class="form-group my-3">
     <label asp-for="Title" class="form-label fs-5">Başlık</label>
     <input asp-for="Title" class="form-control" />
   </div>
