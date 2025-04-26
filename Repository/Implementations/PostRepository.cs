@@ -21,6 +21,6 @@ namespace Repository.Implementations
 
     public void CreateOnePost(Post post) => Create(post);
 
-    public void DeleteOnePost(Post post) => Remove(post);
+    public void DeleteOnePost(Post post) => Delete(post);
   }
 }

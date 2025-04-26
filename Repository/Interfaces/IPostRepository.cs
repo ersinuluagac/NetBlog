@@ -10,6 +10,7 @@ namespace Repository.Interfaces
     /// <param name="trackChanges">Takip</param>
     /// <returns>Bulunan bütün "post"lar.</returns>
     IQueryable<Post> GetAllPosts(bool trackChanges);
+
     /// <summary>
     /// ID'ye göre tek bir "post" getiren metot
     /// </summary>
@@ -17,11 +18,13 @@ namespace Repository.Interfaces
     /// <param name="trackChanges">Takip</param>
     /// <returns>ID'ye göre "post"</returns>
     Post? GetOnePost(int id, bool trackChanges);
+
     /// <summary>
     /// "Post" yaratmak ve veritabanına eklemek için metot.
     /// </summary>
     /// <param name="post">Oluşturulacak "post"</param>
     void CreateOnePost(Post post);
+    
     /// <summary>
     /// "Post" silmek için metot.
     /// </summary>
