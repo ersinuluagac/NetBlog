@@ -5,36 +5,36 @@ namespace Repository.Interfaces
   public interface IPostRepository : IBaseRepository<Post>
   {
     /// <summary>
-    /// Bütün "post"ları getiren metot.
+    /// Tüm gönderileri (postları) veri tabanından getirir.
     /// </summary>
-    /// <param name="trackChanges">Takip</param>
-    /// <returns>Bulunan bütün "post"lar.</returns>
+    /// <param name="trackChanges">Değişiklik takibi yapılsın mı?</</param>
+    /// <returns>Sorgulanabilir (IQueryable) tüm gönderiler.</returns>
     IQueryable<Post> GetAllPosts(bool trackChanges);
 
     /// <summary>
-    /// ID'ye göre tek bir "post" getiren metot
+    /// Belirtilen kimliğe (ID) sahip gönderiyi veri tabanından getirir.
     /// </summary>
-    /// <param name="id">Gönderi ID'si</param>
-    /// <param name="trackChanges">Takip</param>
-    /// <returns>ID'ye göre "post"</returns>
+    /// <param name="id">Getirilecek gönderinin kimliği (ID).</param>
+    /// <param name="trackChanges">Değişiklik takibi yapılsın mı?</param>
+    /// <returns>İstenilen gönderi (Post) veya bulunamazsa null döner.</returns>
     Post? GetOnePost(int id, bool trackChanges);
 
     /// <summary>
-    /// "Post" yaratmak ve veritabanına eklemek için metot.
+    /// Yeni bir gönderiyi (Post) veri tabanına ekler.
     /// </summary>
-    /// <param name="post">Oluşturulacak "post"</param>
+    /// <param name="post">Eklenmek istenen gönderi nesnesi.</param>
     void CreateOnePost(Post post);
 
     /// <summary>
-    /// "Post" güncellemek için metot.
+    /// Var olan bir gönderiyi (Post) güncellemek için işaretler.
     /// </summary>
-    /// <param name="entity">Günellenecek "post"</param>
+    /// <param name="entity">Güncellenecek gönderi nesnesi</param>
     void UpdateOnePost(Post entity);
 
     /// <summary>
-    /// "Post" silmek için metot.
+    /// Veritabanındaki belirtilen nesneyi (entity) siler.
     /// </summary>
-    /// <param name="id">Silinecek "post"</param>
+    /// <param name="id">Silinecek gönderi nesnesi</param>
     void DeleteOnePost(Post post);
   }
 }

@@ -5,36 +5,36 @@ namespace Repository.Interfaces
   public interface IBaseRepository<T>
   {
     /// <summary>
-    /// T tipinde bütün ögeleri bulmak için metot.
+    /// Belirtilen türde veri tabanındaki tüm kayıtları sorgulanabilir şekilde döner.
     /// </summary>
-    /// <param name="trackChanges">Takip</param>
-    /// <returns>T tipinde bulunan ögeler.</returns>
+    /// <param name="trackChanges">Değişiklik takibi yapılsın mı?</param>
+    /// <returns>IQueryable üzerinden tüm kayıtlar.</returns>
     IQueryable<T> FindAll(bool trackChanges);
 
     /// <summary>
-    /// T tipinde koşula bağlı öge bulmak için metot.
+    /// Belirtilen filtre koşuluna göre veri tabanından bir kayıt döner.
     /// </summary>
-    /// <param name="expression">LINQ sorgusu</param>
-    /// <param name="trackChanges">Takip</param>
-    /// <returns>T tipinde koşula bağlı öge.</returns>
+    /// <param name="expression">Filtrelemek için koşul ifadesi (Expression).</param>
+    /// <param name="trackChanges">Değişiklik takibi yapılsın mı?</param>
+    /// <returns>Koşulu sağlayan bir kayıt veya null.</returns>
     T? FindByCondition(Expression<Func<T, bool>> expression, bool trackChanges);
 
     /// <summary>
-    /// T tipinde öge oluşturur ve veri tabanına ekler.
+    /// Yeni bir kayıt oluşturur ve veri tabanına ekler.
     /// </summary>
-    /// <param name="entity">Oluşturulacak Öge</param>
+    /// <param name="entity">Eklenecek nesne.</param>
     void Create(T entity);
 
     /// <summary>
-    /// T tipinde öge güncellemek için kullanılır.
+    /// Veri tabanında mevcut olan bir kaydı günceller.
     /// </summary>
-    /// <param name="entity">Güncellenecek öge</param>
+    /// <param name="entity">Güncellenecek nesne.</param>
     void Update(T entity);
 
     /// <summary>
-    /// T tipinde öge siler.
+    /// Mevcut bir kaydı veri tabanından siler.
     /// </summary>
-    /// <param name="entity">Silinecek öge</param>
+    /// <param name="entity">Silinecek nesne.</param>
     void Delete(T entity);
   }
 }
