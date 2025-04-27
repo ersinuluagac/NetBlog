@@ -12,8 +12,8 @@ using Repository;
 namespace UIWeb.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20250426164832_init")]
-    partial class init
+    [Migration("20250427193212_startPoint")]
+    partial class startPoint
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -69,6 +69,12 @@ namespace UIWeb.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Summary")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -85,6 +91,7 @@ namespace UIWeb.Migrations
                             Id = 1,
                             CategoryId = 1,
                             Content = "HTML bir işaretleme dilidir.",
+                            ImageUrl = "/images/html.png",
                             Title = "HTML"
                         },
                         new
@@ -92,6 +99,7 @@ namespace UIWeb.Migrations
                             Id = 2,
                             CategoryId = 1,
                             Content = "CSS bir işaretleme dilidir ve HTML etiketlerine görsellik eklemek için kullanılır.",
+                            ImageUrl = "/images/css.png",
                             Title = "CSS"
                         },
                         new

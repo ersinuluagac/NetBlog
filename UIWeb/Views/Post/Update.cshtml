@@ -8,11 +8,11 @@
     </h2>
   </div>
 </div>
-<form method="post" asp-action="Update">
+<form method="post" asp-action="Update" enctype="multipart/form-data">
   <div class="text-danger" asp-validation-summary="All"></div> @* Form hataları için *@
   <input type="hidden" asp-for="Id" /> @* ID veri transferi için gerekli *@
   <div class="form-group my-3">
-    <label asp-for="CategoryId"></label>
+    <label asp-for="CategoryId">Kategori</label>
     <select class="form-control" asp-items="@ViewBag.Categories" asp-for="CategoryId">
       @* Kategori listesi *@
     </select>
@@ -22,8 +22,19 @@
     <input asp-for="Title" class="form-control" />
   </div>
   <div class="form-group my-3">
+    <label asp-for="Summary" class="form-label fs-5">Özet</label>
+    <input asp-for="Summary" class="form-control" />
+  </div>
+  <div class="form-group my-3">
     <label asp-for="Content" class="form-label fs-5">İçerik</label>
     <textarea asp-for="Content" class="form-control"></textarea>
+  </div>
+  <div class="form-group" my-3>
+    <img width="150rem" src="@Model?.ImageUrl" />
+  </div>
+  <div class="form-group my-3">
+    <label asp-for="ImageUrl" class="form-label fs-5">Kapak Resmi</label>
+    <input name="file" type="file" class="form-control" />
   </div>
   <div class="form-group my-3">
     <div class="btn-group">

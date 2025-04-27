@@ -4,7 +4,7 @@
 
 namespace UIWeb.Migrations
 {
-    public partial class init : Migration
+    public partial class startPoint : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -29,6 +29,8 @@ namespace UIWeb.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Summary = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CategoryId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -54,14 +56,14 @@ namespace UIWeb.Migrations
 
             migrationBuilder.InsertData(
                 table: "Posts",
-                columns: new[] { "Id", "CategoryId", "Content", "Title" },
+                columns: new[] { "Id", "CategoryId", "Content", "ImageUrl", "Summary", "Title" },
                 values: new object[,]
                 {
-                    { 1, 1, "HTML bir işaretleme dilidir.", "HTML" },
-                    { 2, 1, "CSS bir işaretleme dilidir ve HTML etiketlerine görsellik eklemek için kullanılır.", "CSS" },
-                    { 3, 1, "Javascript bir programlama dilidir. HTML ve CSS ile oluşturulmuş sayfalara etkileşim ve hareket katmak için kullanılır.", "Javascript" },
-                    { 4, 2, "Doğu Roma'nın ve Osmanlı'nın başkentidir. Önemli bir yarımadadır.", "İstanbul" },
-                    { 5, 2, "Tam olarak bilinmemekle birlikte kökenlerine dair iki farklı görüş vardır.", "Rusya" }
+                    { 1, 1, "HTML bir işaretleme dilidir.", "/images/html.png", null, "HTML" },
+                    { 2, 1, "CSS bir işaretleme dilidir ve HTML etiketlerine görsellik eklemek için kullanılır.", "/images/css.png", null, "CSS" },
+                    { 3, 1, "Javascript bir programlama dilidir. HTML ve CSS ile oluşturulmuş sayfalara etkileşim ve hareket katmak için kullanılır.", null, null, "Javascript" },
+                    { 4, 2, "Doğu Roma'nın ve Osmanlı'nın başkentidir. Önemli bir yarımadadır.", null, null, "İstanbul" },
+                    { 5, 2, "Tam olarak bilinmemekle birlikte kökenlerine dair iki farklı görüş vardır.", null, null, "Rusya" }
                 });
 
             migrationBuilder.CreateIndex(

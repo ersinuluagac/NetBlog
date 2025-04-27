@@ -2,6 +2,7 @@ using Core.Dtos;
 using Core.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Service.UnitOfWork;
 
 namespace UIWeb.Controllers
@@ -43,10 +44,18 @@ namespace UIWeb.Controllers
     }
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Create([FromForm] PostDto postDto)
+    public async Task<IActionResult> Create([FromForm] PostDto postDto, IFormFile file)
     {
       if (ModelState.IsValid)
       {
+        //dosyalama işlemleri
+        string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", file.FileName);
+        using (var stream = new FileStream(path, FileMode.Create))
+        {
+          await file.CopyToAsync(stream);
+        }
+        postDto.ImageUrl = String.Concat("/images/", file.FileName);
+
         _manager.PostService.CreateOnePost(postDto);
         return RedirectToAction("Index");
       }
@@ -61,14 +70,24 @@ namespace UIWeb.Controllers
     }
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Update([FromForm] PostDto post)
+    public async Task<IActionResult> Update([FromForm] PostDto postDto, IFormFile file)
     {
+      ViewBag.Categories = GetCategories();
+
       if (ModelState.IsValid)
       {
-        _manager.PostService.UpdateOnePost(post);
+        //dosyalama işlemleri
+        string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", file.FileName);
+        using (var stream = new FileStream(path, FileMode.Create))
+        {
+          await file.CopyToAsync(stream);
+        }
+        postDto.ImageUrl = String.Concat("/images/", file.FileName);
+
+        _manager.PostService.UpdateOnePost(postDto);
         return RedirectToAction("Index");
       }
-      return View();
+      return View(postDto);
     }
   }
 }
