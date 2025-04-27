@@ -1,3 +1,4 @@
+using Core.Dtos;
 using Core.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -16,6 +17,12 @@ namespace UIWeb.Controllers
       _manager = manager;
     }
 
+    // SelectList
+    private SelectList GetCategories()
+    {
+      return new SelectList(_manager.CategoryService.GetAllCategories(false), "Id", "Name", "1");
+    }
+
     // Views
     public IActionResult Index()
     {
@@ -31,16 +38,16 @@ namespace UIWeb.Controllers
 
     public IActionResult Create()
     {
-      ViewBag.Categories = new SelectList(_manager.CategoryService.GetAllCategories(false), "Id", "Name", "1");
+      ViewBag.Categories = GetCategories();
       return View();
     }
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Create([FromForm] Post post)
+    public IActionResult Create([FromForm] PostDto postDto)
     {
       if (ModelState.IsValid)
       {
-        _manager.PostService.CreateOnePost(post);
+        _manager.PostService.CreateOnePost(postDto);
         return RedirectToAction("Index");
       }
       return View();
@@ -48,12 +55,13 @@ namespace UIWeb.Controllers
 
     public IActionResult Update([FromRoute(Name = "id")] int id)
     {
-      var model = _manager.PostService.GetOnePost(id, false);
+      ViewBag.Categories = GetCategories();
+      var model = _manager.PostService.GetOnePostForUpdate(id, false);
       return View(model);
     }
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Update(Post post)
+    public IActionResult Update([FromForm] PostDto post)
     {
       if (ModelState.IsValid)
       {

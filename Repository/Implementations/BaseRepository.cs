@@ -36,6 +36,11 @@ namespace Repository.Implementations
       _context.Set<T>().Add(entity);
     }
 
+    public void Update(T entity)
+    {
+      _context.Set<T>().Update(entity);
+    }
+
     public void Delete(T entity)
     {
       _context.Set<T>().Remove(entity);

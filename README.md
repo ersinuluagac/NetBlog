@@ -8,6 +8,7 @@
 - **Entity**
 - **LINQ**
 - **Fluent API**
+- **Tag Helper**
 ## 1 Projenin Oluşturulması & Çalıştırılması
 - "ASP.NET Core Empty" projesi başlatıldı.
 - "MVC Pattern" uygulandı.

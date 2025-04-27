@@ -1,3 +1,5 @@
+using AutoMapper;
+using Core.Dtos;
 using Core.Models;
 using Microsoft.EntityFrameworkCore;
 using Repository.UnitOfWork;
@@ -9,11 +11,13 @@ namespace Service.Implementations
   {
     // DI
     private readonly IRepositoryManager _manager;
+    private readonly IMapper _mapper;
 
     // Constructor
-    public PostService(IRepositoryManager manager)
+    public PostService(IRepositoryManager manager, IMapper mapper)
     {
-      _manager = manager; // DI
+      _manager = manager;
+      _mapper = mapper;
     }
 
     // Methods
@@ -30,17 +34,31 @@ namespace Service.Implementations
       return post;
     }
 
-    public void CreateOnePost(Post post)
+    public PostDto GetOnePostForUpdate(int id, bool trackChanges)
     {
+      var post = GetOnePost(id, trackChanges);
+      return _mapper.Map<PostDto>(post);
+    }
+
+    public void CreateOnePost(PostDto postDto)
+    {
+      /* AutoMapper olmasaydı.
+        Post post = new Post()
+        {
+          Title = postDto.Title,
+          Content = postDto.Content,
+          CategoryId = postDto.CategoryId
+        };
+      */
+      Post post = _mapper.Map<Post>(postDto);
       _manager.Post.CreateOnePost(post);
       _manager.Save();
     }
 
-    public void UpdateOnePost(Post post)
+    public void UpdateOnePost(PostDto postDto)
     {
-      var entity = _manager.Post.GetOnePost(post.Id, true);
-      entity.Title = post.Title;
-      entity.Content = post.Content;
+      var entity = _mapper.Map<Post>(postDto);
+      _manager.Post.UpdateOnePost(entity);
       _manager.Save();
     }
 

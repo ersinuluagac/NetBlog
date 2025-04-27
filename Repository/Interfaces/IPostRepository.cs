@@ -24,7 +24,13 @@ namespace Repository.Interfaces
     /// </summary>
     /// <param name="post">Oluşturulacak "post"</param>
     void CreateOnePost(Post post);
-    
+
+    /// <summary>
+    /// "Post" güncellemek için metot.
+    /// </summary>
+    /// <param name="entity">Günellenecek "post"</param>
+    void UpdateOnePost(Post entity);
+
     /// <summary>
     /// "Post" silmek için metot.
     /// </summary>

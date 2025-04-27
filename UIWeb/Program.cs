@@ -24,6 +24,8 @@ builder.Services.AddScoped<IServiceManager, ServiceManager>();
 builder.Services.AddScoped<IPostService, PostService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 
+builder.Services.AddAutoMapper(typeof(Program)); // AutoMapper servise ekleniyor.
+
 var app = builder.Build(); // Web uygulaması servisler ile derleniyor.
 
 app.UseStaticFiles(); // Statik dosyalar (wwwroot) kullanılıyor.

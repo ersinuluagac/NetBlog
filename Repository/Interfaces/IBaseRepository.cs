@@ -26,6 +26,12 @@ namespace Repository.Interfaces
     void Create(T entity);
 
     /// <summary>
+    /// T tipinde öge güncellemek için kullanılır.
+    /// </summary>
+    /// <param name="entity">Güncellenecek öge</param>
+    void Update(T entity);
+
+    /// <summary>
     /// T tipinde öge siler.
     /// </summary>
     /// <param name="entity">Silinecek öge</param>
