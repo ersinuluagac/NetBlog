@@ -10,6 +10,8 @@ using Service.UnitOfWork;
 var builder = WebApplication.CreateBuilder(args); // Web uygulaması oluşturuluyor.
 
 builder.Services.AddControllersWithViews(); // Controller ve view servisleri ekleniyor.
+builder.Services.AddRazorPages(); // Razor sayfaları ekleniyor.
+
 builder.Services.AddDbContext<RepositoryContext>(options => // Veritabanı bağlantısı yapılıyor.
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("MsSqlConnection"), // appsettings.json dosyasındaki bağlantı bilgileri alınıyor.
@@ -32,6 +34,7 @@ app.UseStaticFiles(); // Statik dosyalar (wwwroot) kullanılıyor.
 
 app.UseHttpsRedirection(); // HTTPS yönlendirmesi yapılıyor.
 app.UseRouting(); // Yönlendirme ayarları yapılıyor.
+
 app.UseEndpoints(endpoint => // Yönlendirme haritalaması.
 {
     endpoint.MapAreaControllerRoute( // Admin için controller ve action.
@@ -43,6 +46,7 @@ app.UseEndpoints(endpoint => // Yönlendirme haritalaması.
         name: "default",
         pattern: "{controller=Home}/{action=Index}/{id?}"
     );
+    endpoint.MapRazorPages(); // Razor sayfaları için yönlendirme.
 });
 
 app.Run(); // Web uygulaması çalıştırılıyor.

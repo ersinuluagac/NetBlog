@@ -43,3 +43,7 @@
 ## 7 AutoMapper
 - Deneme modelleri arasındaki ilişkiler belirlendi.
 - ViewBag ile kategoriler, gönderi oluşturma sayfasına SelectList olarak gönderildi.
+## 8 Dosya
+- Görseller için dosya işlemleri yapıldı.
+## 9 Razor Pages
+- 
