@@ -46,4 +46,4 @@
 ## 8 Dosya
 - Görseller için dosya işlemleri yapıldı.
 ## 9 Razor Pages
-- 
+- About ve Contact sayfaları Razor Page olarak tasarlandı.
