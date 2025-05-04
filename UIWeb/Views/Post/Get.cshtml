@@ -1,15 +1,52 @@
 @model Post
+<div class="row">
+  <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
+    <div class="col px-0">
+      <h1 class="display-1">@Model.Title</h1>
+      <p class="lead my-3">@Model.Summary</p>
+      <p class="mb-1 text-body-secondary fst-italic">
+        <span>@Model.CreatedAt.Day/@Model.CreatedAt.Month/@Model.CreatedAt.Year</span>
+        <span class="float-end">@await Component.InvokeAsync("LikesSummary", new { postId = Model.Id })
+</span>
+      </p>
+    </div>
+  </div>
+</div>
 
-<div>
-  <h1>@Model.Title</h1>
-  <p>@Model.Content</p>
-  <a class="btn btn-sm btn-secondary"
-    asp-controller="Post" asp-action="Index">
-    <i class="fa-solid fa-arrow-left"></i> Geri dön
-  </a>
-  <div class="btn-group">
-    <a class="btn btn-sm btn-outline-danger">Beğen</a>
-    <a class="btn btn-sm btn-outline-primary">Yorum Yap</a>
-    <a class="btn btn-sm btn-outline-success">Okuma Listeme Ekle</a>
+<div class="row g-5">
+  <div class="col">
+    <article class="blog-post">
+      @Model.Content
+    </article>
+  </div>
+</div>
+
+<div class="row d-flex justify-content-center mt-5">
+  <div class="col-md-8">
+    <div class="card border bg-body-secondary">
+      <div class="card-body p-4">
+        <div data-mdb-input-init class="form-outline mb-4">
+          <form action="post">
+            <input class="form-control" placeholder="Başlık" />
+            <textarea class="form-control" /></textarea>
+            <label class="form-label ms-2" for="addANote"><i class="fa-solid fa-plus fa-sm"></i> Yorumu ekle</label>
+          </form>
+        </div>
+        @foreach (var comment in Model.Comments)
+        {
+          <div class="card mb-4">
+            <div class="card-body">
+              <h4>@comment.Title</h4>
+              <p>@comment.Content</p>
+              <div class="d-flex justify-content-between">
+                <div class="d-flex flex-row align-items-center">
+                  <p class="small mb-0"><i class="fa-solid fa-circle-user"></i> @comment.User.UserName</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
   </div>
 </div>

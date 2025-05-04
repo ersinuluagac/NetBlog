@@ -1,12 +1,11 @@
 namespace Core.Models
 {
-  public class Category
+  public class Category : BaseEntity
   {
     // Properties
-    public int Id { get; set; }
     public string? Name { get; set; } = string.Empty;
 
     // Navigation Properties
-    public ICollection<Post>? Posts { get; set; }
+    public ICollection<Post> Posts { get; set; } = new List<Post>();
   }
 }

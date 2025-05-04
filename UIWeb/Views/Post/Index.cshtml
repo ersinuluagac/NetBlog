@@ -1,10 +1,9 @@
 @model IQueryable<Post>
-
+<div class="col">
+  @await Component.InvokeAsync("CategoriesMenu")
+</div>
 <div class="row">
-  <div class="col-md-3">
-    @await Component.InvokeAsync("CategoriesMenu")
-  </div>
-  <div class="col-md-9">
+  <div class="col">
     <div class="row">
       @foreach (Post p in Model)
       {

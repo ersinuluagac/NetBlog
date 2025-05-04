@@ -1,17 +1,23 @@
 @model Post
 
-<div class="col-sm-12 col-lg-6 col-xxl-4 my-5">
-  <div class="card" style="width: 18rem;">
-    <img src="@Model?.ImageUrl" class="card-img-top" alt="Görsel Yüklenemedi">
-    <div class="card-body">
-    <h5 class="card-title">@Model.Title</h5>
-    <h6 class="card-subtitle mb-2 text-body-secondary">@(Model.Category != null ? Model.Category.Name : "Kategori Yok")
-    </h6>
-    <p class="card-text">@Model.Content</p>
-    <a class="card-link btn btn-sm btn-dark" asp-action="Get" asp-route-id="@Model.Id">
-      Devamını oku...
-    </a>
-    <a class="card-link btn btn-sm btn-outline-dark" asp-action="Update" asp-route-id="@Model.Id">Güncelle</a>
+<div class="col-md-6">
+  <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+    <div class="col p-4 d-flex flex-column position-static">
+      <strong class="d-inline-block mb-2 text-primary-emphasis">@Model.Category.Name</strong>
+      <h3 class="mb-0">@Model.Title</h3>
+      <div class="mb-1 text-body-secondary">@Model.CreatedAt.Day/@Model.CreatedAt.Month/@Model.CreatedAt.Year</div>
+      <p class="card-text mb-auto">@Model.Summary</p>
+      <a class="icon-link link-secondary link-underline-opacity-0 link-underline-opacity-25-hover" asp-action="Get" asp-route-id="@Model.Id">
+        Okumaya başla...
+        <svg class="bi" aria-hidden="true">
+          <use xlink:href="#chevron-right"></use>
+        </svg>
+      </a>
+    </div>
+    <div class="col-auto d-none d-lg-block">
+      <img src="@Model?.ImageUrl" width="200" height="250">
+    </div>
   </div>
 </div>
-</div>
+
+

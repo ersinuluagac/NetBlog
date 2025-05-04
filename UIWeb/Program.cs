@@ -18,13 +18,18 @@ builder.Services.AddDbContext<RepositoryContext>(options => // Veritabanı bağl
     b => b.MigrationsAssembly("UIWeb")); // Migrations'ların nerde bulunacağını belirliyoruz.
 });
 
-// Inversion of Control
+// Inversion of Control Repository
 builder.Services.AddScoped<IRepositoryManager, RepositoryManager>();
 builder.Services.AddScoped<IPostRepository, PostRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<ICommentRepository, CommentRepository>();
+builder.Services.AddScoped<ILikeRepository, LikeRepository>();
+// Inversion of Control Repository
 builder.Services.AddScoped<IServiceManager, ServiceManager>();
 builder.Services.AddScoped<IPostService, PostService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<ICommentService, CommentService>();
+builder.Services.AddScoped<ILikeService, LikeService>();
 
 builder.Services.AddAutoMapper(typeof(Program)); // AutoMapper servise ekleniyor.
 

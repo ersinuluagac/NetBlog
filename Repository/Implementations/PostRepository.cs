@@ -1,4 +1,5 @@
 using Core.Models;
+using Microsoft.EntityFrameworkCore;
 using Repository.Interfaces;
 
 namespace Repository.Implementations
@@ -16,7 +17,11 @@ namespace Repository.Implementations
 
     public Post? GetOnePost(int id, bool trackChanges)
     {
-      return FindByCondition(p => p.Id.Equals(id), trackChanges);
+      return _context.Posts
+      .Include(p => p.Comments).ThenInclude(c => c.User)
+      .Include(p => p.Likes)
+      .FirstOrDefault(p => p.Id.Equals(id));
+      // return FindByCondition(p => p.Id.Equals(id), trackChanges);
     }
 
     public void CreateOnePost(Post post) => Create(post);

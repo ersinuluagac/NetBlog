@@ -4,21 +4,21 @@ using Service.Interfaces;
 
 namespace Service.Implementations
 {
-  public class CategoryService : ICategoryService
+  public class LikeService : ILikeService
   {
     // DI
     private readonly IRepositoryManager _manager;
 
     // Constructor
-    public CategoryService(IRepositoryManager manager)
+    public LikeService(IRepositoryManager manager)
     {
       _manager = manager; // DI
     }
 
     // Methods
-    public IEnumerable<Category> GetAllCategories(bool trackChanges)
+    public int GetLikesCount(int postId)
     {
-      return _manager.Category.FindAll(trackChanges);
+      return _manager.Like.GetLikesCountByPostId(postId);
     }
   }
 }

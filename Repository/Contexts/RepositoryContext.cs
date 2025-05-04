@@ -10,6 +10,8 @@ namespace Repository
         // Tablolar
         public DbSet<Post> Posts { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Like> Likes { get; set; }
 
         // DbContextOptions ifadesi olmadan yapılan türetme isteği geçersiz olur ve derlenemez.
         public RepositoryContext(DbContextOptions<RepositoryContext> options) : base(options)

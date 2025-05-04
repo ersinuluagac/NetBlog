@@ -6,5 +6,7 @@ namespace Service.UnitOfWork
   {
     IPostService PostService { get; }
     ICategoryService CategoryService { get; }
+    ICommentService CommentService { get; }
+    ILikeService LikeService { get; }
   }
 }
