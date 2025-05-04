@@ -1,3 +1,6 @@
+using AutoMapper;
+using Core.Dtos;
+using Core.Models;
 using Repository.UnitOfWork;
 using Service.Interfaces;
 
@@ -6,14 +9,22 @@ namespace Service.Implementations
   public class CommentService : ICommentService
   {
     // DI
-    private IRepositoryManager _manager;
+    private readonly IRepositoryManager _manager;
+    private readonly IMapper _mapper;
 
     // Constructor
-    public CommentService(IRepositoryManager manager)
+    public CommentService(IRepositoryManager manager, IMapper mapper)
     {
       _manager = manager; // DI
+      _mapper = mapper;
     }
 
     // Methods
+    public void CreateComment(CommentDto commentDto)
+    {
+      Comment comment = _mapper.Map<Comment>(commentDto);
+      _manager.Comment.Create(comment);
+      _manager.Save();
+    }
   }
 }

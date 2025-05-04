@@ -10,6 +10,7 @@ namespace UIWeb.Infrastructure.Mapper
     public MappingProfile()
     {
       CreateMap<PostDto, Post>().ReverseMap();
+      CreateMap<CommentDto, Comment>().ReverseMap();
     }
   }
 }

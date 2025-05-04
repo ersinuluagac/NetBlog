@@ -89,5 +89,18 @@ namespace UIWeb.Controllers
       }
       return View(postDto);
     }
+
+    public IActionResult AddComment([FromForm] CommentDto commentDto)
+    {
+      if (ModelState.IsValid)
+      {
+        _manager.CommentService.CreateComment(commentDto);
+        return RedirectToAction("Get", new { id = commentDto.PostId });
+      }
+      else
+      {
+        return View("Get", _manager.PostService.GetOnePost(commentDto.PostId, false));
+      }
+    }
   }
 }
