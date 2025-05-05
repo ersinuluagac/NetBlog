@@ -1,12 +1,12 @@
 @model IEnumerable<Category>
 
 <div class="nav-scroller py-1 mb-3 border-bottom">
-  <div class="nav nav-underline justify-content-between">
+  <nav style="white-space: nowrap;" class="nav nav-underline justify-content-between flex-nowrap overflow-auto">
     @foreach (var category in Model)
     {
       <li class="nav-item nav-link link-body-emphasis">
         @category.Name
       </li>
     }
-  </div>
+  </nav>
 </div>

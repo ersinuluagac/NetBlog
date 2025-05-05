@@ -6,8 +6,9 @@
       <p class="lead my-3">@Model.Summary</p>
       <p class="mb-1 text-body-secondary fst-italic">
         <span>@Model.CreatedAt.Day/@Model.CreatedAt.Month/@Model.CreatedAt.Year</span>
-        <span class="float-end">@await Component.InvokeAsync("LikesSummary", new { postId = Model.Id })
-        </span>
+      <div class="float-end">
+        @await Component.InvokeAsync("LikesSummary", new { postId = Model.Id }) kişi beğendi!
+      </div>
       </p>
     </div>
   </div>
@@ -16,7 +17,7 @@
 <div class="row g-5">
   <div class="col">
     <article class="blog-post">
-      @Model.Content
+      @Html.Raw(Model.Content)
     </article>
   </div>
 </div>
@@ -29,8 +30,8 @@
           <form method="post" asp-action="AddComment">
             <div class="text-danger" asp-validation-summary="All"></div>
             <input type="hidden" asp-for="@Model.Id" name="PostId" />
-            <input name="Title" class="form-control" placeholder="Başlık" />
-            <textarea name="Content" class="form-control" /></textarea>
+            <input name="Title" class="form-control my-1" placeholder="Başlık" />
+            <textarea name="Content" class="form-control my-1" /></textarea>
             <button class="btn btn-sm mt-2 btn-outline-secondary" type="submit"><i class="fa-solid fa-plus fa-sm"></i>
               Yorumu ekle</button>
           </form>

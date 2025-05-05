@@ -18,6 +18,14 @@ builder.Services.AddDbContext<RepositoryContext>(options => // Veritabanı bağl
     b => b.MigrationsAssembly("UIWeb")); // Migrations'ların nerde bulunacağını belirliyoruz.
 });
 
+builder.Services.AddDistributedMemoryCache(); // Dağıtılmış önbellek eklendi.
+builder.Services.AddSession(options => {  // Oturum (session) yönetimi için.
+    options.Cookie.Name = "NetBlog.Session"; // Çerezleri tutmak için isim.
+    options.IdleTimeout = TimeSpan.FromMinutes(10); // Eğer yeni istek yoksa 10 dakika tutar.
+});
+
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>(); // HTTP isteği bilgilerine erişim için.
+
 // Inversion of Control Repository
 builder.Services.AddScoped<IRepositoryManager, RepositoryManager>();
 builder.Services.AddScoped<IPostRepository, PostRepository>();
@@ -36,6 +44,8 @@ builder.Services.AddAutoMapper(typeof(Program)); // AutoMapper servise ekleniyor
 var app = builder.Build(); // Web uygulaması servisler ile derleniyor.
 
 app.UseStaticFiles(); // Statik dosyalar (wwwroot) kullanılıyor.
+
+app.UseSession(); // Session kullanılıyor.
 
 app.UseHttpsRedirection(); // HTTPS yönlendirmesi yapılıyor.
 app.UseRouting(); // Yönlendirme ayarları yapılıyor.

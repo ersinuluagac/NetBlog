@@ -1,6 +1,8 @@
 @model PostDto
-<style></style>
 
+@section Styles {
+  <link rel="stylesheet" href="~/lib/summernote/summernote-bs5.min.css" />
+}
 <div class="text-center">
   <div>
     <h2 class="display-2">
@@ -47,3 +49,13 @@
     </div>
   </div>
 </form>
+@section Scripts {
+  <script src="~/lib/summernote/summernote-bs5.min.js"></script>
+  <script>
+    $(function () {
+      $('#Content').summernote({
+        lang: "tr-TR"
+      });
+    })
+  </script>
+}

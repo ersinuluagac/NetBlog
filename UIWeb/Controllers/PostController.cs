@@ -90,6 +90,8 @@ namespace UIWeb.Controllers
       return View(postDto);
     }
 
+    [HttpPost]
+    [ValidateAntiForgeryToken]
     public IActionResult AddComment([FromForm] CommentDto commentDto)
     {
       if (ModelState.IsValid)

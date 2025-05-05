@@ -1,5 +1,8 @@
 @model PostDto
 
+@section Styles {
+  <link rel="stylesheet" href="~/lib/summernote/summernote-bs5.min.css" />
+}
 <div class="text-center">
   <div>
     <h2 class="display-2">
@@ -10,7 +13,7 @@
 <form method="post" asp-action="Create" enctype="multipart/form-data">
   <div class="text-danger" asp-validation-summary="All"></div> @* Form hataları için *@
   <div class="form-group my-3">
-    <label asp-for="CategoryId"></label>
+    <label asp-for="CategoryId">Kategori</label>
     <select class="form-control" asp-items="@ViewBag.Categories" asp-for="CategoryId">
       @* Kategori listesi *@
     </select>
@@ -23,10 +26,14 @@
     <label asp-for="Summary" class="form-label fs-5">Özet</label>
     <input asp-for="Summary" class="form-control" />
   </div>
+
+
   <div class="form-group my-3">
     <label asp-for="Content" class="form-label fs-5">İçerik</label>
     <textarea asp-for="Content" class="form-control"></textarea>
   </div>
+
+
   <div class="form-group my-3">
     <label asp-for="ImageUrl" class="form-label fs-5">Kapak Resmi</label>
     <input name="file" type="file" class="form-control" />
@@ -42,3 +49,13 @@
     </div>
   </div>
 </form>
+@section Scripts {
+  <script src="~/lib/summernote/summernote-bs5.min.js"></script>
+  <script>
+    $(function () {
+      $('#Content').summernote({
+        lang: "tr-TR"
+      });
+    })
+  </script>
+}
