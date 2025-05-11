@@ -23,13 +23,23 @@ namespace Repository
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            foreach (var entityType in modelBuilder.Model.GetEntityTypes()) // Assembly'deki EntityType'lar taranır.
+            {
+                if (typeof(BaseEntity).IsAssignableFrom(entityType.ClrType)) // BaseEntity'den türeyenleri bulur.
+                {
+                    modelBuilder.Entity(entityType.ClrType) // CreatedAt
+                        .Property(nameof(BaseEntity.CreatedAt))
+                        .HasDefaultValueSql("GETDATE()");
+
+                    
+                }
+            }
 
             // Tek tek verilebilir
             /*
                 modelBuilder.ApplyConfiguration(new PostConfig());
                 modelBuilder.ApplyConfiguration(new CategoryConfig());
             */
-
             // Assembly'den alınabilir.
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly()); // Çalışan Assembly'den getir (Assembly: dll, exe).
         }

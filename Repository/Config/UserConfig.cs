@@ -10,11 +10,30 @@ namespace Repository.Config
     {
       builder.HasKey(u => u.Id);
 
-      builder.Property(u => u.UserName).HasColumnType("nvarchar(50)").IsRequired();
+      builder.HasMany(u => u.Posts)
+        .WithOne(p => p.User)
+        .HasForeignKey(p => p.UserId)
+        .OnDelete(DeleteBehavior.Cascade);
+      builder.HasMany(u => u.Comments)
+        .WithOne(c => c.User)
+        .HasForeignKey(c => c.UserId)
+        .OnDelete(DeleteBehavior.Cascade);
+      builder.HasMany(u => u.Likes)
+        .WithOne(l => l.User)
+        .HasForeignKey(l => l.UserId)
+        .OnDelete(DeleteBehavior.Cascade);
+
+      builder.Property(u => u.UserName)
+      .IsRequired()
+      .HasColumnType("nvarchar(24)");
 
       builder.HasData(
-        new User() {Id = 1, UserName = "Arbores"},
-        new User() {Id = 2, UserName = "Surgens"}
+          new User() { Id = 1, UserName = "Arbores" },
+          new User() { Id = 2, UserName = "Surgens" },
+          new User() { Id = 3, UserName = "Tenebris" },
+          new User() { Id = 4, UserName = "Luminis" },
+          new User() { Id = 5, UserName = "Ignitus" },
+          new User() { Id = 6, UserName = "Gelidus" }
       );
     }
   }

@@ -14,15 +14,16 @@ namespace Core.Models
         public string? Content { get; set; }
         public string? Summary { get; set; }
         public string? ImageUrl { get; set; }
+        public bool ShowCase { get; set; }
 
         // Foreign Keys
-        public int? UserId { get; set; } //
-        public int? CategoryId { get; set; }
+        public int UserId { get; set; } //
+        public int CategoryId { get; set; }
 
         // Navigation Properties
         public User? User { get; set; } //
         public Category? Category { get; set; }
-        public ICollection<Comment> Comments { get; set; }  = new List<Comment>(); //
-        public ICollection<Like> Likes { get; set; } = new List<Like>(); //
+        public ICollection<Comment>? Comments { get; set; }  = new List<Comment>(); //
+        public ICollection<Like>? Likes { get; set; } = new List<Like>(); //
     }
 }
