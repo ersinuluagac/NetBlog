@@ -1,43 +1,15 @@
-using Microsoft.EntityFrameworkCore;
-using Repository;
-using Repository.Implementations;
-using Repository.Interfaces;
-using Repository.UnitOfWork;
-using Service.Implementations;
-using Service.Interfaces;
-using Service.UnitOfWork;
+using UIWeb.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args); // Web uygulaması oluşturuluyor.
 
 builder.Services.AddControllersWithViews(); // Controller ve view servisleri ekleniyor.
 builder.Services.AddRazorPages(); // Razor sayfaları ekleniyor.
 
-builder.Services.AddDbContext<RepositoryContext>(options => // Veritabanı bağlantısı yapılıyor.
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("MsSqlConnection"), // appsettings.json dosyasındaki bağlantı bilgileri alınıyor.
-    b => b.MigrationsAssembly("UIWeb")); // Migrations'ların nerde bulunacağını belirliyoruz.
-});
+builder.Services.ConfigureDbContext(builder.Configuration); // Extension'dan gelen veri tabanı bağlantısı.
+builder.Services.ConfigureSession(); // Extension'dan gelen session yapısı.
 
-builder.Services.AddDistributedMemoryCache(); // Dağıtılmış önbellek eklendi.
-builder.Services.AddSession(options => {  // Oturum (session) yönetimi için.
-    options.Cookie.Name = "NetBlog.Session"; // Çerezleri tutmak için isim.
-    options.IdleTimeout = TimeSpan.FromMinutes(10); // Eğer yeni istek yoksa 10 dakika tutar.
-});
-
-builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>(); // HTTP isteği bilgilerine erişim için.
-
-// Inversion of Control Repository
-builder.Services.AddScoped<IRepositoryManager, RepositoryManager>();
-builder.Services.AddScoped<IPostRepository, PostRepository>();
-builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
-builder.Services.AddScoped<ICommentRepository, CommentRepository>();
-builder.Services.AddScoped<ILikeRepository, LikeRepository>();
-// Inversion of Control Repository
-builder.Services.AddScoped<IServiceManager, ServiceManager>();
-builder.Services.AddScoped<IPostService, PostService>();
-builder.Services.AddScoped<ICategoryService, CategoryService>();
-builder.Services.AddScoped<ICommentService, CommentService>();
-builder.Services.AddScoped<ILikeService, LikeService>();
+builder.Services.ConfigureRepositoryRegistration(); // Inversion of Control Repository
+builder.Services.ConfigureServiceRegistration(); // Inversion of Control Repository
 
 builder.Services.AddAutoMapper(typeof(Program)); // AutoMapper servise ekleniyor.
 
