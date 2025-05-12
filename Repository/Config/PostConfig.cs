@@ -13,19 +13,19 @@ namespace Repository.Config
       builder.HasOne(p => p.Category)
         .WithMany(c => c.Posts)
         .HasForeignKey(p => p.CategoryId)
-        .OnDelete(DeleteBehavior.Restrict);
+        .OnDelete(DeleteBehavior.Restrict);;
       builder.HasOne(p => p.User)
         .WithMany(u => u.Posts)
         .HasForeignKey(p => p.UserId)
-        .OnDelete(DeleteBehavior.Cascade);
+        .OnDelete(DeleteBehavior.Restrict);;
       builder.HasMany(p => p.Comments)
         .WithOne(c => c.Post)
         .HasForeignKey(c => c.PostId)
-        .OnDelete(DeleteBehavior.Cascade);
+        .OnDelete(DeleteBehavior.Restrict);;
       builder.HasMany(p => p.Likes)
         .WithOne(l => l.Post)
         .HasForeignKey(l => l.PostId)
-        .OnDelete(DeleteBehavior.Cascade);
+        .OnDelete(DeleteBehavior.Restrict);;
 
 
       builder.Property(p => p.Title)
@@ -36,7 +36,7 @@ namespace Repository.Config
         .HasColumnType("nvarchar(500)");
       builder.Property(p => p.Content)
         .IsRequired()
-        .HasColumnType("nvarchar");
+        .HasColumnType("nvarchar(max)");
       builder.Property(p => p.ImageUrl)
         .IsRequired();
       builder.Property(p => p.ShowCase)
@@ -51,7 +51,8 @@ namespace Repository.Config
           Title = "HTML",
           Summary = "Etiketleme dili",
           Content = "HTML, web sayfalarını yapılandırmak için kullanılan temel bir işaretleme dilidir. Her içerik bir etiket ile başlar ve biter.",
-          ImageUrl = "/images/image1.png"
+          ImageUrl = "/images/image1.png",
+          ShowCase = true
         },
         new Post
         {
@@ -61,7 +62,8 @@ namespace Repository.Config
           Title = "CSS",
           Summary = "Tasarım dili",
           Content = "CSS, HTML elemanlarının görünümünü düzenlemek için kullanılır. Renkler, yazı tipleri ve yerleşim düzenleri gibi görsel öğeleri belirler.",
-          ImageUrl = "/images/image2.png"
+          ImageUrl = "/images/image2.png",
+          ShowCase = true
         },
         new Post
         {
@@ -91,7 +93,8 @@ namespace Repository.Config
           Title = "Yapay Sinir Ağları",
           Summary = "İnsan beyninden ilham",
           Content = "Yapay sinir ağları, biyolojik sinir ağlarından esinlenilerek geliştirilen algoritmalardır. Derin öğrenme ile birlikte popüler hale gelmiştir.",
-          ImageUrl = "/images/image5.png"
+          ImageUrl = "/images/image5.png",
+          ShowCase = true
         },
         new Post
         {
@@ -121,7 +124,8 @@ namespace Repository.Config
           Title = "Borsa Nedir?",
           Summary = "Yatırım piyasası",
           Content = "Borsa, menkul kıymetlerin alınıp satıldığı bir piyasadır. Hisse senetleri, tahviller ve yatırım fonları gibi finansal araçlar işlem görür.",
-          ImageUrl = "/images/image8.png"
+          ImageUrl = "/images/image8.png",
+          ShowCase = true
         },
         new Post
         {
@@ -171,7 +175,8 @@ namespace Repository.Config
           Title = "Alışkanlık Kazanmak",
           Summary = "İrade gücü",
           Content = "Pozitif alışkanlıklar kazanmak, kişisel gelişimin temelidir. 21 gün kuralı ve tekrarlama alışkanlık edinmede etkilidir.",
-          ImageUrl = "/images/image13.png"
+          ImageUrl = "/images/image13.png",
+          ShowCase = true
         },
         new Post
         {
@@ -181,7 +186,8 @@ namespace Repository.Config
           Title = "Osmanlı Tarihi",
           Summary = "600 yıllık imparatorluk",
           Content = "Osmanlı İmparatorluğu, 1299’dan 1922’ye kadar hüküm süren çok uluslu bir devletti. Avrupa, Asya ve Afrika kıtalarında topraklara sahipti.",
-          ImageUrl = "/images/image14.png"
+          ImageUrl = "/images/image14.png",
+          ShowCase = true
         },
         new Post
         {
@@ -221,7 +227,8 @@ namespace Repository.Config
           Title = "Türk Edebiyatı",
           Summary = "Zengin kültürel miras",
           Content = "Türk edebiyatı, divan, halk ve modern edebiyat olmak üzere üç ana dönemde incelenir. Şiir, hikâye ve roman gibi türler öne çıkar.",
-          ImageUrl = "/images/image18.png"
+          ImageUrl = "/images/image18.png",
+          ShowCase = true
         },
         new Post
         {
@@ -241,7 +248,8 @@ namespace Repository.Config
           Title = "Video Oyunları",
           Summary = "Etkileşimli eğlence",
           Content = "Video oyunları, eğlence ve hikâye anlatımı sunan dijital medya ürünleridir. Konsollar, bilgisayarlar ve mobil cihazlar üzerinden oynanabilir.",
-          ImageUrl = "/images/image20.png"
+          ImageUrl = "/images/image20.png",
+          ShowCase = true
         },
         new Post
         {
@@ -271,7 +279,8 @@ namespace Repository.Config
           Title = "Sporun Faydaları",
           Summary = "Sağlıklı yaşam",
           Content = "Düzenli spor yapmak, kalp sağlığını korur, kas gelişimini destekler ve stres seviyesini azaltır. Her yaşta yapılabilir.",
-          ImageUrl = "/images/image23.png"
+          ImageUrl = "/images/image23.png",
+          ShowCase = true
         },
         new Post
         {

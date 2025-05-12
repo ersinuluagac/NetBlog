@@ -19,11 +19,11 @@ namespace Repository.Config
       builder.HasOne(l => l.User)
         .WithMany(u => u.Likes)
         .HasForeignKey(l => l.UserId)
-        .OnDelete(DeleteBehavior.Cascade);
+        .OnDelete(DeleteBehavior.Restrict);;
       builder.HasOne(l => l.Post)
         .WithMany(p => p.Likes)
         .HasForeignKey(l => l.PostId)
-        .OnDelete(DeleteBehavior.Cascade);
+        .OnDelete(DeleteBehavior.Restrict);;
 
       builder.HasData(
           new Like() { UserId = 1, PostId = 2 },

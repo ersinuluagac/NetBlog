@@ -20,11 +20,11 @@ namespace Repository.Config
       builder.HasOne(c => c.User)
         .WithMany(u => u.Comments)
         .HasForeignKey(c => c.UserId)
-        .OnDelete(DeleteBehavior.Cascade);
+        .OnDelete(DeleteBehavior.Restrict);;
       builder.HasOne(c => c.Post)
         .WithMany(p => p.Comments)
         .HasForeignKey(c => c.PostId)
-        .OnDelete(DeleteBehavior.Cascade);
+        .OnDelete(DeleteBehavior.Restrict);;
 
       builder.HasData(
           new Comment

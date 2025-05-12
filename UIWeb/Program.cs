@@ -36,4 +36,6 @@ app.UseEndpoints(endpoint => // Yönlendirme haritalaması.
     endpoint.MapRazorPages(); // Razor sayfaları için yönlendirme.
 });
 
+app.CheckMigration(); // Migration Add ve Database Update için.
+
 app.Run(); // Web uygulaması çalıştırılıyor.

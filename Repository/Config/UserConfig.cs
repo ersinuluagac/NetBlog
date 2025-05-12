@@ -13,15 +13,15 @@ namespace Repository.Config
       builder.HasMany(u => u.Posts)
         .WithOne(p => p.User)
         .HasForeignKey(p => p.UserId)
-        .OnDelete(DeleteBehavior.Cascade);
+        .OnDelete(DeleteBehavior.Restrict);;
       builder.HasMany(u => u.Comments)
         .WithOne(c => c.User)
         .HasForeignKey(c => c.UserId)
-        .OnDelete(DeleteBehavior.Cascade);
+        .OnDelete(DeleteBehavior.Restrict);;
       builder.HasMany(u => u.Likes)
         .WithOne(l => l.User)
         .HasForeignKey(l => l.UserId)
-        .OnDelete(DeleteBehavior.Cascade);
+        .OnDelete(DeleteBehavior.Restrict);;
 
       builder.Property(u => u.UserName)
       .IsRequired()
