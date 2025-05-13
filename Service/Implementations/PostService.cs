@@ -1,6 +1,7 @@
 using AutoMapper;
 using Core.Dtos;
 using Core.Models;
+using Core.RequestParameters;
 using Microsoft.EntityFrameworkCore;
 using Repository.UnitOfWork;
 using Service.Interfaces;
@@ -24,6 +25,11 @@ namespace Service.Implementations
     public IEnumerable<Post> GetAllPosts(bool trackChanges)
     {
       return _manager.Post.GetAllPosts(trackChanges).Include(p => p.Category); // Kategori dahil edildi.
+    }
+
+    public IEnumerable<Post> GetAllPostsWithDetails(PostRequestParameters p)
+    {
+      return _manager.Post.GetAllPostsWithDetails(p);
     }
 
     public Post? GetOnePost(int id, bool trackChanges)

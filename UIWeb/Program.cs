@@ -13,6 +13,8 @@ builder.Services.ConfigureServiceRegistration(); // Inversion of Control Reposit
 
 builder.Services.AddAutoMapper(typeof(Program)); // AutoMapper servise ekleniyor.
 
+builder.Services.ConfigureRouting(); // URL'de küçük harf kullanılması için.
+
 var app = builder.Build(); // Web uygulaması servisler ile derleniyor.
 
 app.UseStaticFiles(); // Statik dosyalar (wwwroot) kullanılıyor.

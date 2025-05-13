@@ -17,7 +17,7 @@ namespace Repository.Config
       builder.HasMany(c => c.Posts)
         .WithOne(p => p.Category)
         .HasForeignKey(p => p.CategoryId)
-        .OnDelete(DeleteBehavior.Restrict);;
+        .OnDelete(DeleteBehavior.Restrict);
 
       builder.HasData(
           new Category() { Id = 1, Name = "Yazılım" },

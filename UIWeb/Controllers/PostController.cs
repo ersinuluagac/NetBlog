@@ -1,5 +1,5 @@
 using Core.Dtos;
-using Core.Models;
+using Core.RequestParameters;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -25,9 +25,9 @@ namespace UIWeb.Controllers
     }
 
     // Views
-    public IActionResult Index()
+    public IActionResult Index(PostRequestParameters p)
     {
-      var model = _manager.PostService.GetAllPosts(false);
+      var model = _manager.PostService.GetAllPostsWithDetails(p);
       return View(model);
     }
 

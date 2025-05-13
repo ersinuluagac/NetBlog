@@ -31,6 +31,7 @@ namespace UIWeb.Infrastructure.Extensions
       services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>(); // HTTP isteği bilgilerine erişim için.
     }
 
+    // Repository IoC
     public static void ConfigureRepositoryRegistration(this IServiceCollection services)
     {
       services.AddScoped<IRepositoryManager, RepositoryManager>();
@@ -39,7 +40,8 @@ namespace UIWeb.Infrastructure.Extensions
       services.AddScoped<ICommentRepository, CommentRepository>();
       services.AddScoped<ILikeRepository, LikeRepository>();
     }
-    
+
+    // Service IoC
     public static void ConfigureServiceRegistration(this IServiceCollection services)
     {
       services.AddScoped<IServiceManager, ServiceManager>();
@@ -49,5 +51,15 @@ namespace UIWeb.Infrastructure.Extensions
       services.AddScoped<ILikeService, LikeService>();
     }
 
+    // Lowecase ve Slash için service.
+    public static void ConfigureRouting(this IServiceCollection services)
+    {
+      services.AddRouting(options =>
+      {
+        options.LowercaseUrls = true; // lowercase
+        options.AppendTrailingSlash = false; // slash
+      }
+      );
+    }
   }
 }

@@ -1,5 +1,7 @@
 using Core.Models;
+using Core.RequestParameters;
 using Microsoft.EntityFrameworkCore;
+using Repository.Extensions;
 using Repository.Interfaces;
 
 namespace Repository.Implementations
@@ -15,12 +17,18 @@ namespace Repository.Implementations
     // Methods
     public IQueryable<Post> GetAllPosts(bool trackChanges) => FindAll(trackChanges);
 
+    public IQueryable<Post> GetAllPostsWithDetails(PostRequestParameters p)
+    {
+      return _context.Posts.FilteredByCategoryId(p.CategoryId).Include(p => p.Category);
+    }
+
     public Post? GetOnePost(int id, bool trackChanges)
     {
-      return _context.Posts
-      .Include(p => p.Comments).ThenInclude(c => c.User)
-      .Include(p => p.Likes)
-      .FirstOrDefault(p => p.Id.Equals(id));
+      return _context
+        .Posts
+        .Include(p => p.Comments).ThenInclude(c => c.User)
+        .Include(p => p.Likes)
+        .FirstOrDefault(p => p.Id.Equals(id));
       // return FindByCondition(p => p.Id.Equals(id), trackChanges);
     }
 
@@ -29,5 +37,7 @@ namespace Repository.Implementations
     public void UpdateOnePost(Post entity) => Update(entity);
 
     public void DeleteOnePost(Post post) => Delete(post);
+
+
   }
 }

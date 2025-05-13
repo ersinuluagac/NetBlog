@@ -1,5 +1,6 @@
 using Core.Dtos;
 using Core.Models;
+using Core.RequestParameters;
 
 namespace Service.Interfaces
 {
@@ -11,6 +12,13 @@ namespace Service.Interfaces
     /// <param name="trackChanges">Değişiklik takibi yapılacak mı?</param>
     /// <returns>Gönderiler listesi.</returns>
     IEnumerable<Post> GetAllPosts(bool trackChanges);
+
+    /// <summary>
+    /// Verilen kategori ID'sine göre postları veri tabanından getirir.
+    /// </summary>
+    /// <param name="p">Kategori ID istek parametresi</param>
+    /// <returns>Kategoriye göre tüm postlar</returns>
+    IEnumerable<Post> GetAllPostsWithDetails(PostRequestParameters p);
 
     /// <summary>
     /// Verilen ID'ye sahip tek bir gönderiyi (Post) getirir.

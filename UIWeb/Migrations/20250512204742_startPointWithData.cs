@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace UIWeb.Migrations
 {
-    public partial class StartPointWithData : Migration
+    public partial class startPointWithData : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -167,8 +167,8 @@ namespace UIWeb.Migrations
                 columns: new[] { "Id", "CategoryId", "Content", "DeletedAt", "ImageUrl", "ShowCase", "Summary", "Title", "UpdatedAt", "UserId" },
                 values: new object[,]
                 {
-                    { 1, 1, "HTML, web sayfalarını yapılandırmak için kullanılan temel bir işaretleme dilidir. Her içerik bir etiket ile başlar ve biter.", null, "/images/image1.png", true, "Etiketleme dili", "HTML", null, 1 },
-                    { 2, 1, "CSS, HTML elemanlarının görünümünü düzenlemek için kullanılır. Renkler, yazı tipleri ve yerleşim düzenleri gibi görsel öğeleri belirler.", null, "/images/image2.png", true, "Tasarım dili", "CSS", null, 2 }
+                    { 1, 1, "HTML, web sayfalarını yapılandırmak için kullanılan temel bir işaretleme dilidir. Her içerik bir etiket ile başlar ve biter.", null, "/images/image1.jpeg", true, "Etiketleme dili", "HTML", null, 1 },
+                    { 2, 1, "CSS, HTML elemanlarının görünümünü düzenlemek için kullanılır. Renkler, yazı tipleri ve yerleşim düzenleri gibi görsel öğeleri belirler.", null, "/images/image2.jpeg", true, "Tasarım dili", "CSS", null, 2 }
                 });
 
             migrationBuilder.InsertData(
@@ -176,38 +176,38 @@ namespace UIWeb.Migrations
                 columns: new[] { "Id", "CategoryId", "Content", "DeletedAt", "ImageUrl", "Summary", "Title", "UpdatedAt", "UserId" },
                 values: new object[,]
                 {
-                    { 3, 1, "JavaScript, web sayfalarına etkileşim ve dinamik özellikler kazandırmak için kullanılan bir programlama dilidir. Olay yönetimi, DOM manipülasyonu ve API çağrıları gibi işlemleri gerçekleştirir.", null, "/images/image3.png", "Dinamiklik katar", "JavaScript", null, 3 },
-                    { 4, 2, "Makine öğrenimi, verilerden örüntüleri tespit ederek öğrenen algoritmaların geliştirilmesini sağlar. Supervised, unsupervised ve reinforcement learning gibi türleri vardır.", null, "/images/image4.png", "Veriden öğrenme", "Makine Öğrenimi", null, 4 }
+                    { 3, 1, "JavaScript, web sayfalarına etkileşim ve dinamik özellikler kazandırmak için kullanılan bir programlama dilidir. Olay yönetimi, DOM manipülasyonu ve API çağrıları gibi işlemleri gerçekleştirir.", null, "/images/image3.jpeg", "Dinamiklik katar", "JavaScript", null, 3 },
+                    { 4, 2, "Makine öğrenimi, verilerden örüntüleri tespit ederek öğrenen algoritmaların geliştirilmesini sağlar. Supervised, unsupervised ve reinforcement learning gibi türleri vardır.", null, "/images/image4.jpeg", "Veriden öğrenme", "Makine Öğrenimi", null, 4 }
                 });
 
             migrationBuilder.InsertData(
                 table: "Posts",
                 columns: new[] { "Id", "CategoryId", "Content", "DeletedAt", "ImageUrl", "ShowCase", "Summary", "Title", "UpdatedAt", "UserId" },
-                values: new object[] { 5, 2, "Yapay sinir ağları, biyolojik sinir ağlarından esinlenilerek geliştirilen algoritmalardır. Derin öğrenme ile birlikte popüler hale gelmiştir.", null, "/images/image5.png", true, "İnsan beyninden ilham", "Yapay Sinir Ağları", null, 5 });
+                values: new object[] { 5, 2, "Yapay sinir ağları, biyolojik sinir ağlarından esinlenilerek geliştirilen algoritmalardır. Derin öğrenme ile birlikte popüler hale gelmiştir.", null, "/images/image5.jpeg", true, "İnsan beyninden ilham", "Yapay Sinir Ağları", null, 5 });
 
             migrationBuilder.InsertData(
                 table: "Posts",
                 columns: new[] { "Id", "CategoryId", "Content", "DeletedAt", "ImageUrl", "Summary", "Title", "UpdatedAt", "UserId" },
                 values: new object[,]
                 {
-                    { 6, 3, "Akıllı telefonlar, iletişimin ötesinde çok işlevli cihazlardır. Uygulamalar, kameralar ve internet bağlantısı gibi pek çok özellik sunar.", null, "/images/image6.png", "Mobil teknoloji", "Akıllı Telefonlar", null, 6 },
-                    { 7, 3, "Nesne tanıma, görüntülerdeki nesneleri tanımlamak için yapay zekayı kullanır. Derin öğrenme ve konvolüsyonel sinir ağları bu alanda önemli rol oynar.", null, "/images/image7.png", "Görüntü işlemede devrim", "Yapay Zeka ile Nesne Tanıma", null, 1 }
+                    { 6, 3, "Akıllı telefonlar, iletişimin ötesinde çok işlevli cihazlardır. Uygulamalar, kameralar ve internet bağlantısı gibi pek çok özellik sunar.", null, "/images/image6.jpeg", "Mobil teknoloji", "Akıllı Telefonlar", null, 6 },
+                    { 7, 3, "Nesne tanıma, görüntülerdeki nesneleri tanımlamak için yapay zekayı kullanır. Derin öğrenme ve konvolüsyonel sinir ağları bu alanda önemli rol oynar.", null, "/images/image7.jpeg", "Görüntü işlemede devrim", "Yapay Zeka ile Nesne Tanıma", null, 1 }
                 });
 
             migrationBuilder.InsertData(
                 table: "Posts",
                 columns: new[] { "Id", "CategoryId", "Content", "DeletedAt", "ImageUrl", "ShowCase", "Summary", "Title", "UpdatedAt", "UserId" },
-                values: new object[] { 8, 4, "Borsa, menkul kıymetlerin alınıp satıldığı bir piyasadır. Hisse senetleri, tahviller ve yatırım fonları gibi finansal araçlar işlem görür.", null, "/images/image8.png", true, "Yatırım piyasası", "Borsa Nedir?", null, 2 });
+                values: new object[] { 8, 4, "Borsa, menkul kıymetlerin alınıp satıldığı bir piyasadır. Hisse senetleri, tahviller ve yatırım fonları gibi finansal araçlar işlem görür.", null, "/images/image8.jpeg", true, "Yatırım piyasası", "Borsa Nedir?", null, 2 });
 
             migrationBuilder.InsertData(
                 table: "Posts",
                 columns: new[] { "Id", "CategoryId", "Content", "DeletedAt", "ImageUrl", "Summary", "Title", "UpdatedAt", "UserId" },
                 values: new object[,]
                 {
-                    { 9, 4, "Kripto paralar, merkeziyetsiz, blockchain teknolojisine dayalı dijital para birimleridir. Bitcoin ve Ethereum en bilinen örneklerdendir.", null, "/images/image9.png", "Dijital para birimleri", "Kripto Paralar", null, 3 },
-                    { 10, 5, "Online eğitim, internet üzerinden bilgi edinmeyi mümkün kılar. Platformlar sayesinde zaman ve mekândan bağımsız öğrenim sağlanır.", null, "/images/image10.png", "Erişilebilir öğrenim", "Online Eğitim", null, 4 },
-                    { 11, 5, "Eğitim teknolojileri, sınıflarda interaktif tahtalar, mobil uygulamalar ve online içerikler gibi araçların kullanımını kapsar.", null, "/images/image11.png", "Dijital araçlar", "Eğitimde Teknoloji", null, 5 },
-                    { 12, 6, "Zaman yönetimi, günlük görevleri planlayarak daha üretken olmayı sağlar. Ajanda tutmak ve önceliklendirme bu konuda etkilidir.", null, "/images/image12.png", "Verimli yaşam", "Zaman Yönetimi", null, 6 }
+                    { 9, 4, "Kripto paralar, merkeziyetsiz, blockchain teknolojisine dayalı dijital para birimleridir. Bitcoin ve Ethereum en bilinen örneklerdendir.", null, "/images/image9.jpeg", "Dijital para birimleri", "Kripto Paralar", null, 3 },
+                    { 10, 5, "Online eğitim, internet üzerinden bilgi edinmeyi mümkün kılar. Platformlar sayesinde zaman ve mekândan bağımsız öğrenim sağlanır.", null, "/images/image10.jpeg", "Erişilebilir öğrenim", "Online Eğitim", null, 4 },
+                    { 11, 5, "Eğitim teknolojileri, sınıflarda interaktif tahtalar, mobil uygulamalar ve online içerikler gibi araçların kullanımını kapsar.", null, "/images/image11.jpeg", "Dijital araçlar", "Eğitimde Teknoloji", null, 5 },
+                    { 12, 6, "Zaman yönetimi, günlük görevleri planlayarak daha üretken olmayı sağlar. Ajanda tutmak ve önceliklendirme bu konuda etkilidir.", null, "/images/image12.jpeg", "Verimli yaşam", "Zaman Yönetimi", null, 6 }
                 });
 
             migrationBuilder.InsertData(
@@ -215,8 +215,8 @@ namespace UIWeb.Migrations
                 columns: new[] { "Id", "CategoryId", "Content", "DeletedAt", "ImageUrl", "ShowCase", "Summary", "Title", "UpdatedAt", "UserId" },
                 values: new object[,]
                 {
-                    { 13, 6, "Pozitif alışkanlıklar kazanmak, kişisel gelişimin temelidir. 21 gün kuralı ve tekrarlama alışkanlık edinmede etkilidir.", null, "/images/image13.png", true, "İrade gücü", "Alışkanlık Kazanmak", null, 1 },
-                    { 14, 7, "Osmanlı İmparatorluğu, 1299’dan 1922’ye kadar hüküm süren çok uluslu bir devletti. Avrupa, Asya ve Afrika kıtalarında topraklara sahipti.", null, "/images/image14.png", true, "600 yıllık imparatorluk", "Osmanlı Tarihi", null, 2 }
+                    { 13, 6, "Pozitif alışkanlıklar kazanmak, kişisel gelişimin temelidir. 21 gün kuralı ve tekrarlama alışkanlık edinmede etkilidir.", null, "/images/image13.jpeg", true, "İrade gücü", "Alışkanlık Kazanmak", null, 1 },
+                    { 14, 7, "Osmanlı İmparatorluğu, 1299’dan 1922’ye kadar hüküm süren çok uluslu bir devletti. Avrupa, Asya ve Afrika kıtalarında topraklara sahipti.", null, "/images/image14.jpeg", true, "600 yıllık imparatorluk", "Osmanlı Tarihi", null, 2 }
                 });
 
             migrationBuilder.InsertData(
@@ -224,44 +224,44 @@ namespace UIWeb.Migrations
                 columns: new[] { "Id", "CategoryId", "Content", "DeletedAt", "ImageUrl", "Summary", "Title", "UpdatedAt", "UserId" },
                 values: new object[,]
                 {
-                    { 15, 7, "Türkiye Cumhuriyeti, 1923 yılında Mustafa Kemal Atatürk önderliğinde kuruldu. Laiklik, eğitim reformları ve sanayileşme bu dönemin temelidir.", null, "/images/image15.png", "Yeni bir dönem", "Cumhuriyetin Kuruluşu", null, 3 },
-                    { 16, 8, "Modern sanat, geleneksel sanat anlayışının dışına çıkarak yenilikçi ve özgür anlatımları kapsar. Dadaizm, kübizm gibi akımlar buna örnektir.", null, "/images/image16.png", "Yorumlara açık", "Modern Sanat", null, 4 },
-                    { 17, 8, "Rönesans, Avrupa’da sanat, bilim ve düşünce alanında büyük ilerlemelerin yaşandığı bir dönemdir. Leonardo da Vinci ve Michelangelo gibi sanatçılar bu dönemde yetişmiştir.", null, "/images/image17.png", "Sanatın altın çağı", "Rönesans Dönemi", null, 5 }
+                    { 15, 7, "Türkiye Cumhuriyeti, 1923 yılında Mustafa Kemal Atatürk önderliğinde kuruldu. Laiklik, eğitim reformları ve sanayileşme bu dönemin temelidir.", null, "/images/image15.jpeg", "Yeni bir dönem", "Cumhuriyetin Kuruluşu", null, 3 },
+                    { 16, 8, "Modern sanat, geleneksel sanat anlayışının dışına çıkarak yenilikçi ve özgür anlatımları kapsar. Dadaizm, kübizm gibi akımlar buna örnektir.", null, "/images/image16.jpeg", "Yorumlara açık", "Modern Sanat", null, 4 },
+                    { 17, 8, "Rönesans, Avrupa’da sanat, bilim ve düşünce alanında büyük ilerlemelerin yaşandığı bir dönemdir. Leonardo da Vinci ve Michelangelo gibi sanatçılar bu dönemde yetişmiştir.", null, "/images/image17.jpeg", "Sanatın altın çağı", "Rönesans Dönemi", null, 5 }
                 });
 
             migrationBuilder.InsertData(
                 table: "Posts",
                 columns: new[] { "Id", "CategoryId", "Content", "DeletedAt", "ImageUrl", "ShowCase", "Summary", "Title", "UpdatedAt", "UserId" },
-                values: new object[] { 18, 9, "Türk edebiyatı, divan, halk ve modern edebiyat olmak üzere üç ana dönemde incelenir. Şiir, hikâye ve roman gibi türler öne çıkar.", null, "/images/image18.png", true, "Zengin kültürel miras", "Türk Edebiyatı", null, 6 });
+                values: new object[] { 18, 9, "Türk edebiyatı, divan, halk ve modern edebiyat olmak üzere üç ana dönemde incelenir. Şiir, hikâye ve roman gibi türler öne çıkar.", null, "/images/image18.jpeg", true, "Zengin kültürel miras", "Türk Edebiyatı", null, 6 });
 
             migrationBuilder.InsertData(
                 table: "Posts",
                 columns: new[] { "Id", "CategoryId", "Content", "DeletedAt", "ImageUrl", "Summary", "Title", "UpdatedAt", "UserId" },
-                values: new object[] { 19, 9, "Roman, kurmaca bir olay örgüsü etrafında gelişen edebi türdür. Karakter derinliği ve olay örgüsü romana özgü unsurlardır.", null, "/images/image19.png", "Kurgu anlatılar", "Roman Türü", null, 1 });
+                values: new object[] { 19, 9, "Roman, kurmaca bir olay örgüsü etrafında gelişen edebi türdür. Karakter derinliği ve olay örgüsü romana özgü unsurlardır.", null, "/images/image19.jpeg", "Kurgu anlatılar", "Roman Türü", null, 1 });
 
             migrationBuilder.InsertData(
                 table: "Posts",
                 columns: new[] { "Id", "CategoryId", "Content", "DeletedAt", "ImageUrl", "ShowCase", "Summary", "Title", "UpdatedAt", "UserId" },
-                values: new object[] { 20, 10, "Video oyunları, eğlence ve hikâye anlatımı sunan dijital medya ürünleridir. Konsollar, bilgisayarlar ve mobil cihazlar üzerinden oynanabilir.", null, "/images/image20.png", true, "Etkileşimli eğlence", "Video Oyunları", null, 2 });
+                values: new object[] { 20, 10, "Video oyunları, eğlence ve hikâye anlatımı sunan dijital medya ürünleridir. Konsollar, bilgisayarlar ve mobil cihazlar üzerinden oynanabilir.", null, "/images/image20.jpeg", true, "Etkileşimli eğlence", "Video Oyunları", null, 2 });
 
             migrationBuilder.InsertData(
                 table: "Posts",
                 columns: new[] { "Id", "CategoryId", "Content", "DeletedAt", "ImageUrl", "Summary", "Title", "UpdatedAt", "UserId" },
                 values: new object[,]
                 {
-                    { 21, 10, "Oyun geliştirme, yazılım, grafik tasarımı ve ses gibi farklı disiplinlerin bir araya gelerek etkileşimli deneyimler oluşturduğu bir süreçtir.", null, "/images/image21.png", "Yazılım ve tasarım", "Oyun Geliştirme", null, 3 },
-                    { 22, 11, "Futbol, dünya genelinde en yaygın oynanan spor dallarından biridir. Modern futbolun temelleri 19. yüzyılda İngiltere'de atılmıştır.", null, "/images/image22.png", "Köklü geçmiş", "Futbolun Tarihi", null, 4 }
+                    { 21, 10, "Oyun geliştirme, yazılım, grafik tasarımı ve ses gibi farklı disiplinlerin bir araya gelerek etkileşimli deneyimler oluşturduğu bir süreçtir.", null, "/images/image21.jpeg", "Yazılım ve tasarım", "Oyun Geliştirme", null, 3 },
+                    { 22, 11, "Futbol, dünya genelinde en yaygın oynanan spor dallarından biridir. Modern futbolun temelleri 19. yüzyılda İngiltere'de atılmıştır.", null, "/images/image22.jpeg", "Köklü geçmiş", "Futbolun Tarihi", null, 4 }
                 });
 
             migrationBuilder.InsertData(
                 table: "Posts",
                 columns: new[] { "Id", "CategoryId", "Content", "DeletedAt", "ImageUrl", "ShowCase", "Summary", "Title", "UpdatedAt", "UserId" },
-                values: new object[] { 23, 11, "Düzenli spor yapmak, kalp sağlığını korur, kas gelişimini destekler ve stres seviyesini azaltır. Her yaşta yapılabilir.", null, "/images/image23.png", true, "Sağlıklı yaşam", "Sporun Faydaları", null, 5 });
+                values: new object[] { 23, 11, "Düzenli spor yapmak, kalp sağlığını korur, kas gelişimini destekler ve stres seviyesini azaltır. Her yaşta yapılabilir.", null, "/images/image23.jpeg", true, "Sağlıklı yaşam", "Sporun Faydaları", null, 5 });
 
             migrationBuilder.InsertData(
                 table: "Posts",
                 columns: new[] { "Id", "CategoryId", "Content", "DeletedAt", "ImageUrl", "Summary", "Title", "UpdatedAt", "UserId" },
-                values: new object[] { 24, 12, "Dengeli ve düzenli beslenme, vücudun ihtiyaç duyduğu vitamin ve mineralleri karşılayarak sağlıklı bir yaşam sürdürülmesini sağlar.", null, "/images/image24.png", "Sağlıklı yaşamın temeli", "Beslenme Alışkanlıkları", null, 6 });
+                values: new object[] { 24, 12, "Dengeli ve düzenli beslenme, vücudun ihtiyaç duyduğu vitamin ve mineralleri karşılayarak sağlıklı bir yaşam sürdürülmesini sağlar.", null, "/images/image24.jpeg", "Sağlıklı yaşamın temeli", "Beslenme Alışkanlıkları", null, 6 });
 
             migrationBuilder.InsertData(
                 table: "Comments",

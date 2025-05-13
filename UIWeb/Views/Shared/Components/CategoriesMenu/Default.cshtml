@@ -4,9 +4,9 @@
   <nav style="white-space: nowrap;" class="nav nav-underline justify-content-between flex-nowrap overflow-auto">
     @foreach (var category in Model)
     {
-      <li class="nav-item nav-link link-body-emphasis">
+      <a class="nav-item nav-link link-body-emphasis" asp-action="Index" asp-route-categoryId="@category.Id">
         @category.Name
-      </li>
+      </a>
     }
   </nav>
 </div>
