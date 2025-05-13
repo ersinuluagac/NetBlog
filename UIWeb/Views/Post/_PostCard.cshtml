@@ -1,23 +1,25 @@
 @model Post
 
-<div class="col-md-6">
-  <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-    <div class="col p-4 d-flex flex-column position-static">
-      <strong class="d-inline-block mb-2 text-primary-emphasis">@Model.Category?.Name</strong>
-      <h3 class="mb-0">@Model.Title</h3>
-      <div class="mb-1 text-body-secondary">@Model.CreatedAt.Day/@Model.CreatedAt.Month/@Model.CreatedAt.Year</div>
-      <p class="card-text mb-auto">@Model.Summary</p>
-      <a class="icon-link link-secondary link-underline-opacity-0 link-underline-opacity-25-hover" asp-action="Get" asp-route-id="@Model.Id">
-        Okumaya başla...
-        <svg class="bi" aria-hidden="true">
-          <use xlink:href="#chevron-right"></use>
-        </svg>
-      </a>
+<div class="col-lg-6">
+  <a class="text-decoration-none text-dark" asp-action="Get"
+    asp-route-id="@Model.Id">
+    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <div class="col p-3 d-flex flex-column position-static">
+        <small class="display-font-sizes-1 d-inline-block mb-1 text-primary-emphasis">@Model.Category?.Name</small>
+        <h3 class="mb-0">@Model.Title</h3>
+        <small class="display-font-sizes-1 d-inline-block mb-1 text-primary-emphasis">
+          Yazar: @Model.User?.UserName
+        </small>
+        <div class="mb-1 text-body-secondary">@Model.CreatedAt.Day/@Model.CreatedAt.Month/@Model.CreatedAt.Year</div>
+        <div>
+          <h6>
+            @Model.Summary
+          </h6>
+        </div>
+      </div>
+      <div class="col-auto d-none d-lg-block p-2">
+        <img src="@Model?.ImageUrl" alt="Kapak Resmi" width="200" height="250">
+      </div>
     </div>
-    <div class="col-auto d-none d-lg-block p-2">
-      <img src="@Model?.ImageUrl" alt="Kapak Resmi" width="200" height="250">
-    </div>
-  </div>
+  </a>
 </div>
-
-

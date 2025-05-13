@@ -6,10 +6,19 @@ namespace Repository.Extensions
   {
     public static IQueryable<Post> FilteredByCategoryId(this IQueryable<Post> posts, int? categoryId)
     {
-      if(categoryId is null)
+      if (categoryId is null)
         return posts;
       else
         return posts.Where(post => post.CategoryId.Equals(categoryId));
+    }
+
+    public static IQueryable<Post> FilteredBySearchTerm(this IQueryable<Post> posts, string searchTerm)
+    {
+      if (string.IsNullOrWhiteSpace(searchTerm))
+        return posts;
+      else
+        return posts.Where(post => post.Title.ToLower()
+          .Contains(searchTerm.ToLower()));
     }
   }
 }

@@ -1,0 +1,16 @@
+<div class="my-3">
+  <h5 class="text-center">
+    Filtreler <i class="fa-solid fa-filter"></i>
+  </h5>
+</div>
+<div class="my-2">
+  <form method=get asp-action="Index">
+    <input type="hidden" name="categoryId" value="@(Context.Request.Query["categoryId"])" />
+    <div class="form-group my-2">
+      <input class="form-control" name="SearchTerm" placeholder="Başlık ara"></input>
+    </div>
+    <div class="form-group my-2 text-center">
+      <button type="submit" class="btn btn-sm btn-outline-secondary">Filtrele</button>
+    </div>
+  </form>
+</div>

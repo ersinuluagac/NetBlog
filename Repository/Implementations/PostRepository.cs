@@ -19,7 +19,11 @@ namespace Repository.Implementations
 
     public IQueryable<Post> GetAllPostsWithDetails(PostRequestParameters p)
     {
-      return _context.Posts.FilteredByCategoryId(p.CategoryId).Include(p => p.Category);
+      return _context.Posts
+        .FilteredByCategoryId(p.CategoryId)
+        .FilteredBySearchTerm(p.SearchTerm)
+        .Include(p => p.Category)
+        .Include(p => p.User);
     }
 
     public Post? GetOnePost(int id, bool trackChanges)
