@@ -3,11 +3,13 @@
 - **Dependency Injection**
 - **Inversion of Control**
 - **Unit of Work**
+- **Onion Architecture**
 ---
 - **MVC Project**
 - **Identity**
 - **Entity**
 - **LINQ**
 - **Fluent API**
-- **Tag Helper**
+- **Tag Helpers**
 - **Razor Pages**
+- **Auto Migrate**
