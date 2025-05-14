@@ -20,5 +20,12 @@ namespace Repository.Extensions
         return posts.Where(post => post.Title.ToLower()
           .Contains(searchTerm.ToLower()));
     }
+
+    public static IQueryable<Post> ToPaginate(this IQueryable<Post> posts, int pageNumber, int pageSize)
+    {
+      return posts
+        .Skip((pageNumber-1)*pageSize)
+        .Take(pageSize);
+    }
   }
 }

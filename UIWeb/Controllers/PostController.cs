@@ -1,9 +1,11 @@
 using Core.Dtos;
+using Core.Models;
 using Core.RequestParameters;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Service.UnitOfWork;
+using UIWeb.Models;
 
 namespace UIWeb.Controllers
 {
@@ -27,8 +29,18 @@ namespace UIWeb.Controllers
     // Views
     public IActionResult Index(PostRequestParameters p)
     {
-      var model = _manager.PostService.GetAllPostsWithDetails(p);
-      return View(model);
+      var posts = _manager.PostService.GetAllPostsWithDetails(p);
+      var pagination = new Pagination()
+      {
+        CurrentPage = p.PageNumber,
+        ItemsPerPage = p.PageSize,
+        TotalItems = _manager.PostService.GetAllPosts(false).Count()
+      };
+      return View(new PostListViewModel()
+      {
+        Posts = posts,
+        Pagination = pagination
+      });
     }
 
     public IActionResult Get([FromRoute(Name = "id")] int id)

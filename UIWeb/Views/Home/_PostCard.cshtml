@@ -1,0 +1,22 @@
+@model Post
+
+<div class="col-md-6 col-lg-4">
+  <a class="text-decoration-none text-dark" asp-controller="Post" asp-action="Get"
+    asp-route-id="@Model.Id">
+    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <div class="col p-3 d-flex flex-column position-static">
+        <small class="display-font-sizes-1 d-inline-block mb-1 text-primary-emphasis">@Model.Category?.Name</small>
+        <h3 class="mb-0">@Model.Title</h3>
+        <small class="display-font-sizes-1 d-inline-block mb-1 text-primary-emphasis">
+          Yazar: @Model.User?.UserName
+        </small>
+        <div class="mb-1 text-body-secondary">@Model.CreatedAt.Day/@Model.CreatedAt.Month/@Model.CreatedAt.Year</div>
+        <div>
+          <h6>
+            @Model.Summary
+          </h6>
+        </div>
+      </div>
+    </div>
+  </a>
+</div>

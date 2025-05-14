@@ -23,7 +23,8 @@ namespace Repository.Implementations
         .FilteredByCategoryId(p.CategoryId)
         .FilteredBySearchTerm(p.SearchTerm)
         .Include(p => p.Category)
-        .Include(p => p.User);
+        .Include(p => p.User)
+        .ToPaginate(p.PageNumber, p.PageSize);
     }
 
     public Post? GetOnePost(int id, bool trackChanges)
@@ -41,7 +42,5 @@ namespace Repository.Implementations
     public void UpdateOnePost(Post entity) => Update(entity);
 
     public void DeleteOnePost(Post post) => Delete(post);
-
-
   }
 }

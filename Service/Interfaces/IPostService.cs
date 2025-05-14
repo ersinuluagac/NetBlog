@@ -14,10 +14,18 @@ namespace Service.Interfaces
     IEnumerable<Post> GetAllPosts(bool trackChanges);
 
     /// <summary>
+    /// Son eklenen gönderileri veri tabanından getirir.
+    /// </summary>
+    /// <param name="n">Kaç gönderi getirilecek?</param>
+    /// <param name="trackChanges">Değişiklik takibi yapılacak mı?</param>
+    /// <returns>"n" adet gönderi.</returns>
+    IEnumerable<Post> GetLastestPosts(int n, bool trackChanges);
+
+    /// <summary>
     /// Verilen kategori ID'sine göre postları veri tabanından getirir.
     /// </summary>
     /// <param name="p">Kategori ID istek parametresi</param>
-    /// <returns>Kategoriye göre tüm postlar</returns>
+    /// <returns>Kategoriye göre tüm gönderiler</returns>
     IEnumerable<Post> GetAllPostsWithDetails(PostRequestParameters p);
 
     /// <summary>
@@ -48,7 +56,7 @@ namespace Service.Interfaces
     /// </summary>
     /// <param name="postDto">Güncellenmesi gereken gönderinin verilerini içeren DTO.</param>
     void UpdateOnePost(PostDto postDto);
-    
+
     /// <summary>
     /// Belirli bir gönderiyi siler.
     /// </summary>

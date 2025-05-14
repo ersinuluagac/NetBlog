@@ -27,6 +27,16 @@ namespace Service.Implementations
       return _manager.Post.GetAllPosts(trackChanges).Include(p => p.Category); // Kategori dahil edildi.
     }
 
+    public IEnumerable<Post> GetLastestPosts(int n, bool trackChanges)
+    {
+      return _manager.Post
+      .FindAll(trackChanges)
+      .OrderByDescending(post => post.Id)
+      .Take(n)
+      .Include(p => p.Category)
+      .Include(p => p.User);
+    }
+
     public IEnumerable<Post> GetAllPostsWithDetails(PostRequestParameters p)
     {
       return _manager.Post.GetAllPostsWithDetails(p);
