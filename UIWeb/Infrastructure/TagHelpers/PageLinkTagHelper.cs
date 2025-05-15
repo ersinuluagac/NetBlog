@@ -19,7 +19,7 @@ namespace UIWeb.Infrastructure.TagHelpers
     [HtmlAttributeNotBound]
     public ViewContext? ViewContext { get; set; } //araştırılacak.
     public Pagination PageModel { get; set; }
-    public String? PageAction { get; set; }
+    public string? PageAction { get; set; }
 
     public bool PageClassesEnabled { get; set; } = false;
     public string PageClass { get; set; } = String.Empty;
