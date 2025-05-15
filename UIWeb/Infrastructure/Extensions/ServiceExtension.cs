@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Repository;
 using Repository.Implementations;
@@ -16,8 +17,23 @@ namespace UIWeb.Infrastructure.Extensions
       services.AddDbContext<RepositoryContext>(options => // Veritabanı bağlantısı yapılıyor.
       {
         options.UseSqlServer(configuration.GetConnectionString("MsSqlConnection"), // appsettings.json dosyasındaki bağlantı bilgileri alınıyor.
-        b => b.MigrationsAssembly("UIWeb")); // Migrations'ların nerde bulunacağını belirliyoruz.
+          b => b.MigrationsAssembly("UIWeb")); // Migrations'ların nerde bulunacağını belirliyoruz.
+        options.EnableSensitiveDataLogging(true); // Hassas bilgileri loglara yansıtmak için.
       });
+    }
+
+    public static void ConfigureIdentity(this IServiceCollection services)
+    {
+      services.AddIdentity<IdentityUser, IdentityRole>(options => // Identity sistemini tanımlar.
+      {
+        options.SignIn.RequireConfirmedAccount = false;
+        options.User.RequireUniqueEmail = true;
+        options.Password.RequireUppercase = false;
+        options.Password.RequireLowercase = false;
+        options.Password.RequireNonAlphanumeric = false;
+        options.Password.RequiredLength = 6;
+      })
+      .AddEntityFrameworkStores<RepositoryContext>(); // Identity verileri Entity Framework ile veri tabanına kaydedilecek.
     }
 
     public static void ConfigureSession(this IServiceCollection services)

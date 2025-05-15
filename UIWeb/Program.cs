@@ -6,6 +6,7 @@ builder.Services.AddControllersWithViews(); // Controller ve view servisleri ekl
 builder.Services.AddRazorPages(); // Razor sayfaları ekleniyor.
 
 builder.Services.ConfigureDbContext(builder.Configuration); // Extension'dan gelen veri tabanı bağlantısı.
+builder.Services.ConfigureIdentity();
 builder.Services.ConfigureSession(); // Extension'dan gelen session yapısı.
 
 builder.Services.ConfigureRepositoryRegistration(); // Inversion of Control Repository
@@ -39,5 +40,7 @@ app.UseEndpoints(endpoint => // Yönlendirme haritalaması.
 });
 
 app.CheckMigration(); // Migration Add ve Database Update için.
+
+app.ConfigureDefaultAdminUser(); // Varsayılan olarak Admin kullanıcısını ekler.
 
 app.Run(); // Web uygulaması çalıştırılıyor.
