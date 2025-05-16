@@ -3,20 +3,19 @@ using Service.UnitOfWork;
 
 namespace UIWeb.Areas.Admin.Controllers
 {
-  [Area("Admin")] // Controller için area belirteci
-  public class CategoryController : Controller
+  [Area("Admin")]
+  public class RoleController : Controller
   {
     private readonly IServiceManager _manager;
 
-    public CategoryController(IServiceManager manager)
+    public RoleController(IServiceManager manager)
     {
       _manager = manager;
     }
 
-    // Views
     public IActionResult Index()
     {
-      return View(_manager.CategoryService.GetAllCategories(false));
+      return View(_manager.AuthService.Roles);
     }
   }
 }

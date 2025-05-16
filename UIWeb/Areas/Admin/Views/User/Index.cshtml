@@ -1,0 +1,33 @@
+@model IEnumerable<IdentityUser>
+
+<div class="text-center py-3">
+  <h1 class="display-1">Kullanıcılar</h1>
+</div>
+<table class="table">
+  <thead class="">
+    <tr>
+      <td>ID</td>
+      <td>Kullanıcı Adı</td>
+      <td>E-posta Adresi</td>
+      <td>Rol</td>
+      <td>Operasyon</td>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (IdentityUser user in Model)
+    {
+      <tr>
+        <td>@user.Id</td>
+        <td>@user.UserName</td>
+        <td>@user.Email</td>
+        <td>Rol</td>
+        <td>
+          <div class="btn-group">
+            <a class="btn btn-sm btn-outline-secondary">Güncelle</a>
+            <a class="btn btn-sm btn-outline-danger">Sil</a>
+          </div>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>

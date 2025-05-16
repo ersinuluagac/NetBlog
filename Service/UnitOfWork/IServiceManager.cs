@@ -8,5 +8,6 @@ namespace Service.UnitOfWork
     ICategoryService CategoryService { get; }
     ICommentService CommentService { get; }
     ILikeService LikeService { get; }
+    IAuthService AuthService { get; }
   }
 }

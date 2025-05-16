@@ -65,6 +65,7 @@ namespace UIWeb.Infrastructure.Extensions
       services.AddScoped<ICategoryService, CategoryService>();
       services.AddScoped<ICommentService, CommentService>();
       services.AddScoped<ILikeService, LikeService>();
+      services.AddScoped<IAuthService, AuthService>();
     }
 
     // Lowecase ve Slash için service.
