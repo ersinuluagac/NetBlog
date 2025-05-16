@@ -25,6 +25,9 @@ app.UseSession(); // Session kullanılıyor.
 app.UseHttpsRedirection(); // HTTPS yönlendirmesi yapılıyor.
 app.UseRouting(); // Yönlendirme ayarları yapılıyor.
 
+app.UseAuthentication(); // Kimlik doğrulama
+app.UseAuthorization(); // Yetkilendirme
+
 app.UseEndpoints(endpoint => // Yönlendirme haritalaması.
 {
     endpoint.MapAreaControllerRoute( // Admin için controller ve action.

@@ -1,0 +1,27 @@
+@if (User.Identity.IsAuthenticated)
+{
+  @if (User.IsInRole("Admin"))
+  {
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" target="_blank" asp-area="Admin" asp-controller="Dashboard"
+        asp-action="Index">
+        <i class="fa-solid fa-gears"></i> Panel
+      </a>
+    </li>
+  }
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" asp-controller="Account" asp-action="SignOut"
+      asp-route-returnUrl="@Context.Request.Path">
+      <i class="fa-solid fa-right-from-bracket"></i> Çıkış
+    </a>
+  </li>
+}
+else
+{
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" asp-controller="Account" asp-action="SignIn"
+      asp-route-returnUrl="@Context.Request.Path">
+      <i class="fa-solid fa-user"></i> Giriş
+    </a>
+  </li>
+}

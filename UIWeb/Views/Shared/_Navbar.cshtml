@@ -34,17 +34,8 @@
         </li>
       </ul>
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" asp-controller="User" asp-action="SignIn">
-            <i class="fa-solid fa-user"></i></i> Giriş
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" target="_blank" asp-area="Admin" asp-controller="Dashboard"
-            asp-action="Index">
-            <i class="fa-solid fa-gears"></i> Panel
-          </a>
-        </li>
+
+        <partial name="_SignMenu" />
       </ul>
     </div>
   </div>
