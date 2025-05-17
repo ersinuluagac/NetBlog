@@ -13,6 +13,10 @@
     {
       "library": "jquery@3.7.1",
       "destination": "wwwroot/lib/jquery"
+    },
+    {
+      "library": "summernote@0.9.1",
+      "destination": "wwwroot/lib/summernote"
     }
   ]
 }
