@@ -55,12 +55,7 @@ namespace UIWeb.Infrastructure.Extensions
         if (!result.Succeeded)
           throw new Exception("Admin kullanıcısı oluşturulamadı!");
         // Mevcut tüm roller kullanıcıya atanır
-        var roleResult = await userManager.AddToRolesAsync(user,
-          roleManager
-            .Roles
-            .Select(r => r.Name)
-            .ToList()
-        );
+        var roleResult = await userManager.AddToRoleAsync(user, "Admin");
         // Roller atanamadıysa hata fırlatılır  
         if (!roleResult.Succeeded)
           throw new Exception("Rol taımlaması yapılamadı.");

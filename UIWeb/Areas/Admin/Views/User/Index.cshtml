@@ -1,4 +1,4 @@
-@model IEnumerable<IdentityUser>
+@model IEnumerable<UserWithRoleDto>
 
 <div class="text-center py-3">
   <h1 class="display-1">Kullanıcılar</h1>
@@ -6,7 +6,6 @@
 <table class="table">
   <thead class="">
     <tr>
-      <td>ID</td>
       <td>Kullanıcı Adı</td>
       <td>E-posta Adresi</td>
       <td>Rol</td>
@@ -14,13 +13,12 @@
     </tr>
   </thead>
   <tbody>
-    @foreach (IdentityUser user in Model)
+    @foreach (UserWithRoleDto user in Model)
     {
       <tr>
-        <td>@user.Id</td>
-        <td>@user.UserName</td>
+        <td>@user.Username</td>
         <td>@user.Email</td>
-        <td>Rol</td>
+        <td>@user.Role</td>
         <td>
           <div class="btn-group">
             <a class="btn btn-sm btn-outline-secondary">Güncelle</a>

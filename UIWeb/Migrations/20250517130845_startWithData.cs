@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace UIWeb.Migrations
 {
-    public partial class startWithSeedData : Migration
+    public partial class startWithData : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -280,9 +280,9 @@ namespace UIWeb.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "0e6ba79f-901c-4ef2-8c92-4efb8d9ac640", "781ab7ab-9706-485d-8fc9-6977d61d3898", "Editor", "EDITOR" },
-                    { "6425becf-510c-4473-9156-8912035e1f07", "3b365d34-e181-478b-8d3f-3a31aa38ff32", "User", "USER" },
-                    { "e0377419-2eba-454d-b363-573b4c5bb219", "06c05039-2c89-43f9-b4cf-4770690f8833", "Admin", "ADMIN" }
+                    { "2a32aee3-222a-49a4-81a0-303037263c51", "3ac0a1f9-1b6a-48c6-a258-0d6a5ff5eef3", "Admin", "ADMIN" },
+                    { "acecf7d8-b5fd-4551-8d92-721a8ac42902", "a944100c-9c38-42cc-813f-ed346153dacc", "Editor", "EDITOR" },
+                    { "c145aa15-8d5d-42ba-a483-9409a4b4e78c", "8b2c0734-bbc2-4335-b8af-86658c399c56", "User", "USER" }
                 });
 
             migrationBuilder.InsertData(

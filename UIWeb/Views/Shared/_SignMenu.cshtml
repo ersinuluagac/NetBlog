@@ -1,6 +1,6 @@
 @if (User.Identity.IsAuthenticated)
 {
-  @if (User.IsInRole("Admin"))
+  @if (User.IsInRole("Admin") || User.IsInRole("Editor"))
   {
     <li class="nav-item">
       <a class="nav-link active" aria-current="page" target="_blank" asp-area="Admin" asp-controller="Dashboard"

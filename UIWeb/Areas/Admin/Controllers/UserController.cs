@@ -1,4 +1,7 @@
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Service.UnitOfWork;
 
 namespace UIWeb.Areas.Admin.Controllers
@@ -13,9 +16,14 @@ namespace UIWeb.Areas.Admin.Controllers
       _manager = manager;
     }
 
-    public IActionResult Index()
+    public SelectList GetAllRoles()
     {
-      return View(_manager.AuthService.GetAllUsers());
+      return new SelectList(_manager.AuthService.Roles);
+    }
+    public async Task<IActionResult> Index()
+    {
+      ViewBag.Roles = GetAllRoles();
+      return View(await _manager.AuthService.GetAllUsersWithRole());
     }
   }
 }
