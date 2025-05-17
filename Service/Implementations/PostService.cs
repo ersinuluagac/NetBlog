@@ -24,7 +24,8 @@ namespace Service.Implementations
     // Methods
     public IEnumerable<Post> GetAllPosts(bool trackChanges)
     {
-      return _manager.Post.GetAllPosts(trackChanges).Include(p => p.Category); // Kategori dahil edildi.
+      return _manager.Post.FindAll(trackChanges).Include(p => p.Category); // Kategori dahil edildi.
+
     }
 
     public IEnumerable<Post> GetLastestPosts(int n, bool trackChanges)
@@ -58,23 +59,15 @@ namespace Service.Implementations
 
     public void CreateOnePost(PostDto postDto)
     {
-      /* AutoMapper olmasaydı.
-        Post post = new Post()
-        {
-          Title = postDto.Title,
-          Content = postDto.Content,
-          CategoryId = postDto.CategoryId
-        };
-      */
       Post post = _mapper.Map<Post>(postDto);
-      _manager.Post.CreateOnePost(post);
+      _manager.Post.Create(post);
       _manager.Save();
     }
 
     public void UpdateOnePost(PostDto postDto)
     {
       var entity = _mapper.Map<Post>(postDto);
-      _manager.Post.UpdateOnePost(entity);
+      _manager.Post.Update(entity);
       _manager.Save();
     }
 
@@ -83,7 +76,7 @@ namespace Service.Implementations
       Post post = GetOnePost(id, false);
       if (post is not null)
       {
-        _manager.Post.DeleteOnePost(post);
+        _manager.Post.Delete(post);
         _manager.Save();
       }
     }

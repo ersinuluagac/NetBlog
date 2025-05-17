@@ -15,8 +15,6 @@ namespace Repository.Implementations
     }
 
     // Methods
-    public IQueryable<Post> GetAllPosts(bool trackChanges) => FindAll(trackChanges);
-
     public IQueryable<Post> GetAllPostsWithDetails(PostRequestParameters p)
     {
       return _context.Posts
@@ -31,16 +29,10 @@ namespace Repository.Implementations
     {
       return _context
         .Posts
-        .Include(p => p.Comments).ThenInclude(c => c.User)
+        .Include(p => p.Comments)
+          .ThenInclude(c => c.User)
         .Include(p => p.Likes)
         .FirstOrDefault(p => p.Id.Equals(id));
-      // return FindByCondition(p => p.Id.Equals(id), trackChanges);
     }
-
-    public void CreateOnePost(Post post) => Create(post);
-
-    public void UpdateOnePost(Post entity) => Update(entity);
-
-    public void DeleteOnePost(Post post) => Delete(post);
   }
 }
