@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using AutoMapper;
 using Core.Dtos;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -11,28 +12,34 @@ namespace Service.Implementations
     // DI
     private readonly RoleManager<IdentityRole> _roleManager;
     private readonly UserManager<IdentityUser> _userManager;
+    private readonly IMapper _mapper;
 
     // CTOR
-    public AuthService(RoleManager<IdentityRole> roleManager, UserManager<IdentityUser> userManager)
+    public AuthService(RoleManager<IdentityRole> roleManager, UserManager<IdentityUser> userManager, IMapper mapper)
     {
       _roleManager = roleManager;
       _userManager = userManager;
+      _mapper = mapper;
     }
 
     public IEnumerable<IdentityRole> Roles =>
       _roleManager.Roles;
 
-    public async Task<IEnumerable<UserWithRoleDto>> GetAllUsersWithRole()
+    public async Task<IdentityUser> GetOneUser(string email)
+    {
+      return await _userManager.FindByEmailAsync(email);
+    }
+
+    public async Task<IEnumerable<UserDto>> GetAllUsersWithRole()
     {
       var users = _userManager.Users;
-      var userWithRoleList = new List<UserWithRoleDto>();
+      var userWithRoleList = new List<UserDto>();
       foreach (var user in users)
       {
         var roles = await _userManager.GetRolesAsync(user);
-        userWithRoleList.Add(new UserWithRoleDto
+        userWithRoleList.Add(new UserDto
         {
-          Id = user.Id,
-          Username = user.UserName,
+          UserName = user.UserName,
           Email = user.Email,
           Role = roles.FirstOrDefault()
         });

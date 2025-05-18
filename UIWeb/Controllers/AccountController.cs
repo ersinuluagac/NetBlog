@@ -51,17 +51,17 @@ namespace UIWeb.Controllers
       return Redirect(returnUrl);
     }
 
-    public IActionResult Register()
+    public IActionResult SignUp()
     {
       return View();
     }
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Register([FromForm] RegisterDto model)
+    public async Task<IActionResult> SignUp([FromForm] UserDto model)
     {
       var user = new IdentityUser // Mapping
       {
-        UserName = model.Username,
+        UserName = model.UserName,
         Email = model.Email,
       };
       var result = await _userManager // Parola ile kullanıcı yarat

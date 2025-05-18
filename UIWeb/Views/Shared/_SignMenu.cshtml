@@ -9,11 +9,39 @@
       </a>
     </li>
   }
-  <li class="nav-item">
-    <a class="nav-link active" aria-current="page" asp-controller="Account" asp-action="SignOut"
-      asp-route-returnUrl="@Context.Request.Path">
-      <i class="fa-solid fa-right-from-bracket"></i> Çıkış
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"
+      aria-expanded="false">
+      Profil
     </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a class="dropdown-item">
+          <i class="fa-solid fa-user mx-2"></i>Profilim
+        </a>
+      </li>
+      <li>
+        <a class="dropdown-item">
+          <i class="fa-solid fa-comments mx-2"></i>Gönderilerim
+        </a>
+      </li>
+      <li>
+        <a class="dropdown-item">
+          <i class="fa-solid fa-heart mx-2"></i>Beğendiklerim
+        </a>
+      </li>
+      <li>
+        <a class="dropdown-item">
+          <i class="fa-solid fa-list mx-2"></i>Okuma Listem
+        </a>
+      </li>
+      <li>
+        <a class="dropdown-item" asp-controller="Account" asp-action="SignOut"
+          asp-route-returnUrl="@Context.Request.Path">
+          <i class="fa-solid fa-right-from-bracket mx-2"></i>Çıkış
+        </a>
+      </li>
+    </ul>
   </li>
 }
 else

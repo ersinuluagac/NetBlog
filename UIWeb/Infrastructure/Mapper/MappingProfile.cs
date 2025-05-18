@@ -1,6 +1,7 @@
 using AutoMapper;
 using Core.Dtos;
 using Core.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace UIWeb.Infrastructure.Mapper
 {
@@ -11,6 +12,7 @@ namespace UIWeb.Infrastructure.Mapper
     {
       CreateMap<PostDto, Post>().ReverseMap();
       CreateMap<CommentDto, Comment>().ReverseMap();
+      CreateMap<UserDto, IdentityUser>().ReverseMap();
     }
   }
 }

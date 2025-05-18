@@ -1,4 +1,4 @@
-@model IEnumerable<UserWithRoleDto>
+@model IEnumerable<UserDto>
 
 <div class="text-center py-3">
   <h1 class="display-1">Kullanıcılar</h1>
@@ -9,23 +9,23 @@
       <td>Kullanıcı Adı</td>
       <td>E-posta Adresi</td>
       <td>Rol</td>
-      <td>Operasyon</td>
+      <td></td>
     </tr>
   </thead>
   <tbody>
-    @foreach (UserWithRoleDto user in Model)
+    @foreach (UserDto user in Model)
     {
-      <tr>
-        <td>@user.Username</td>
-        <td>@user.Email</td>
-        <td>@user.Role</td>
-        <td>
-          <div class="btn-group">
-            <a class="btn btn-sm btn-outline-secondary">Güncelle</a>
-            <a class="btn btn-sm btn-outline-danger">Sil</a>
-          </div>
-        </td>
-      </tr>
+        <tr>
+          <td>@user.UserName</td>
+          <td>@user.Email</td>
+          <td>@user.Role</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <a href="##" class="btn btn-sm btn-outline-dark"><i class="fa-solid fa-magnifying-glass"></i></a>
+              <a href="##" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></a>
+            </div>
+          </td>
+        </tr>
     }
   </tbody>
 </table>
