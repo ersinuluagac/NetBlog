@@ -27,12 +27,14 @@ namespace Repository.Implementations
 
     public Post? GetOnePost(int id, bool trackChanges)
     {
-      return _context
-        .Posts
-        .Include(p => p.Comments)
-          .ThenInclude(c => c.User)
-        .Include(p => p.Likes)
-        .FirstOrDefault(p => p.Id.Equals(id));
+      var query = _context.Posts
+          .Include(p => p.Comments)
+            .ThenInclude(c => c.User)
+          .Include(p => p.Likes)
+          .Where(p => p.Id == id);
+      if (!trackChanges)
+        query = query.AsNoTracking();
+      return query.FirstOrDefault(); ;
     }
   }
 }

@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Core.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Repository;
@@ -27,11 +28,11 @@ namespace UIWeb.Infrastructure.Extensions
       const string adminPass = "admin123";
 
       // UserManager
-      UserManager<IdentityUser> userManager = app
+      UserManager<ApplicationUser> userManager = app
         .ApplicationServices
         .CreateScope()
         .ServiceProvider
-        .GetRequiredService<UserManager<IdentityUser>>();
+        .GetRequiredService<UserManager<ApplicationUser>>();
       // RoleManager
       RoleManager<IdentityRole> roleManager = app
         .ApplicationServices
@@ -40,10 +41,10 @@ namespace UIWeb.Infrastructure.Extensions
         .GetRequiredService<RoleManager<IdentityRole>>();
 
       // Daha önce "Admin" adlı bir kullanıcı oluşturulmuş mu kontrol edilir.
-      IdentityUser user = await userManager.FindByNameAsync(adminUser);
+      ApplicationUser user = await userManager.FindByNameAsync(adminUser);
       if (user is null) // Kullanıcı yoksa yeni kullanıcı oluşturulur.
       {
-        user = new IdentityUser()
+        user = new ApplicationUser()
         {
           Email = "ersinuluagac@gmail.com",
           EmailConfirmed = true,

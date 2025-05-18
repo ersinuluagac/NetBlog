@@ -25,11 +25,14 @@
                 Gönderiler (@await Component.InvokeAsync("PostSummary"))
               </a>
             </li>
-            <li>
-              <a class="dropdown-item" asp-controller="Post" asp-action="Create">
-                Gönderi Oluştur
-              </a>
-            </li>
+            @if (User.Identity.IsAuthenticated)
+            {
+              <li>
+                <a class="dropdown-item" asp-controller="Post" asp-action="Create">
+                  Gönderi Oluştur
+                </a>
+              </li>
+            }
           </ul>
         </li>
       </ul>

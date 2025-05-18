@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Repository
 {
-    public class RepositoryContext : IdentityDbContext<IdentityUser>
+    public class RepositoryContext : IdentityDbContext<ApplicationUser>
     {
         // Tablolar
         public DbSet<Post> Posts { get; set; }

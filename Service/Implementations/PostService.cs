@@ -57,11 +57,12 @@ namespace Service.Implementations
       return _mapper.Map<PostDto>(post);
     }
 
-    public void CreateOnePost(PostDto postDto)
+    public Post CreateOnePost(PostDto postDto)
     {
       Post post = _mapper.Map<Post>(postDto);
       _manager.Post.Create(post);
       _manager.Save();
+      return post;
     }
 
     public void UpdateOnePost(PostDto postDto)

@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using Core.Dtos;
+using Core.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using UIWeb.Models;
@@ -8,10 +9,10 @@ namespace UIWeb.Controllers
 {
   public class AccountController : Controller
   {
-    private readonly UserManager<IdentityUser> _userManager;
-    private readonly SignInManager<IdentityUser> _signInManager;
+    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly SignInManager<ApplicationUser> _signInManager;
 
-    public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+    public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
     {
       _userManager = userManager;
       _signInManager = signInManager;
@@ -30,7 +31,7 @@ namespace UIWeb.Controllers
     {
       if (ModelState.IsValid)
       {
-        IdentityUser user = await _userManager.FindByNameAsync(model.Username);
+        ApplicationUser user = await _userManager.FindByNameAsync(model.Username);
         if (user is not null)
         {
           await _signInManager.SignOutAsync();
@@ -59,7 +60,7 @@ namespace UIWeb.Controllers
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> SignUp([FromForm] UserDto model)
     {
-      var user = new IdentityUser // Mapping
+      var user = new ApplicationUser // Mapping
       {
         UserName = model.UserName,
         Email = model.Email,

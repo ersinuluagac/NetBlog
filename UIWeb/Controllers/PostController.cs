@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using Core.Dtos;
 using Core.Models;
 using Core.RequestParameters;
@@ -58,6 +59,7 @@ namespace UIWeb.Controllers
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([FromForm] PostDto postDto, IFormFile file)
     {
+      ViewBag.Categories = GetCategories();
       if (ModelState.IsValid)
       {
         //dosyalama işlemleri
@@ -108,13 +110,12 @@ namespace UIWeb.Controllers
     {
       if (ModelState.IsValid)
       {
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        commentDto.UserId = userId;
         _manager.CommentService.CreateComment(commentDto);
         return RedirectToAction("Get", new { id = commentDto.PostId });
       }
-      else
-      {
-        return View("Get", _manager.PostService.GetOnePost(commentDto.PostId, false));
-      }
+      return View("Get", _manager.PostService.GetOnePost(commentDto.PostId, false));
     }
   }
 }

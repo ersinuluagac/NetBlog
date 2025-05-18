@@ -1,4 +1,5 @@
 using Core.Dtos;
+using Core.Models;
 using Microsoft.AspNetCore.Identity;
 
 namespace Service.Interfaces
@@ -21,6 +22,6 @@ namespace Service.Interfaces
     /// </summary>
     /// <param name="userName">Getirilecek kullanıcının e-posta adresi</param>
     /// <returns>IdentityUser döner.</returns>
-    Task<IdentityUser> GetOneUser(string email);
+    Task<ApplicationUser> GetOneUser(string email);
   }
 }

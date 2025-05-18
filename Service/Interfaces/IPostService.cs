@@ -49,7 +49,7 @@ namespace Service.Interfaces
     /// Yeni bir gönderi (Post) oluşturur.
     /// </summary>
     /// <param name="postDto">Oluşturulacak gönderinin verilerini içeren DTO.</param>
-    void CreateOnePost(PostDto postDto);
+    Post CreateOnePost(PostDto postDto);
 
     /// <summary>
     /// Mevcut bir gönderiyi günceller.

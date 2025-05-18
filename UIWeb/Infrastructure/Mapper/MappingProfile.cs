@@ -12,7 +12,7 @@ namespace UIWeb.Infrastructure.Mapper
     {
       CreateMap<PostDto, Post>().ReverseMap();
       CreateMap<CommentDto, Comment>().ReverseMap();
-      CreateMap<UserDto, IdentityUser>().ReverseMap();
+      CreateMap<UserDto, ApplicationUser>().ReverseMap();
     }
   }
 }

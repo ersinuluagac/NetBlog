@@ -8,7 +8,7 @@ namespace Core.Dtos
     public string? Title { get; set; }
     [Required(ErrorMessage = "İleti boş bırakılamaz.")]
     public string? Content { get; set; }
-    public int UserId { get; set; } = 1;
+    public string? UserId { get; set; }
     public int PostId { get; set; }
   }
 }

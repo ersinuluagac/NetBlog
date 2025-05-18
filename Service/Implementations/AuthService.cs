@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using Core.Dtos;
+using Core.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Service.Interfaces;
@@ -11,11 +12,11 @@ namespace Service.Implementations
   {
     // DI
     private readonly RoleManager<IdentityRole> _roleManager;
-    private readonly UserManager<IdentityUser> _userManager;
+    private readonly UserManager<ApplicationUser> _userManager;
     private readonly IMapper _mapper;
 
     // CTOR
-    public AuthService(RoleManager<IdentityRole> roleManager, UserManager<IdentityUser> userManager, IMapper mapper)
+    public AuthService(RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> userManager, IMapper mapper)
     {
       _roleManager = roleManager;
       _userManager = userManager;
@@ -25,7 +26,7 @@ namespace Service.Implementations
     public IEnumerable<IdentityRole> Roles =>
       _roleManager.Roles;
 
-    public async Task<IdentityUser> GetOneUser(string email)
+    public async Task<ApplicationUser> GetOneUser(string email)
     {
       return await _userManager.FindByEmailAsync(email);
     }

@@ -1,3 +1,4 @@
+using Core.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Repository;
@@ -24,7 +25,7 @@ namespace UIWeb.Infrastructure.Extensions
 
     public static void ConfigureIdentity(this IServiceCollection services)
     {
-      services.AddIdentity<IdentityUser, IdentityRole>(options => // Identity sistemini tanımlar.
+      services.AddIdentity<ApplicationUser, IdentityRole>(options => // Identity sistemini tanımlar.
       {
         options.SignIn.RequireConfirmedAccount = false;
         options.User.RequireUniqueEmail = true;

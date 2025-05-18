@@ -11,7 +11,7 @@ namespace Core.Dtos
     [Required(ErrorMessage = "Gönderi içeriği zorunludur.")]
     public string? Content { get; init; }
     public string? Summary { get; init; }
-    public string? ImageUrl { get; set; } // atama işlemi daha sonra yapılacağı için "set".
+    public string? ImageUrl { get; set; }
     public int? CategoryId { get; init; }
 
   }
