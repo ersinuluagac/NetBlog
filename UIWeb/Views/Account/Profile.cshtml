@@ -1,0 +1,63 @@
+@model ApplicationUser
+
+<div class="row mt-5">
+  <!-- Sol Sütun: Kullanıcı Bilgileri -->
+  <div class="col-md-4 py-4 text-center border-end">
+    <h3 class="fw-bold">@Model.UserName</h3>
+    <h5 class="text-muted">@Model.Email</h5>
+  </div>
+
+  <!-- Sağ Üst Sütun: İstatistik Kartları -->
+  <div class="col-md-8 mb-4 px-5">
+    <div class="row text-center g-3">
+      <div class="col-4">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <i class="fa-solid fa-file fa-xl my-2"></i>
+            <h5 class="card-title text-dark mb-2">Gönderileri</h5>
+            <p class="card-text fs-4 mb-0">@Model.Posts.Count()</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <i class="fa-solid fa-comments fa-xl my-2"></i>
+            <h5 class="card-title text-dark mb-2">Yorumları</h5>
+            <p class="card-text fs-4 mb-0">@Model.Comments.Count()</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <i class="fa-solid fa-heart fa-xl my-2"></i>
+            <h5 class="card-title text-dark mb-2">Beğenileri</h5>
+            <p class="card-text fs-4 mb-0">@Model.Likes.Count()</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sağ Alt Sütun: Gönderiler Listesi -->
+  <div class="col-lg-8 offset-lg-2 mt-3 pt-3 border-top">
+    <h2 class="mb-3">Gönderiler</h2>
+    @if (Model.Posts != null && Model.Posts.Any())
+    {
+      @foreach (var post in Model.Posts)
+      {
+        <div class="card mb-3 shadow-sm">
+          <div class="card-body">
+            <h3 class="card-title">@post.Title</h3>
+            <p class="card-text text-muted">@post.Summary</p>
+          </div>
+        </div>
+      }
+    }
+    else
+    {
+      <p class="text-muted fst-italic">Henüz gönderiniz yok.</p>
+    }
+  </div>
+</div>

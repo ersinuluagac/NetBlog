@@ -1,8 +1,10 @@
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Core.Dtos;
 using Core.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using UIWeb.Models;
 
 namespace UIWeb.Controllers
@@ -84,6 +86,19 @@ namespace UIWeb.Controllers
           ModelState.AddModelError("", err.Description);
         }
       }
+      return View();
+    }
+
+    public async Task<IActionResult> Profile()
+    {
+      var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+      var user = await _userManager.Users
+        .Include(u => u.Posts).ThenInclude(p => p.Category)
+        .Include(u => u.Comments)
+        .Include(u => u.Likes)
+        .FirstOrDefaultAsync(u => u.Id.Equals(userId));
+      if (user is not null)
+        return View(user);
       return View();
     }
   }

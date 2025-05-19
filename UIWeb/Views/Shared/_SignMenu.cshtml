@@ -16,13 +16,13 @@
     </a>
     <ul class="dropdown-menu">
       <li>
-        <a class="dropdown-item">
+        <a asp-controller="Account" asp-action="Profile" class="dropdown-item">
           <i class="fa-solid fa-user mx-2"></i>Profilim
         </a>
       </li>
       <li>
         <a class="dropdown-item">
-          <i class="fa-solid fa-comments mx-2"></i>Gönderilerim
+          <i class="fa-solid fa-file mx-2"></i>Gönderilerim
         </a>
       </li>
       <li>
@@ -36,8 +36,7 @@
         </a>
       </li>
       <li>
-        <a class="dropdown-item" asp-controller="Account" asp-action="SignOut"
-          asp-route-returnUrl="@Context.Request.Path">
+        <a class="dropdown-item" asp-controller="Account" asp-action="SignOut">
           <i class="fa-solid fa-right-from-bracket mx-2"></i>Çıkış
         </a>
       </li>
