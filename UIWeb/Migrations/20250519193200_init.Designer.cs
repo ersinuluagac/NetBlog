@@ -12,7 +12,7 @@ using Repository;
 namespace UIWeb.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20250518215449_init")]
+    [Migration("20250519193200_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -283,22 +283,22 @@ namespace UIWeb.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "ee8e101d-de90-4416-a678-2c1324809b5a",
-                            ConcurrencyStamp = "fc94c6da-b207-4abe-b3ae-c75621e6abd6",
+                            Id = "823ffcdd-15ef-4f2e-bf99-c39498faa8e3",
+                            ConcurrencyStamp = "6dd4dc4a-3bbd-4a41-bf56-8c4731d61d21",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "91dfd087-a70e-4e21-9a2a-4023f0b609e3",
-                            ConcurrencyStamp = "cf6b0c9e-0637-4693-a7e2-7505a34e3c7d",
+                            Id = "07667eec-e431-42a1-84db-818146369d48",
+                            ConcurrencyStamp = "680a4182-06a8-4d40-b673-46f3ffd515ee",
                             Name = "Editor",
                             NormalizedName = "EDITOR"
                         },
                         new
                         {
-                            Id = "a3854815-4033-48da-b0c1-82342c3750c3",
-                            ConcurrencyStamp = "9b2ed8dc-7786-4f4e-b7be-05b6bd0a9bab",
+                            Id = "835f522a-6019-4533-941c-eedad3a8a129",
+                            ConcurrencyStamp = "f6eddc07-df51-43a6-8ed8-6cde94f7246f",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -415,7 +415,7 @@ namespace UIWeb.Migrations
                     b.HasOne("Core.Models.Post", "Post")
                         .WithMany("Comments")
                         .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Core.Models.ApplicationUser", "User")
@@ -433,7 +433,7 @@ namespace UIWeb.Migrations
                     b.HasOne("Core.Models.Post", "Post")
                         .WithMany("Likes")
                         .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Core.Models.ApplicationUser", "User")

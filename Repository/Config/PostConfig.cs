@@ -21,11 +21,11 @@ namespace Repository.Config
       builder.HasMany(p => p.Comments)
         .WithOne(c => c.Post)
         .HasForeignKey(c => c.PostId)
-        .OnDelete(DeleteBehavior.Restrict);
+        .OnDelete(DeleteBehavior.Cascade);
       builder.HasMany(p => p.Likes)
         .WithOne(l => l.Post)
         .HasForeignKey(l => l.PostId)
-        .OnDelete(DeleteBehavior.Restrict);
+        .OnDelete(DeleteBehavior.Cascade);
 
 
       builder.Property(p => p.Title)

@@ -26,7 +26,7 @@ namespace Service.Interfaces
     /// </summary>
     /// <param name="p">Kategori ID istek parametresi</param>
     /// <returns>Kategoriye göre tüm gönderiler</returns>
-    IEnumerable<Post> GetAllPostsWithDetails(PostRequestParameters p);
+    IEnumerable<PostDtoWithDetails> GetAllPostsWithDetails(PostRequestParameters p);
 
     /// <summary>
     /// Verilen ID'ye sahip tek bir gönderiyi (Post) getirir.
@@ -34,7 +34,7 @@ namespace Service.Interfaces
     /// <param name="id">Getirilecek gönderinin benzersiz kimliği (ID).</param>
     /// <param name="trackChanges">Değişiklik takibi yapılacak mı?</param>
     /// <returns>Verilen ID'ye sahip gönderi (Post) ya da eğer bulunamazsa null döner.</returns>
-    Post? GetOnePost(int id, bool trackChanges);
+    PostDtoWithDetails? GetOnePost(int id, bool trackChanges);
 
     /// <summary>
     /// Verilen ID'ye sahip tek bir gönderiyi (Post) güncelleme için alır.
@@ -43,19 +43,19 @@ namespace Service.Interfaces
     /// <param name="trackChanges">Değişiklik takibi yapılacak mı?</param>
     /// <returns>Verilen ID'ye sahip gönderinin güncellenebilir versiyonunu döner (PostDto). 
     /// Eğer gönderi bulunamazsa, null döner.</returns>
-    PostDto GetOnePostForUpdate(int id, bool trackChanges);
+    PostDtoForUpdate GetOnePostForUpdate(int id, bool trackChanges);
 
     /// <summary>
     /// Yeni bir gönderi (Post) oluşturur.
     /// </summary>
     /// <param name="postDto">Oluşturulacak gönderinin verilerini içeren DTO.</param>
-    Post CreateOnePost(PostDto postDto);
+    void CreateOnePost(PostDtoForCreation postDto);
 
     /// <summary>
     /// Mevcut bir gönderiyi günceller.
     /// </summary>
     /// <param name="postDto">Güncellenmesi gereken gönderinin verilerini içeren DTO.</param>
-    void UpdateOnePost(PostDto postDto);
+    void UpdateOnePost(PostDtoForUpdate postDto);
 
     /// <summary>
     /// Belirli bir gönderiyi siler.

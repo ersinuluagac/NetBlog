@@ -1,4 +1,4 @@
-@model Post
+@model PostDtoWithDetails
 <div class="row">
   <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
     <div class="col px-0">
@@ -26,15 +26,25 @@
   <div class="col-md-8">
     <div class="card border bg-body-secondary">
       <div class="card-body p-4">
-        <div data-mdb-input-init class="form-outline mb-4">
-          <form method="post" asp-action="AddComment">
-            <div class="text-danger" asp-validation-summary="All"></div>
-            <input type="hidden" asp-for="@Model.Id" name="PostId" />
-            <input name="Title" class="form-control my-1" placeholder="Başlık" />
-            <textarea name="Content" class="form-control my-1" /></textarea>
-            <button class="btn btn-sm mt-2 btn-outline-secondary" type="submit"><i class="fa-solid fa-plus fa-sm"></i>
-              Yorumu ekle</button>
-          </form>
+        @if (User.Identity.IsAuthenticated)
+        {
+          <div>
+            <h5 class="display-6">Yorum yaz</h5>
+          </div>
+          <div data-mdb-input-init class="form-outline mb-4">
+            <form method="post" asp-action="AddComment">
+              <div class="text-danger" asp-validation-summary="All"></div>
+              <input type="hidden" asp-for="@Model.Id" name="PostId" />
+              <input name="Title" class="form-control my-1" placeholder="Başlık" />
+              <textarea name="Content" class="form-control my-1" ></textarea>
+              <button class="btn btn-sm mt-2 btn-outline-secondary" type="submit">
+                <i class="fa-solid fa-plus fa-sm"></i> Yorumu ekle
+              </button>
+            </form>
+          </div>
+        }
+        <div>
+          <h5 class="display-6">Yorumlar</h5>
         </div>
         @foreach (var comment in Model.Comments.Reverse() ?? Enumerable.Empty<Comment>())
         {

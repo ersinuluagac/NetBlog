@@ -1,22 +1,3 @@
-﻿@model IQueryable<Post>
-
-<div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
-    <div class="col-lg-6 px-0">
-        <h1 class="display-4 fst-italic">Aklına gelen her konu...</h1>
-        <p class="lead my-3">NetBlog'da yazarlar kendi gönderilerini üretir ve paylaşır, aynı zamanda başkalarının
-            gönderilerini okur ve yorumlar.</p>
-        <p class="lead mb-0">
-            <a href="#Contents" class="text-body-emphasis fw-bold">
-                Son eklenen gönderileri incele...
-            </a>
-        </p>
-    </div>
-</div>
-
-<div id="Contents" class="row my-3">
-    <h4 class="display-4">Son eklenenler</h4>
-    @foreach (Post p in Model)
-    {
-        <partial name="_PostCard" model="@p" />
-    }
+﻿<div>
+    <h1>Ana Sayfa</h1>
 </div>

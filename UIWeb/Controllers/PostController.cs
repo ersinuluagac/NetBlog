@@ -57,7 +57,7 @@ namespace UIWeb.Controllers
     }
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([FromForm] PostDto postDto, IFormFile file)
+    public async Task<IActionResult> Create([FromForm] PostDtoForCreation postDto, IFormFile file)
     {
       ViewBag.Categories = GetCategories();
       if (ModelState.IsValid)
@@ -69,7 +69,8 @@ namespace UIWeb.Controllers
           await file.CopyToAsync(stream);
         }
         postDto.ImageUrl = String.Concat("/images/", file.FileName);
-
+        postDto.UserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+      
         _manager.PostService.CreateOnePost(postDto);
         return RedirectToAction("Index");
       }
@@ -84,7 +85,7 @@ namespace UIWeb.Controllers
     }
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Update([FromForm] PostDto postDto, IFormFile file)
+    public async Task<IActionResult> Update([FromForm] PostDtoForUpdate postDto, IFormFile file)
     {
       ViewBag.Categories = GetCategories();
 

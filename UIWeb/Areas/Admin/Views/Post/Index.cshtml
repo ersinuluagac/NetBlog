@@ -9,7 +9,8 @@
       <tr>
         <th>ID</th>
         <th>Gönderi Başlığı</th>
-        <th>Gönderi İçeriği</th>
+        <th>Yazar</th>
+        <th>Kategori</th>
         <th>Operasyonlar</th>
       </tr>
     </thead>
@@ -19,7 +20,8 @@
         <tr>
           <td>@post.Id</td>
           <td>@post.Title</td>
-          <td>@post.Content</td>
+          <td>@(post.User?.UserName ?? "Anonim")</td>
+          <td>@post.Category.Name</td>
           <td>
             <div class="btn-group">
               <a class="btn btn-sm btn-outline-secondary" target="_blank" asp-area="" asp-controller="Post" asp-action="Get" asp-route-id="@post.Id">

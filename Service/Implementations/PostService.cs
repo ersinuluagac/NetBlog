@@ -24,8 +24,10 @@ namespace Service.Implementations
     // Methods
     public IEnumerable<Post> GetAllPosts(bool trackChanges)
     {
-      return _manager.Post.FindAll(trackChanges).Include(p => p.Category); // Kategori dahil edildi.
-
+      return _manager.Post
+        .FindAll(trackChanges)
+        .Include(p => p.Category)
+        .Include(p => p.User);
     }
 
     public IEnumerable<Post> GetLastestPosts(int n, bool trackChanges)
@@ -38,34 +40,33 @@ namespace Service.Implementations
       .Include(p => p.User);
     }
 
-    public IEnumerable<Post> GetAllPostsWithDetails(PostRequestParameters p)
+    public IEnumerable<PostDtoWithDetails> GetAllPostsWithDetails(PostRequestParameters p)
     {
-      return _manager.Post.GetAllPostsWithDetails(p);
+      return _mapper.Map<IEnumerable<PostDtoWithDetails>>(_manager.Post.GetAllPostsWithDetails(p));
     }
 
-    public Post? GetOnePost(int id, bool trackChanges)
+    public PostDtoWithDetails? GetOnePost(int id, bool trackChanges)
     {
       var post = _manager.Post.GetOnePost(id, trackChanges);
       if (post is null)
         throw new Exception("Gönderi bulunamadı!");
-      return post;
+      return _mapper.Map<PostDtoWithDetails>(post);
     }
 
-    public PostDto GetOnePostForUpdate(int id, bool trackChanges)
+    public PostDtoForUpdate GetOnePostForUpdate(int id, bool trackChanges)
     {
       var post = GetOnePost(id, trackChanges);
-      return _mapper.Map<PostDto>(post);
+      return _mapper.Map<PostDtoForUpdate>(post);
     }
 
-    public Post CreateOnePost(PostDto postDto)
+    public void CreateOnePost(PostDtoForCreation postDto)
     {
       Post post = _mapper.Map<Post>(postDto);
       _manager.Post.Create(post);
       _manager.Save();
-      return post;
     }
 
-    public void UpdateOnePost(PostDto postDto)
+    public void UpdateOnePost(PostDtoForUpdate postDto)
     {
       var entity = _mapper.Map<Post>(postDto);
       _manager.Post.Update(entity);
@@ -74,7 +75,7 @@ namespace Service.Implementations
 
     public void DeleteOnePost(int id)
     {
-      Post post = GetOnePost(id, false);
+      Post post = _mapper.Map<Post>(GetOnePost(id, false));
       if (post is not null)
       {
         _manager.Post.Delete(post);

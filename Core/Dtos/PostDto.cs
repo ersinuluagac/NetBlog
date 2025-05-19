@@ -5,7 +5,6 @@ namespace Core.Dtos
   public record PostDto // record çünkü değiştirilemez, sadece veri taşır.
   {
     // set yerine init çünkü nesne oluştuktan sonra değiştirilemez, record mantığına uygun.
-    public int Id { get; init; }
     [Required(ErrorMessage = "Gönderi başlığı zorunludur.")]
     public string? Title { get; init; }
     [Required(ErrorMessage = "Gönderi içeriği zorunludur.")]

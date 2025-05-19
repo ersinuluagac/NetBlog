@@ -23,7 +23,7 @@ namespace Repository.Config
       builder.HasOne(l => l.Post)
         .WithMany(p => p.Likes)
         .HasForeignKey(l => l.PostId)
-        .OnDelete(DeleteBehavior.Restrict);
+        .OnDelete(DeleteBehavior.Cascade);
     }
   }
 }

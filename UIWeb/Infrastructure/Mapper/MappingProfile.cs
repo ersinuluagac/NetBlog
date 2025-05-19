@@ -10,7 +10,12 @@ namespace UIWeb.Infrastructure.Mapper
     // Constructor
     public MappingProfile()
     {
-      CreateMap<PostDto, Post>().ReverseMap();
+      CreateMap<PostDtoForCreation, Post>().ReverseMap();
+      CreateMap<PostDtoForUpdate, Post>().ReverseMap();
+      CreateMap<Post, PostDtoWithDetails>().ReverseMap();
+
+
+
       CreateMap<CommentDto, Comment>().ReverseMap();
       CreateMap<UserDto, ApplicationUser>().ReverseMap();
     }

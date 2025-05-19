@@ -231,7 +231,7 @@ namespace UIWeb.Migrations
                         column: x => x.PostId,
                         principalTable: "Posts",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -258,7 +258,7 @@ namespace UIWeb.Migrations
                         column: x => x.PostId,
                         principalTable: "Posts",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -266,9 +266,9 @@ namespace UIWeb.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "91dfd087-a70e-4e21-9a2a-4023f0b609e3", "cf6b0c9e-0637-4693-a7e2-7505a34e3c7d", "Editor", "EDITOR" },
-                    { "a3854815-4033-48da-b0c1-82342c3750c3", "9b2ed8dc-7786-4f4e-b7be-05b6bd0a9bab", "Admin", "ADMIN" },
-                    { "ee8e101d-de90-4416-a678-2c1324809b5a", "fc94c6da-b207-4abe-b3ae-c75621e6abd6", "User", "USER" }
+                    { "07667eec-e431-42a1-84db-818146369d48", "680a4182-06a8-4d40-b673-46f3ffd515ee", "Editor", "EDITOR" },
+                    { "823ffcdd-15ef-4f2e-bf99-c39498faa8e3", "6dd4dc4a-3bbd-4a41-bf56-8c4731d61d21", "User", "USER" },
+                    { "835f522a-6019-4533-941c-eedad3a8a129", "f6eddc07-df51-43a6-8ed8-6cde94f7246f", "Admin", "ADMIN" }
                 });
 
             migrationBuilder.InsertData(
