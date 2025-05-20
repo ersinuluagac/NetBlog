@@ -281,22 +281,22 @@ namespace UIWeb.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "823ffcdd-15ef-4f2e-bf99-c39498faa8e3",
-                            ConcurrencyStamp = "6dd4dc4a-3bbd-4a41-bf56-8c4731d61d21",
+                            Id = "1713c322-9068-4afb-b411-6a0a06c66e97",
+                            ConcurrencyStamp = "d697a562-e85e-4022-ac31-3132647eb944",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "07667eec-e431-42a1-84db-818146369d48",
-                            ConcurrencyStamp = "680a4182-06a8-4d40-b673-46f3ffd515ee",
+                            Id = "b98be965-419f-4ac9-9b99-d58d17ad1005",
+                            ConcurrencyStamp = "dbb9e02c-72dc-4e4b-9d50-58e7beb5836f",
                             Name = "Editor",
                             NormalizedName = "EDITOR"
                         },
                         new
                         {
-                            Id = "835f522a-6019-4533-941c-eedad3a8a129",
-                            ConcurrencyStamp = "f6eddc07-df51-43a6-8ed8-6cde94f7246f",
+                            Id = "895bfb1c-d794-4359-988c-cfb278973878",
+                            ConcurrencyStamp = "84205dba-c873-4a33-83a2-2db6ff56e563",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });

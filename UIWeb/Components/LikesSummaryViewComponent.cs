@@ -15,9 +15,11 @@ namespace UIWeb.Components
     }
 
     // ViewComponent
-    public string Invoke(int postId) // Gönderi beğeni sayısını döner.
+    public async Task<string> InvokeAsync(int postId)
     {
-      return _manager.LikeService.GetLikesCount(postId).ToString();
+      var count = _manager.LikeService.GetLikesCount(postId);
+      return await Task.FromResult(count.ToString());
     }
+
   }
 }

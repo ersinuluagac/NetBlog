@@ -89,17 +89,23 @@ namespace UIWeb.Controllers
       return View();
     }
 
-    public async Task<IActionResult> Profile()
+    public async Task<IActionResult> Profile(string? id = null)
     {
-      var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+      if (string.IsNullOrEmpty(id))
+      {
+        id = User.FindFirstValue(ClaimTypes.NameIdentifier);
+      }
+
       var user = await _userManager.Users
-        .Include(u => u.Posts).ThenInclude(p => p.Category)
-        .Include(u => u.Comments)
-        .Include(u => u.Likes)
-        .FirstOrDefaultAsync(u => u.Id.Equals(userId));
-      if (user is not null)
+          .Include(u => u.Posts).ThenInclude(p => p.Category)
+          .Include(u => u.Comments)
+          .Include(u => u.Likes)
+          .FirstOrDefaultAsync(u => u.Id == id);
+
+      if (user != null)
         return View(user);
-      return View();
+
+      return NotFound();
     }
   }
 }

@@ -13,11 +13,9 @@ namespace UIWeb.Infrastructure.Mapper
       CreateMap<PostDtoForCreation, Post>().ReverseMap();
       CreateMap<PostDtoForUpdate, Post>().ReverseMap();
       CreateMap<Post, PostDtoWithDetails>().ReverseMap();
-
-
-
-      CreateMap<CommentDto, Comment>().ReverseMap();
       CreateMap<UserDto, ApplicationUser>().ReverseMap();
+      CreateMap<CommentDto, Comment>().ReverseMap();
+      CreateMap<LikeDto, Like>().ReverseMap();
     }
   }
 }

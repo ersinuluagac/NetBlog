@@ -70,7 +70,7 @@ namespace UIWeb.Controllers
         }
         postDto.ImageUrl = String.Concat("/images/", file.FileName);
         postDto.UserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-      
+
         _manager.PostService.CreateOnePost(postDto);
         return RedirectToAction("Index");
       }
@@ -117,6 +117,16 @@ namespace UIWeb.Controllers
         return RedirectToAction("Get", new { id = commentDto.PostId });
       }
       return View("Get", _manager.PostService.GetOnePost(commentDto.PostId, false));
+    }
+    [HttpPost("{postId}")]
+    [ValidateAntiForgeryToken]
+    public IActionResult ToggleLike([FromRoute] int postId)
+    {
+      var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+      if (string.IsNullOrEmpty(userId))
+        return Unauthorized();
+      _manager.LikeService.ToggleLike(postId, userId);
+      return RedirectToAction("Get", new { id = postId });
     }
   }
 }
