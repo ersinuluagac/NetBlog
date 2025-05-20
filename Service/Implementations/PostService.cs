@@ -75,7 +75,7 @@ namespace Service.Implementations
 
     public void DeleteOnePost(int id)
     {
-      Post post = _mapper.Map<Post>(GetOnePost(id, false));
+      Post post = _manager.Post.GetOnePost(id, true);
       if (post is not null)
       {
         _manager.Post.Delete(post);

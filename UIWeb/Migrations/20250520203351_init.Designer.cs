@@ -12,7 +12,7 @@ using Repository;
 namespace UIWeb.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20250520173721_init")]
+    [Migration("20250520203351_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -231,6 +231,9 @@ namespace UIWeb.Migrations
                     b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Summary")
                         .IsRequired()
                         .HasColumnType("nvarchar(150)");
@@ -283,22 +286,22 @@ namespace UIWeb.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "1713c322-9068-4afb-b411-6a0a06c66e97",
-                            ConcurrencyStamp = "d697a562-e85e-4022-ac31-3132647eb944",
+                            Id = "dc626c48-5ad3-4bca-8794-b7322f64b831",
+                            ConcurrencyStamp = "c6c6c82b-248a-42d6-bd83-f60be6a85946",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "b98be965-419f-4ac9-9b99-d58d17ad1005",
-                            ConcurrencyStamp = "dbb9e02c-72dc-4e4b-9d50-58e7beb5836f",
+                            Id = "93f2fcc7-23e7-4807-aa1a-7b6fc26a5863",
+                            ConcurrencyStamp = "75afb454-a3f5-40e0-9772-f58441e35f93",
                             Name = "Editor",
                             NormalizedName = "EDITOR"
                         },
                         new
                         {
-                            Id = "895bfb1c-d794-4359-988c-cfb278973878",
-                            ConcurrencyStamp = "84205dba-c873-4a33-83a2-2db6ff56e563",
+                            Id = "9f992e4a-2ff9-4701-8447-fad1697a58e0",
+                            ConcurrencyStamp = "6a70d0c3-ca08-4d9e-8b4b-fe3db4a778f3",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });

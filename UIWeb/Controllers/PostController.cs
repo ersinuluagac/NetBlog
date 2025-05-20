@@ -105,6 +105,12 @@ namespace UIWeb.Controllers
       return View(postDto);
     }
 
+    public IActionResult Delete(int id)
+    {
+      _manager.PostService.DeleteOnePost(id);
+      return RedirectToAction("Index");
+    }
+
     [HttpPost]
     [ValidateAntiForgeryToken]
     public IActionResult AddComment([FromForm] CommentDto commentDto)

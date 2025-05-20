@@ -14,7 +14,7 @@
         <div class="card shadow-sm">
           <div class="card-body">
             <i class="fa-solid fa-file fa-xl my-2"></i>
-            <h5 class="card-title text-dark mb-2">Gönderileri</h5>
+            <h5 class="card-title text-dark mb-2">Yazılan Gönderi</h5>
             <p class="card-text fs-4 mb-0">@Model.Posts.Count()</p>
           </div>
         </div>
@@ -23,7 +23,7 @@
         <div class="card shadow-sm">
           <div class="card-body">
             <i class="fa-solid fa-comments fa-xl my-2"></i>
-            <h5 class="card-title text-dark mb-2">Yorumları</h5>
+            <h5 class="card-title text-dark mb-2">Yazılan Yorum</h5>
             <p class="card-text fs-4 mb-0">@Model.Comments.Count()</p>
           </div>
         </div>
@@ -32,7 +32,7 @@
         <div class="card shadow-sm">
           <div class="card-body">
             <i class="fa-solid fa-heart fa-xl my-2"></i>
-            <h5 class="card-title text-dark mb-2">Beğenileri</h5>
+            <h5 class="card-title text-dark mb-2">Beğenilen Gönderi</h5>
             <p class="card-text fs-4 mb-0">@Model.Likes.Count()</p>
           </div>
         </div>
@@ -47,12 +47,26 @@
     {
       @foreach (var post in Model.Posts)
       {
-        <div class="card mb-3 shadow-sm">
-          <div class="card-body">
-            <h3 class="card-title">@post.Title</h3>
-            <p class="card-text text-muted">@post.Summary</p>
+        if (post.IsDeleted.Equals(false))
+        {
+          <div class="card mb-3 shadow-sm">
+            <div class="card-body">
+              <h3 class="card-title">@post.Title</h3>
+              <p class="card-text text-muted">@post.Summary</p>
+            </div>
+          @{
+              var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+          }
+          @if (User.Identity.IsAuthenticated && userId == post.UserId)
+          {
+              <div class="btn-group col-4 offset-4">
+                  <a asp-controller="Post" asp-action="Get" asp-route-id="@post.Id" class="btn btn-outline-secondary">İncele</a>
+                  <a asp-controller="Post" asp-action="Update" asp-route-id="@post.Id" class="btn btn-outline-warning">Güncelle</a>
+                  <a asp-controller="Post" asp-action="Delete" asp-route-id="@post.Id" class="btn btn-outline-danger">Sil</a>
+              </div>
+          }
           </div>
-        </div>
+        }
       }
     }
     else

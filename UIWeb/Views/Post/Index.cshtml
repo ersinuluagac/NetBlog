@@ -13,7 +13,10 @@
     <div class="row">
       @foreach (PostDtoWithDetails p in Model.Posts)
       {
-        <partial name="_PostCard" model="@p" />
+        if (p.IsDeleted.Equals(false))
+        {
+          <partial name="_PostCard" model="@p" />
+        }
       }
     </div>
     <div class="text-center">

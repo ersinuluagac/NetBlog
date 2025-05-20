@@ -180,6 +180,7 @@ namespace UIWeb.Migrations
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Summary = table.Column<string>(type: "nvarchar(150)", nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     CategoryId = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
@@ -266,9 +267,9 @@ namespace UIWeb.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "1713c322-9068-4afb-b411-6a0a06c66e97", "d697a562-e85e-4022-ac31-3132647eb944", "User", "USER" },
-                    { "895bfb1c-d794-4359-988c-cfb278973878", "84205dba-c873-4a33-83a2-2db6ff56e563", "Admin", "ADMIN" },
-                    { "b98be965-419f-4ac9-9b99-d58d17ad1005", "dbb9e02c-72dc-4e4b-9d50-58e7beb5836f", "Editor", "EDITOR" }
+                    { "93f2fcc7-23e7-4807-aa1a-7b6fc26a5863", "75afb454-a3f5-40e0-9772-f58441e35f93", "Editor", "EDITOR" },
+                    { "9f992e4a-2ff9-4701-8447-fad1697a58e0", "6a70d0c3-ca08-4d9e-8b4b-fe3db4a778f3", "Admin", "ADMIN" },
+                    { "dc626c48-5ad3-4bca-8794-b7322f64b831", "c6c6c82b-248a-42d6-bd83-f60be6a85946", "User", "USER" }
                 });
 
             migrationBuilder.InsertData(
