@@ -20,12 +20,20 @@
         <span>@Model.CreatedAt.ToString("dd/MM/yyyy") tarihinde yazıldı.</span>
       }
       <div class="mt-3">
-        <form method="post" asp-action="ToggleLike" asp-route-postId="@Model.Id">
-          <button type="submit" class="btn p-0 border-0 bg-transparent">
-            <i class="fa-solid fa-heart text-danger"></i>
-            @await Component.InvokeAsync("LikesSummary", new { postId = Model.Id })
-          </button>
-        </form>
+        @if (User.Identity.IsAuthenticated)
+        {
+          <form method="post" asp-action="ToggleLike" asp-route-postId="@Model.Id">
+            <button type="submit" class="btn p-0 border-0 bg-transparent">
+              <i class="fa-solid fa-heart text-danger"></i>
+              @await Component.InvokeAsync("LikesSummary", new { postId = Model.Id })
+            </button>
+          </form>
+        }
+        else
+        {
+          <i class="fa-solid fa-heart text-danger"></i>
+          @await Component.InvokeAsync("LikesSummary", new { postId = Model.Id })
+        }
       </div>
     </div>
   </div>
