@@ -81,18 +81,29 @@
               <p>@comment.Content</p>
               <div class="d-flex justify-content-between">
                 <div class="d-flex flex-row align-items-center">
-                  <p class="small mb-0"><i class="fa-solid fa-circle-user me-2"></i>@comment.User?.UserName</p>
+                  <p class="mb-0"><i class="fa-solid fa-circle-user mx-2"></i>@comment.User?.UserName</p>
                 </div>
                 <div class="d-flex flex-row align-items-center">
-                  <p class="small mb-0">
-                  <form method="post" asp-action="RemoveComment" asp-route-postId="@Model.Id">
-                    <input type="hidden" name="commentId" value="@comment.Id" />
-                    <button type="submit" class="btn btn-link p-0 text-decoration-none text-dark" title="Yorumu Sil">
-                      <i class="fa-solid fa-trash"></i>
-                    </button>
-                  </form>
-                  |
-                  @comment.CreatedAt </p>
+                  <p class="mb-0">
+                    @comment.CreatedAt
+                    @{
+                      var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+                    }
+                    @if (User.Identity.IsAuthenticated && comment.UserId.Equals(userId))
+                    {
+                    <form method="post" asp-action="RemoveComment" asp-route-postId="@Model.Id">
+                      <input type="hidden" name="commentId" value="@comment.Id" />
+                      <button data-toggle="tooltip" data-placement="top" title="Yorumu Sil" type="submit"
+                        class="btn btn-link p-0 text-decoration-none text-dark" title="Yorumu Sil">
+                        <i class="fa-solid fa-trash mx-2"></i>
+                      </button>
+                    </form>
+                  }
+                  else
+                  {
+                    <i class="fa-solid fa-calendar-days mx-2"></i>
+                  }
+                  </p>
                 </div>
               </div>
             </div>
@@ -102,3 +113,11 @@
     </div>
   </div>
 </div>
+
+@section Scripts {
+  <script type="text/javascript">
+    $(document).ready(() => {
+      $('[data-toggle=tooltip]').tooltip()
+    })
+  </script>
+}
