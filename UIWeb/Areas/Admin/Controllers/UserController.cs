@@ -1,4 +1,5 @@
 using Core.Dtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Service.UnitOfWork;
@@ -6,6 +7,8 @@ using Service.UnitOfWork;
 namespace UIWeb.Areas.Admin.Controllers
 {
   [Area("Admin")]
+  [Authorize(Roles = "Admin")]
+
   public class UserController : Controller
   {
     private readonly IServiceManager _manager;

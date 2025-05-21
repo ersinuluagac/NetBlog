@@ -1,9 +1,12 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.UnitOfWork;
 
 namespace UIWeb.Areas.Admin.Controllers
 {
   [Area("Admin")] // Controller için area belirteci
+  [Authorize(Roles = "Admin, Editor")]
+
   public class PostController : Controller
   {
     // Dependency Injection
