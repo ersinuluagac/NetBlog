@@ -54,5 +54,10 @@ namespace Service.Implementations
     {
       return _manager.Like.GetLikesCountByPostId(postId);
     }
+
+    public string GetAllLikesCount()
+    {
+      return _manager.Like.FindAll(false).Count().ToString();
+    }
   }
 }

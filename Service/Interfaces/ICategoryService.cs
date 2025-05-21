@@ -10,5 +10,7 @@ namespace Service.Interfaces
     /// <param name="trackChanges">Değişiklik takibi yapılacak mı?</param>
     /// <returns>Kategorilerin listesi.</returns>
     IEnumerable<Category> GetAllCategories(bool trackChanges);
+
+    void AddCategory(Category category);
   }
 }

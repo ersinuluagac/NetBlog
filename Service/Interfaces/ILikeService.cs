@@ -17,5 +17,7 @@ namespace Service.Interfaces
     /// <param name="postId">Beğenilecek gönderinin ID'si</param>
     /// <param name="userId">Beğenen kullanıcının ID'si</param>
     public void ToggleLike(int postId, string userId);
+
+    public string GetAllLikesCount();
   }
 }

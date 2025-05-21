@@ -26,5 +26,10 @@ namespace Service.Implementations
       _manager.Comment.Create(comment);
       _manager.Save();
     }
+
+    public string GetAllComments()
+    {
+      return _manager.Comment.FindAll(false).Count().ToString();
+    }
   }
 }

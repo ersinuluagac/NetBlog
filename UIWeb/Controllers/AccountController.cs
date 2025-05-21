@@ -65,10 +65,26 @@ namespace UIWeb.Controllers
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> SignUp([FromForm] UserDtoForCreation userDto)
     {
-      var result = await _manager.AuthService.CreateUser(userDto);
-      return result.Succeeded
-        ? RedirectToAction("SignIn", new { ReturnUrl = "/" })
-        : View();
+      if (!ModelState.IsValid)
+      {
+        return View(userDto);
+      }
+      try
+      {
+        var result = await _manager.AuthService.CreateUser(userDto);
+        if (result.Succeeded)
+          return RedirectToAction("SignIn", new { ReturnUrl = "/" });
+
+        foreach (var error in result.Errors)
+        {
+          ModelState.AddModelError(string.Empty, error.Description);
+        }
+      }
+      catch (Exception ex)
+      {
+        ModelState.AddModelError(string.Empty, ex.Message);
+      }
+      return View(userDto);
     }
 
     public async Task<IActionResult> Profile(string? id = null)

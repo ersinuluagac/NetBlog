@@ -31,10 +31,18 @@ namespace Service.Implementations
       var user = _mapper.Map<ApplicationUser>(userDto);
       var result = await _userManager.CreateAsync(user, userDto.Password);
       if (!result.Succeeded)
-        throw new Exception("Kullanıcı oluşturulamadı.");
+      {
+        var errors = string.Join("; ", result.Errors.Select(e => e.Description));
+        throw new Exception("Kullanıcı oluşturulamadı: " + errors);
+      }
+
       var roleResult = await _userManager.AddToRoleAsync(user, "User");
       if (!roleResult.Succeeded)
-        throw new Exception("Rol eklenemedi.");
+      {
+        var errors = string.Join("; ", roleResult.Errors.Select(e => e.Description));
+        throw new Exception("Rol eklenemedi: " + errors);
+      }
+
       return result;
     }
 

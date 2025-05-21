@@ -20,5 +20,11 @@ namespace Service.Implementations
     {
       return _manager.Category.FindAll(trackChanges);
     }
+
+    public void AddCategory(Category category)
+    {
+      _manager.Category.Create(category);
+      _manager.Save();
+    }
   }
 }

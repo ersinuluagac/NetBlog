@@ -1,0 +1,34 @@
+@model CategoryCreateViewModel
+<!-- Var olan kategoriler listesi -->
+<div class="py-5">
+  <h4> Kategoriler</h4>
+  <ul class="list-group">
+    @foreach (var category in Model.Categories)
+    {
+      <li class="list-group-item">@category.Name</li>
+    }
+  </ul>
+</div>
+
+<!-- Yeni kategori ekleme formu -->
+<div class="text-center my-3">
+  <h4 class="display-4">
+    Yeni Kategori Ekle
+  </h4>
+</div>
+
+<form method="post" asp-action="Create" class="px-5">
+  <div class="form-group my-1">
+
+    <label asp-for="NewCategory.Name">Kategori Adı</label>
+    <input asp-for="NewCategory.Name" class="form-control" />
+    <span asp-validation-for="NewCategory.Name" class="text-danger"></span>
+  </div>
+  <p class="text-center text-danger"><small>Kategoriler silinemez.</small></p>
+  <div class="form-group my-3 d-flex justify-content-center">
+    <button type="submit" class="btn btn-outline-success">
+      Ekle <i class="fa-solid fa-plus"></i>
+    </button>
+  </div>
+</form>
+</div>

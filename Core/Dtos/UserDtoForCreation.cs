@@ -6,6 +6,7 @@ namespace Core.Dtos
   {
     [DataType(DataType.Password)]
     [Required(ErrorMessage = "Parola gereklidir.")]
+    [MinLength(6, ErrorMessage = "Parola en az 6 karakter içermeli.")]
     public string? Password { get; init; }
   }
 }

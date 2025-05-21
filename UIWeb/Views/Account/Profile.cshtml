@@ -9,10 +9,12 @@
     @if (User.Identity.IsAuthenticated && User.FindFirst(ClaimTypes.NameIdentifier)?.Value == Model.Id.ToString())
     {
       <div class="btn-group">
-        <a class="btn" asp-action="ResetPassword" asp-route-id="@Model.UserName">
+        <a data-toggle="tooltip" data-placement="top" title="Parola Değiştir" class="btn" asp-action="ResetPassword"
+          asp-route-id="@Model.UserName">
           <i class="fa-solid fa-key fa-xl"></i>
         </a>
-        <a class="btn" asp-action="Update" asp-route-id="@Model.UserName">
+        <a data-toggle="tooltip" data-placement="top" title="E-posta Değiştir" class="btn" asp-action="Update"
+          asp-route-id="@Model.UserName">
           <i class="fa-solid fa-gear fa-xl"></i>
         </a>
       </div>
@@ -88,3 +90,11 @@
     }
   </div>
 </div>
+
+@section Scripts {
+  <script type="text/javascript">
+    $(document).ready(() => {
+      $('[data-toggle=tooltip]').tooltip()
+    })
+  </script>
+}

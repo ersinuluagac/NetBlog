@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.UnitOfWork;
+using UIWeb.Areas.Admin.Models;
 
 namespace UIWeb.Areas.Admin.Controllers
 {
@@ -19,6 +20,25 @@ namespace UIWeb.Areas.Admin.Controllers
     public IActionResult Index()
     {
       return View(_manager.CategoryService.GetAllCategories(false));
+    }
+
+    public IActionResult Create()
+    {
+      var model = new CategoryCreateViewModel
+      {
+        Categories = _manager.CategoryService.GetAllCategories(false)
+      };
+      return View(model);
+    }
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult Create(CategoryCreateViewModel model)
+    {
+      if (ModelState.IsValid)
+      {
+        _manager.CategoryService.AddCategory(model.NewCategory);
+      }
+      return RedirectToAction("Index");
     }
   }
 }

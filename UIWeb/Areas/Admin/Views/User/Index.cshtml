@@ -15,16 +15,25 @@
   <tbody>
     @foreach (UserDto user in Model)
     {
-        <tr>
-          <td>@user.UserName</td>
-          <td>@user.Email</td>
-          <td>@user.Role</td>
-          <td class="text-end">
-            <div class="btn-group">
-              <a asp-action="Update" asp-route-id="@user.UserName" class="btn btn-sm btn-outline-dark"><i class="fa-solid fa-gears"></i></a>
-            </div>
-          </td>
-        </tr>
+      <tr>
+        <td>@user.UserName</td>
+        <td>@user.Email</td>
+        <td>@user.Role</td>
+        <td class="text-end">
+          <div class="btn-group">
+            <a data-toggle="tooltip" data-placement="top" title="Rol Değiştir" asp-action="Update" asp-route-id="@user.UserName"
+              class="btn btn-sm btn-outline-dark"><i class="fa-solid fa-gears"></i></a>
+          </div>
+        </td>
+      </tr>
     }
   </tbody>
 </table>
+
+@section Scripts {
+  <script type="text/javascript">
+    $(document).ready(() => {
+      $('[data-toggle=tooltip]').tooltip()
+    })
+  </script>
+}
