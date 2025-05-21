@@ -12,7 +12,7 @@ using Repository;
 namespace UIWeb.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20250521180408_init")]
+    [Migration("20250521224432_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -286,22 +286,22 @@ namespace UIWeb.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "445275da-35af-489e-8d41-10a45a0c6499",
-                            ConcurrencyStamp = "f9e89ea4-f001-4c1f-9cc6-2e6643f63f1a",
+                            Id = "2ebcfa22-3f09-400d-b92c-00eb3d63e60c",
+                            ConcurrencyStamp = "32ab9ddd-6983-4d8b-bf34-ebb9d5e2e87a",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "0b0d36c1-da83-414f-8c21-7e500d03ce27",
-                            ConcurrencyStamp = "f59d6aab-8272-47c5-9564-b4858b397e21",
+                            Id = "ddf1ffe7-96de-4abf-8d39-961f088541a9",
+                            ConcurrencyStamp = "63de840d-55e6-4208-bb87-09f13f28fd49",
                             Name = "Editor",
                             NormalizedName = "EDITOR"
                         },
                         new
                         {
-                            Id = "e9d3e6a7-dd5c-443a-85a7-4e7017f599e9",
-                            ConcurrencyStamp = "79696a1b-9b61-4385-a675-933fe7e8f5eb",
+                            Id = "bf508dfa-bc7d-4653-bf5b-c5ebc3fe919b",
+                            ConcurrencyStamp = "b733c5db-7541-4f38-905c-1c03639054d3",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });

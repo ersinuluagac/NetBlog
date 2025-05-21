@@ -267,9 +267,9 @@ namespace UIWeb.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "0b0d36c1-da83-414f-8c21-7e500d03ce27", "f59d6aab-8272-47c5-9564-b4858b397e21", "Editor", "EDITOR" },
-                    { "445275da-35af-489e-8d41-10a45a0c6499", "f9e89ea4-f001-4c1f-9cc6-2e6643f63f1a", "User", "USER" },
-                    { "e9d3e6a7-dd5c-443a-85a7-4e7017f599e9", "79696a1b-9b61-4385-a675-933fe7e8f5eb", "Admin", "ADMIN" }
+                    { "2ebcfa22-3f09-400d-b92c-00eb3d63e60c", "32ab9ddd-6983-4d8b-bf34-ebb9d5e2e87a", "User", "USER" },
+                    { "bf508dfa-bc7d-4653-bf5b-c5ebc3fe919b", "b733c5db-7541-4f38-905c-1c03639054d3", "Admin", "ADMIN" },
+                    { "ddf1ffe7-96de-4abf-8d39-961f088541a9", "63de840d-55e6-4208-bb87-09f13f28fd49", "Editor", "EDITOR" }
                 });
 
             migrationBuilder.InsertData(
