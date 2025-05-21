@@ -5,17 +5,20 @@ using Core.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Service.UnitOfWork;
 using UIWeb.Models;
 
 namespace UIWeb.Controllers
 {
   public class AccountController : Controller
   {
+    private readonly IServiceManager _manager;
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly SignInManager<ApplicationUser> _signInManager;
 
-    public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+    public AccountController(IServiceManager manager, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
     {
+      _manager = manager;
       _userManager = userManager;
       _signInManager = signInManager;
     }
@@ -60,33 +63,12 @@ namespace UIWeb.Controllers
     }
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> SignUp([FromForm] UserDto model)
+    public async Task<IActionResult> SignUp([FromForm] UserDtoForCreation userDto)
     {
-      var user = new ApplicationUser // Mapping
-      {
-        UserName = model.UserName,
-        Email = model.Email,
-      };
-      var result = await _userManager // Parola ile kullanıcı yarat
-        .CreateAsync(user, model.Password);
-
-      if (result.Succeeded) // Başarılı ise
-      {
-        var roleResult = await _userManager
-          .AddToRoleAsync(user, "User"); // Role olarak "User" ata.
-        if (roleResult.Succeeded) // Role atama başarılı ise
-        {
-          return RedirectToAction("SignIn", new { ReturnUrl = "/" }); // Giriş sayfasına yönlendir.
-        }
-      }
-      else
-      {
-        foreach (var err in result.Errors) // Başarısız ise
-        {
-          ModelState.AddModelError("", err.Description);
-        }
-      }
-      return View();
+      var result = await _manager.AuthService.CreateUser(userDto);
+      return result.Succeeded
+        ? RedirectToAction("SignIn", new { ReturnUrl = "/" })
+        : View();
     }
 
     public async Task<IActionResult> Profile(string? id = null)
@@ -95,7 +77,6 @@ namespace UIWeb.Controllers
       {
         id = User.FindFirstValue(ClaimTypes.NameIdentifier);
       }
-
       var user = await _userManager.Users
           .Include(u => u.Posts).ThenInclude(p => p.Category)
           .Include(u => u.Comments)
@@ -104,8 +85,38 @@ namespace UIWeb.Controllers
 
       if (user != null)
         return View(user);
-
       return NotFound();
+    }
+
+    public async Task<IActionResult> ResetPassword([FromRoute(Name = "id")] string id)
+    {
+      return View(new ResetPasswordDto()
+      {
+        UserName = id
+      });
+    }
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> ResetPassword([FromForm] ResetPasswordDto model)
+    {
+      if (!ModelState.IsValid)
+        return View(model);
+      try
+      {
+        var result = await _manager.AuthService.ResetPassword(model);
+        if (result.Succeeded)
+          return RedirectToAction("Profile");
+        else
+        {
+          foreach (var error in result.Errors)
+            ModelState.AddModelError(string.Empty, error.Description);
+        }
+      }
+      catch (Exception ex)
+      {
+        ModelState.AddModelError(string.Empty, ex.Message);
+      }
+      return View(model);
     }
   }
 }

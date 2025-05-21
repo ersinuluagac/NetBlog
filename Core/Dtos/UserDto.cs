@@ -10,9 +10,7 @@ namespace Core.Dtos
     [DataType(DataType.EmailAddress)]
     [Required(ErrorMessage = "E-posta adresi gereklidir.")]
     public string? Email { get; init; }
-    [DataType(DataType.Password)]
-    [Required(ErrorMessage = "Parola gereklidir.")]
-    public string? Password { get; init; }
-    public string? Role { get; init; }
+
+    public string? Role { get; set; }
   }
 }

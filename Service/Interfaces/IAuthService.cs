@@ -18,10 +18,23 @@ namespace Service.Interfaces
     Task<IEnumerable<UserDto>> GetAllUsersWithRole();
 
     /// <summary>
-    /// Kullanıcının e-posta adresi ile bir kullanıcı getirir
+    /// Bir kullanıcı getirir.
     /// </summary>
-    /// <param name="userName">Getirilecek kullanıcının e-posta adresi</param>
-    /// <returns>IdentityUser döner.</returns>
-    Task<ApplicationUser> GetOneUser(string email);
+    /// <param name="userName">Getirilecek kullanıcının kullanıcı adı.</param>
+    /// <returns>Bir kulalnıcı döner.</returns>
+    Task<ApplicationUser> GetOneUser(string userName);
+
+    Task<UserDtoForUpdate> GetOneUserForUpdate(string userName);
+
+    /// <summary>
+    /// Kullanıcı oluşturmak için metot
+    /// </summary>
+    /// <param name="userDto">Oluşturulacak kullanıcı.</param>
+    /// <returns>IdentityResult döner.</returns>
+    Task<IdentityResult> CreateUser(UserDtoForCreation userDto);
+
+    Task Update(UserDtoForUpdate userDto);
+
+    Task<IdentityResult> ResetPassword(ResetPasswordDto model);
   }
 }

@@ -1,10 +1,22 @@
 @model ApplicationUser
+@using System.Security.Claims
 
 <div class="row mt-5">
   <!-- Sol Sütun: Kullanıcı Bilgileri -->
   <div class="col-md-4 py-4 text-center border-end">
     <h3 class="fw-bold">@Model.UserName</h3>
     <h5 class="text-muted">@Model.Email</h5>
+    @if (User.Identity.IsAuthenticated && User.FindFirst(ClaimTypes.NameIdentifier)?.Value == Model.Id.ToString())
+    {
+      <div class="btn-group">
+        <a class="btn" asp-action="ResetPassword"  asp-route-id="@Model.UserName">
+          <i class="fa-solid fa-key fa-xl"></i>
+        </a>
+        <a class="btn" asp-action="ResetPassword"  asp-route-id="@Model.UserName">
+          <i class="fa-solid fa-gear fa-xl"></i>
+        </a>
+      </div>
+    }
   </div>
 
   <!-- Sağ Üst Sütun: İstatistik Kartları -->
@@ -54,17 +66,18 @@
               <h3 class="card-title">@post.Title</h3>
               <p class="card-text text-muted">@post.Summary</p>
             </div>
-          @{
+            @{
               var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
-          }
-          @if (User.Identity.IsAuthenticated && userId == post.UserId)
-          {
+            }
+            @if (User.Identity.IsAuthenticated && userId == post.UserId)
+            {
               <div class="btn-group col-4 offset-4">
-                  <a asp-controller="Post" asp-action="Get" asp-route-id="@post.Id" class="btn btn-outline-secondary">İncele</a>
-                  <a asp-controller="Post" asp-action="Update" asp-route-id="@post.Id" class="btn btn-outline-warning">Güncelle</a>
-                  <a asp-controller="Post" asp-action="Delete" asp-route-id="@post.Id" class="btn btn-outline-danger">Sil</a>
+                <a asp-controller="Post" asp-action="Get" asp-route-id="@post.Id" class="btn btn-outline-secondary">İncele</a>
+                <a asp-controller="Post" asp-action="Update" asp-route-id="@post.Id"
+                  class="btn btn-outline-warning">Güncelle</a>
+                <a asp-controller="Post" asp-action="Delete" asp-route-id="@post.Id" class="btn btn-outline-danger">Sil</a>
               </div>
-          }
+            }
           </div>
         }
       }
