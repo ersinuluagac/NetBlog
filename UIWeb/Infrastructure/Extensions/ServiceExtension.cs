@@ -1,4 +1,6 @@
+using System;
 using Core.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Repository;
@@ -69,7 +71,18 @@ namespace UIWeb.Infrastructure.Extensions
       services.AddScoped<IAuthService, AuthService>();
     }
 
-    // Lowecase ve Slash için service.
+    public static void ConfigureApplicationCookie(this IServiceCollection services)
+    {
+      services.ConfigureApplicationCookie(options =>
+      {
+        options.LoginPath = new PathString("/Account/SignIn");
+        options.ReturnUrlParameter = CookieAuthenticationDefaults.ReturnUrlParameter;
+        options.ExpireTimeSpan = TimeSpan.FromMinutes(10);
+        options.AccessDeniedPath = new PathString("/Account/AccessDenied");
+      });
+    }
+
+    // Lowercase ve Slash için service.
     public static void ConfigureRouting(this IServiceCollection services)
     {
       services.AddRouting(options =>

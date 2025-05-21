@@ -12,9 +12,10 @@ builder.Services.ConfigureSession(); // Extension'dan gelen session yapısı.
 builder.Services.ConfigureRepositoryRegistration(); // Inversion of Control Repository
 builder.Services.ConfigureServiceRegistration(); // Inversion of Control Repository
 
-builder.Services.AddAutoMapper(typeof(Program)); // AutoMapper servise ekleniyor.
-
 builder.Services.ConfigureRouting(); // URL'de küçük harf kullanılması için.
+builder.Services.ConfigureApplicationCookie();
+
+builder.Services.AddAutoMapper(typeof(Program)); // AutoMapper servise ekleniyor.
 
 var app = builder.Build(); // Web uygulaması servisler ile derleniyor.
 
