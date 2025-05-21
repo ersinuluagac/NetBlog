@@ -84,7 +84,15 @@
                   <p class="small mb-0"><i class="fa-solid fa-circle-user me-2"></i>@comment.User?.UserName</p>
                 </div>
                 <div class="d-flex flex-row align-items-center">
-                  <p class="small mb-0"> @comment.CreatedAt</p>
+                  <p class="small mb-0">
+                  <form method="post" asp-action="RemoveComment" asp-route-postId="@Model.Id">
+                    <input type="hidden" name="commentId" value="@comment.Id" />
+                    <button type="submit" class="btn btn-link p-0 text-decoration-none text-dark" title="Yorumu Sil">
+                      <i class="fa-solid fa-trash"></i>
+                    </button>
+                  </form>
+                  |
+                  @comment.CreatedAt </p>
                 </div>
               </div>
             </div>

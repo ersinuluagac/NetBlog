@@ -72,6 +72,7 @@ namespace UIWeb.Controllers
         postDto.UserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
         _manager.PostService.CreateOnePost(postDto);
+        TempData["success"] = $"{postDto.Title} oluşturuldu.";
         return RedirectToAction("Index");
       }
       return View();
@@ -108,6 +109,7 @@ namespace UIWeb.Controllers
     public IActionResult Delete(int id)
     {
       _manager.PostService.DeleteOnePost(id);
+      TempData["danger"] = "Gönderi silindi!";
       return RedirectToAction("Index");
     }
 
@@ -124,7 +126,15 @@ namespace UIWeb.Controllers
       }
       return View("Get", _manager.PostService.GetOnePost(commentDto.PostId, false));
     }
-    [HttpPost("{postId}")]
+    [HttpPost("Post/{postId}/RemoveComment")]
+    [ValidateAntiForgeryToken]
+    public IActionResult RemoveComment([FromRoute] int postId, [FromForm] int commentId)
+    {
+      _manager.CommentService.RemoveComment(commentId);
+      return RedirectToAction("Get", new { id = postId });
+    }
+
+    [HttpPost("Post/{postId}/ToggleLike")]
     [ValidateAntiForgeryToken]
     public IActionResult ToggleLike([FromRoute] int postId)
     {

@@ -31,5 +31,23 @@ namespace Service.Implementations
     {
       return _manager.Comment.FindAll(false).Count().ToString();
     }
+
+    public Comment GetComment(int id)
+    {
+      return _manager.Comment.FindByCondition(c => c.Id == id, false);
+
+
+    }
+
+
+    public void RemoveComment(int id)
+    {
+      var comment = GetComment(id);
+      if (comment is not null)
+      {
+        _manager.Comment.Delete(comment);
+        _manager.Save();
+      }
+    }
   }
 }

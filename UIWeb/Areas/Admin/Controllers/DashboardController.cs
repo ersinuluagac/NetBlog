@@ -11,6 +11,7 @@ namespace UIWeb.Areas.Admin.Controllers
     // Views
     public IActionResult Index()
     {
+      TempData["primary"] = $"{DateTime.Now.ToShortDateString()} | {DateTime.Now.ToShortTimeString()}";
       return View();
     }
   }
