@@ -1,0 +1,38 @@
+@model UserDtoForUpdate
+
+<div class="text-center">
+  <div class="display-5">
+    <p class="py-5">Güncelle</p>
+  </div>
+</div>
+<form method="post" asp-action="Update">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group my-3">
+        <label asp-for="UserName">Kullanıcı adı değiştirilemez.</label>
+        <input asp-for="UserName" class="form-control" value="@Model.UserName" readonly/>
+      </div>
+      <div class="form-group my-3">
+        <label asp-for="Email">E-posta Adresi</label>
+        <input asp-for="Email" class="form-control" value="@Model.Email" />
+      </div>
+      <div class="form-group my-3">
+        <div class="btn-group d-flex justify-content-end">
+          <a asp-action="Index" a class=" btn btn-outline-secondary">
+            Geri Dön
+          </a>
+
+          <input type="submit" class="btn btn-outline-secondary" />
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="lead p-2 mt-2">
+        Üyelik tipi
+        <div class="my-2">
+          <input name="Role" value="@Model.Role" readonly />
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

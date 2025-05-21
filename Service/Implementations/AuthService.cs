@@ -93,6 +93,10 @@ namespace Service.Implementations
     public async Task Update(UserDtoForUpdate userDto)
     {
       var user = await GetOneUser(userDto.UserName);
+      if (user is null)
+      {
+        throw new Exception("Kullanıcı bulunamadı.");
+      }
       user.Email = userDto.Email;
       if (user is not null)
       {

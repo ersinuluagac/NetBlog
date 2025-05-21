@@ -9,10 +9,10 @@
     @if (User.Identity.IsAuthenticated && User.FindFirst(ClaimTypes.NameIdentifier)?.Value == Model.Id.ToString())
     {
       <div class="btn-group">
-        <a class="btn" asp-action="ResetPassword"  asp-route-id="@Model.UserName">
+        <a class="btn" asp-action="ResetPassword" asp-route-id="@Model.UserName">
           <i class="fa-solid fa-key fa-xl"></i>
         </a>
-        <a class="btn" asp-action="ResetPassword"  asp-route-id="@Model.UserName">
+        <a class="btn" asp-action="Update" asp-route-id="@Model.UserName">
           <i class="fa-solid fa-gear fa-xl"></i>
         </a>
       </div>
