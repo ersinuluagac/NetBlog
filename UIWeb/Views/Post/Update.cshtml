@@ -3,6 +3,9 @@
 @section Styles {
   <link rel="stylesheet" href="~/lib/summernote/summernote-bs5.min.css" />
 }
+@{
+    var categories = ViewBag.Categories as SelectList ?? new SelectList(Enumerable.Empty<SelectListItem>());
+}
 <div class="text-center">
   <div>
     <h2 class="display-2">
@@ -13,6 +16,7 @@
 <form method="post" asp-action="Update" enctype="multipart/form-data">
   <div class="text-danger" asp-validation-summary="All"></div> @* Form hataları için *@
   <input type="hidden" asp-for="Id" /> @* ID veri transferi için gerekli *@
+  <input type="hidden" asp-for="UserId" />
   <div class="form-group my-3">
     <label asp-for="CategoryId">Kategori</label>
     <select class="form-control" asp-items="@ViewBag.Categories" asp-for="CategoryId">

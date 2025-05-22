@@ -27,6 +27,7 @@ namespace Service.Implementations
       return _manager.Post
         .FindAll(trackChanges)
         .Include(p => p.Category)
+        .Include(p => p.Likes)
         .Include(p => p.User);
     }
 
@@ -68,7 +69,9 @@ namespace Service.Implementations
 
     public void UpdateOnePost(PostDtoForUpdate postDto)
     {
-      var entity = _mapper.Map<Post>(postDto);
+      var entity = _manager.Post.FindByCondition(p => p.Id.Equals(postDto.Id), true);
+      _mapper.Map(postDto, entity);
+      entity.UpdatedAt = DateTime.UtcNow;
       _manager.Post.Update(entity);
       _manager.Save();
     }

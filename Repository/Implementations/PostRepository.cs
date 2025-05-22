@@ -20,6 +20,7 @@ namespace Repository.Implementations
       return _context.Posts
         .FilteredByCategoryId(p.CategoryId)
         .FilteredBySearchTerm(p.SearchTerm)
+        .OrderByDescending(p => p.CreatedAt)
         .Include(p => p.Category)
         .Include(p => p.User)
         .ToPaginate(p.PageNumber, p.PageSize);

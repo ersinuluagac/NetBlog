@@ -8,7 +8,7 @@ namespace Core.RequestParameters
     public int PageSize { get; set; } //Pagination için sayfa büyüklüğü
 
     // CTORs
-    public PostRequestParameters() : this(1, 10)
+    public PostRequestParameters() : this(1, 6)
     {
       // Varsayılan olarak pageNumber 1 ve pageSize 6 verilir.
     }

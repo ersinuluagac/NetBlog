@@ -1,3 +1,49 @@
-﻿<div>
-    <h1>Ana Sayfa</h1>
+﻿@model IEnumerable<Post>
+<section class="py-5 text-center">
+    <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+            <h1 class="fw-light mb-3">En İyi İçerikler NetBlog'da</h1>
+            <p class="lead text-body-secondary">@Model.Count().ToString() farklı içerik. Oku, beğen veya yorum yap...
+            </p>
+            <p class="lead text-body-secondary">Sen de yaz! Başkaları okusun, beğensin veya yorum yapsın...</p>
+        </div>
+    </div>
+</section>
+<div class="row mb-5">
+    @{
+        var mostLike = Model.OrderByDescending(p => p.Likes.Count()).Take(3).ToList();
+        var lastest = Model.OrderByDescending(p => p.CreatedAt).Take(3).ToList();
+    }
+    <div class="col-md-6 mb-3 mb-sm-0">
+        <div>
+            <h3>En çok beğenilenler </h3>
+        </div>
+        @foreach (var post in mostLike)
+        {
+            <div class="card my-2">
+                <div class="card-body">
+                    <h5 class="card-title">@post.Title</h5>
+                    <p class="card-text">@post.Summary</p>
+                    <a asp-controller="Post" asp-action="Get" asp-route-id="@post.Id"
+                        class="btn btn-outline-primary">Oku</a>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="col-md-6 mb-3 mb-sm-0">
+        <div>
+            <h3>En son eklenenler</h3>
+        </div>
+        @foreach (var post in lastest)
+        {
+            <div class="card my-2">
+                <div class="card-body">
+                    <h5 class="card-title">@post.Title</h5>
+                    <p class="card-text">@post.Summary</p>
+                    <a asp-controller="Post" asp-action="Get" asp-route-id="@post.Id"
+                        class="btn btn-outline-primary">Oku</a>
+                </div>
+            </div>
+        }
+    </div>
 </div>

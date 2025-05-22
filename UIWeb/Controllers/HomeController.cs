@@ -17,7 +17,8 @@ namespace UIWeb.Controllers
         // Views
         public IActionResult Index()
         {
-            return View();
+            var model = _manager.PostService.GetAllPosts(false);
+            return View(model);
         }
     }
 }

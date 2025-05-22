@@ -30,7 +30,7 @@ namespace UIWeb.Controllers
     // Views
     public IActionResult Index(PostRequestParameters p)
     {
-      var posts = _manager.PostService.GetAllPostsWithDetails(p);
+      var posts = _manager.PostService.GetAllPostsWithDetails(p).OrderByDescending(p => p.CreatedAt);
       var pagination = new Pagination()
       {
         CurrentPage = p.PageNumber,

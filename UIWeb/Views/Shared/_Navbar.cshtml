@@ -14,27 +14,37 @@
             Ana Sayfa
           </a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"
-            aria-expanded="false">
-            Gönderiler
-          </a>
-          <ul class="dropdown-menu">
-            <li>
-              <a class="dropdown-item" asp-controller="Post" asp-action="Index">
-                Gönderiler (@await Component.InvokeAsync("PostSummary"))
-              </a>
-            </li>
-            @if (User.Identity.IsAuthenticated)
-            {
+        @if (User.Identity.IsAuthenticated)
+        {
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Gönderiler
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" asp-controller="Post" asp-action="Index">
+                  Gönderiler (@await Component.InvokeAsync("PostSummary"))
+                </a>
+              </li>
+
               <li>
                 <a class="dropdown-item" asp-controller="Post" asp-action="Create">
                   Gönderi Oluştur
                 </a>
               </li>
-            }
-          </ul>
-        </li>
+
+            </ul>
+          </li>
+        }
+        else
+        {
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" asp-controller="Post" asp-action="Index">
+              Gönderiler (@await Component.InvokeAsync("PostSummary"))
+            </a>
+          </li>
+        }
       </ul>
       <ul class="navbar-nav">
 
