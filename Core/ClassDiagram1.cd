@@ -25,6 +25,9 @@
       <HashCode>AAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Category.cs</FileName>
     </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Posts" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Core.Models.Comment">
     <Position X="8.75" Y="0.5" Width="1.5" />
@@ -32,6 +35,10 @@
       <HashCode>AAABAAAAAgAAAEEAAAAAAAgACAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Comment.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Post" />
+      <Property Name="User" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Core.Models.Like">
     <Position X="8.75" Y="5.75" Width="1.5" />
