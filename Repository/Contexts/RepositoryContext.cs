@@ -31,8 +31,6 @@ namespace Repository
                     modelBuilder.Entity(entityType.ClrType) // CreatedAt
                         .Property(nameof(BaseEntity.CreatedAt))
                         .HasDefaultValueSql("GETDATE()");
-
-                    
                 }
             }
             // Assembly'den alınabilir.
