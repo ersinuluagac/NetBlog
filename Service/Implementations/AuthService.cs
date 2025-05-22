@@ -32,17 +32,13 @@ namespace Service.Implementations
       var result = await _userManager.CreateAsync(user, userDto.Password);
       if (!result.Succeeded)
       {
-        var errors = string.Join("; ", result.Errors.Select(e => e.Description));
-        throw new Exception("Kullanıcı oluşturulamadı: " + errors);
+        throw new Exception("Kullanıcı oluşturulamadı");
       }
-
       var roleResult = await _userManager.AddToRoleAsync(user, "User");
       if (!roleResult.Succeeded)
       {
-        var errors = string.Join("; ", roleResult.Errors.Select(e => e.Description));
-        throw new Exception("Rol eklenemedi: " + errors);
+        throw new Exception("Rol eklenemedi:");
       }
-
       return result;
     }
 

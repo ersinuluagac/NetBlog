@@ -14,14 +14,6 @@ namespace Service.Interfaces
     IEnumerable<Post> GetAllPosts(bool trackChanges);
 
     /// <summary>
-    /// Son eklenen gönderileri veri tabanından getirir.
-    /// </summary>
-    /// <param name="n">Kaç gönderi getirilecek?</param>
-    /// <param name="trackChanges">Değişiklik takibi yapılacak mı?</param>
-    /// <returns>"n" adet gönderi.</returns>
-    IEnumerable<Post> GetLastestPosts(int n, bool trackChanges);
-
-    /// <summary>
     /// Verilen kategori ID'sine göre postları veri tabanından getirir.
     /// </summary>
     /// <param name="p">Kategori ID istek parametresi</param>

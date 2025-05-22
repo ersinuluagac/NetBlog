@@ -31,16 +31,6 @@ namespace Service.Implementations
         .Include(p => p.User);
     }
 
-    public IEnumerable<Post> GetLastestPosts(int n, bool trackChanges)
-    {
-      return _manager.Post
-      .FindAll(trackChanges)
-      .OrderByDescending(post => post.Id)
-      .Take(n)
-      .Include(p => p.Category)
-      .Include(p => p.User);
-    }
-
     public IEnumerable<PostDtoWithDetails> GetAllPostsWithDetails(PostRequestParameters p)
     {
       return _mapper.Map<IEnumerable<PostDtoWithDetails>>(_manager.Post.GetAllPostsWithDetails(p));

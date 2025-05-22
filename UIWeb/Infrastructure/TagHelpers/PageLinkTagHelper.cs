@@ -17,7 +17,7 @@ namespace UIWeb.Infrastructure.TagHelpers
     // PROP
     [ViewContext]
     [HtmlAttributeNotBound]
-    public ViewContext? ViewContext { get; set; } //araştırılacak.
+    public ViewContext? ViewContext { get; set; }
     public Pagination PageModel { get; set; }
     public string? PageAction { get; set; }
 

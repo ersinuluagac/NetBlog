@@ -35,12 +35,6 @@ namespace Repository
                     
                 }
             }
-
-            // Tek tek verilebilir
-            /*
-                modelBuilder.ApplyConfiguration(new PostConfig());
-                modelBuilder.ApplyConfiguration(new CategoryConfig());
-            */
             // Assembly'den alınabilir.
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly()); // Çalışan Assembly'den getir (Assembly: dll, exe).
         }
