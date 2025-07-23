@@ -1,5 +1,5 @@
 # NetBlog
-## 0 Prensipler & Teknoloyiler
+## Prensipler & Teknolojiler
 - **Dependency Injection**
 - **Inversion of Control**
 - **Unit of Work**
